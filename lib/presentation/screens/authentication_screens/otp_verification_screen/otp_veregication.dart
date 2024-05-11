@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -49,6 +50,12 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
   } 
 
   @override
+  void initState() {
+    timer();
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _timer.cancel();
     super.dispose();
@@ -59,7 +66,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
     String timerString = '${_minutes.toString()}:${_seconds.toString().padLeft(2, '0')}';
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 45, 20, 16),
+        padding: const EdgeInsets.fromLTRB(30, 45, 30, 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -119,7 +126,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(49, 48, 49, 0),
+                  padding: const EdgeInsets.fromLTRB(25, 48, 25, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: List.generate(4, (index) {
@@ -127,7 +134,8 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                         width: 54,
                         height: 58,
                         child: TextField(
-
+                          textAlign: TextAlign.center,
+                          
                           keyboardType: TextInputType.phone,
                           cursorColor: Colors.transparent,
 
@@ -142,6 +150,8 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                             if (value.isNotEmpty) {
                               if(index == 0){
                                 inputStarted = true;
+                                      
+                              _timer.cancel();
                                 timer();
                               }
                               
@@ -154,8 +164,6 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
 
                           decoration: const InputDecoration(
 
-                            contentPadding: EdgeInsets.fromLTRB(18, 15, 0, 10),
-                            
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide.none
@@ -187,59 +195,114 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                 ),
                 if (inputStarted) Padding(
                   padding: const EdgeInsets.only(top: 24),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: 
-                    _isTimeExpired
-                    ? [
-                      const Text(
-                        'Не получили код?',
-                        style: TextStyle(
-                          fontFamily: 'Geologica',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color.fromARGB(255, 22, 21, 23)
+                  child: 
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: 
+                      _isTimeExpired
+                      ? [
+                        const TextSpan(
+                          text: 'Не получили код?',
+                          style: TextStyle(
+                            fontFamily: 'Geologica',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromARGB(255, 22, 21, 23)
+                          ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: (){
+                        TextSpan(
+                        recognizer: TapGestureRecognizer()..onTap = (){
                           setState(() {
                             _isTimeExpired = false;
                           });
                           timer();
                         },
-                        child: const Text(
-                        ' Отправить повторно',
-                          style: TextStyle(
+                        text: ' Отправить повторно',
+                          style: const TextStyle(
                             fontFamily: 'Geologica',
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                             color: Color.fromARGB(255, 175, 222, 46)
                           ),
                         )
-                      )
-                    ]
-                    : [
-                      const Text(
-                        'Новый код можно будет запросить через ',
+                      ]
+                      : [
+                        const TextSpan(
+                        text: 'Новый код можно будет запросить через ',
                         style: TextStyle(
                           fontFamily: 'Geologica',
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
                           color: Color.fromARGB(255, 130, 133, 137)
+                          ),
                         ),
-                      ),
-                      Text(
-                        timerString,
-                        style: const TextStyle(
-                          fontFamily: 'Geologica',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color.fromARGB(255, 130, 133, 137)
-                        ),
-                      )
-                    ]
-                  ),
+                        TextSpan(
+                          text: timerString,
+                          style: const TextStyle(
+                            fontFamily: 'Geologica',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            color: Color.fromARGB(255, 130, 133, 137)
+                          ),
+                        )
+                      ]
+                    )
+                  )
+                  
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: 
+                  //   _isTimeExpired
+                  //   ? [
+                  //     const Text(
+                  //       'Не получили код?',
+                  //       style: TextStyle(
+                  //         fontFamily: 'Geologica',
+                  //         fontSize: 14,
+                  //         fontWeight: FontWeight.w600,
+                  //         color: Color.fromARGB(255, 22, 21, 23)
+                  //       ),
+                  //     ),
+                  //     InkWell(
+                  //       onTap: (){
+                  //         setState(() {
+                  //           _isTimeExpired = false;
+                  //         });
+                  //         timer();
+                  //       },
+                  //       child: const Text(
+                  //       ' Отправить повторно',
+                  //         style: TextStyle(
+                  //           fontFamily: 'Geologica',
+                  //           fontSize: 14,
+                  //           fontWeight: FontWeight.w600,
+                  //           color: Color.fromARGB(255, 175, 222, 46)
+                  //         ),
+                  //       )
+                  //     )
+                  //   ]
+                  //   : [
+                  //     const Text(
+                  //       'Новый код можно будет запросить через ',
+                  //       style: TextStyle(
+                  //         fontFamily: 'Geologica',
+                  //         fontSize: 14,
+                  //         fontWeight: FontWeight.w300,
+                  //         color: Color.fromARGB(255, 130, 133, 137)
+                  //       ),
+                  //     ),
+                  //     Text(
+                  //       timerString,
+                  //       style: const TextStyle(
+                  //         fontFamily: 'Geologica',
+                  //         fontSize: 14,
+                  //         fontWeight: FontWeight.w300,
+                  //         color: Color.fromARGB(255, 130, 133, 137)
+                  //       ),
+                  //     )
+                  //   ]
+                  // ),
                 ) else const SizedBox()
               ],
             ),

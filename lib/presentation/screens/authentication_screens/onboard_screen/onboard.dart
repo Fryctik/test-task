@@ -22,7 +22,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 45),
+                padding: const EdgeInsets.only(top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -56,7 +56,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 3),
+                padding: const EdgeInsets.only(top: 0),
                 child: Image.asset('assets/image/onboard-image.png'),
               ),
               const Column(
@@ -94,7 +94,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: EdgeInsets.only(top: 0),
                       child: Text(
                         'Собирай, Сдавай, Сохраняй',
                         textAlign: TextAlign.center,
@@ -107,7 +107,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 8),
+                      padding: EdgeInsets.only(top: 4),
                       child: Text(
                         'Управляйте вашими отходами: приложение для организации вывоза'
                         ' вторсырья, учета и отслеживания вашего эковклада',
@@ -130,7 +130,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               width: double.infinity,
-              height: 62,
+              height: 50,
               child: ElevatedButton(
                 onPressed: (){
                   context.router.push(const IdentificationRoute());

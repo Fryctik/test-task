@@ -52,8 +52,9 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                 const Padding(
                   padding: EdgeInsets.only(top: 24),
                   child: Text(
-                    'Вход \n и регистрация',
+                    'Вход\n и регистрация',
                     textAlign: TextAlign.center,
+                    softWrap: false,
                     style: TextStyle(
                       fontFamily: 'Unbounded',
                       fontWeight: FontWeight.w600,
