@@ -135,7 +135,6 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                         height: 58,
                         child: TextField(
                           textAlign: TextAlign.center,
-                          
                           keyboardType: TextInputType.phone,
                           cursorColor: Colors.transparent,
 
@@ -186,6 +185,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                             ),
                             fillColor: Color.fromARGB(255, 239, 242, 245),
                             filled: true,
+                            contentPadding: EdgeInsets.symmetric(vertical: 15)
                           ),
                         ),
                       );
@@ -249,60 +249,6 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                       ]
                     )
                   )
-                  
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: 
-                  //   _isTimeExpired
-                  //   ? [
-                  //     const Text(
-                  //       'Не получили код?',
-                  //       style: TextStyle(
-                  //         fontFamily: 'Geologica',
-                  //         fontSize: 14,
-                  //         fontWeight: FontWeight.w600,
-                  //         color: Color.fromARGB(255, 22, 21, 23)
-                  //       ),
-                  //     ),
-                  //     InkWell(
-                  //       onTap: (){
-                  //         setState(() {
-                  //           _isTimeExpired = false;
-                  //         });
-                  //         timer();
-                  //       },
-                  //       child: const Text(
-                  //       ' Отправить повторно',
-                  //         style: TextStyle(
-                  //           fontFamily: 'Geologica',
-                  //           fontSize: 14,
-                  //           fontWeight: FontWeight.w600,
-                  //           color: Color.fromARGB(255, 175, 222, 46)
-                  //         ),
-                  //       )
-                  //     )
-                  //   ]
-                  //   : [
-                  //     const Text(
-                  //       'Новый код можно будет запросить через ',
-                  //       style: TextStyle(
-                  //         fontFamily: 'Geologica',
-                  //         fontSize: 14,
-                  //         fontWeight: FontWeight.w300,
-                  //         color: Color.fromARGB(255, 130, 133, 137)
-                  //       ),
-                  //     ),
-                  //     Text(
-                  //       timerString,
-                  //       style: const TextStyle(
-                  //         fontFamily: 'Geologica',
-                  //         fontSize: 14,
-                  //         fontWeight: FontWeight.w300,
-                  //         color: Color.fromARGB(255, 130, 133, 137)
-                  //       ),
-                  //     )
-                  //   ]
-                  // ),
                 ) else const SizedBox()
               ],
             ),

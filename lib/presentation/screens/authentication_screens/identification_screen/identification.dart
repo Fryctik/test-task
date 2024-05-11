@@ -54,7 +54,6 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                   child: Text(
                     'Вход\n и регистрация',
                     textAlign: TextAlign.center,
-                    softWrap: false,
                     style: TextStyle(
                       fontFamily: 'Unbounded',
                       fontWeight: FontWeight.w600,
