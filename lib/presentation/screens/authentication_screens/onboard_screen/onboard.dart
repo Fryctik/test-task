@@ -16,7 +16,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromARGB(255, 186, 132, 246),
-      body: Column(
+      body:
+      ///не хватает safeArea
+      Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
@@ -55,6 +57,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   ],
                 ),
               ),
+              ///бесполезный padding
               Padding(
                 padding: const EdgeInsets.only(top: 0),
                 child: Image.asset('assets/image/onboard-image.png'),
@@ -71,6 +74,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Color.fromARGB(255, 230, 216, 246)
+                            ///не хватает height
                           ),
                         ),
                         Text(
@@ -80,6 +84,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Color.fromARGB(255, 175, 222, 46)
+                            ///не хватает height
                           ),
                         ),
                         Text(
@@ -89,10 +94,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Color.fromARGB(255, 230, 216, 246)
+                            ///не хватает height
                           ),
                         ),
                       ],
                     ),
+                    ///бесполезный padding
                     Padding(
                       padding: EdgeInsets.only(top: 0),
                       child: Text(
@@ -117,6 +124,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                           color: Color.fromARGB(255, 230, 216, 246),
+                          ///не хватает height
                         ),
                       ),
                     )
@@ -124,12 +132,14 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 ),
             ],
           ),
-          
+
+          ///не по макету
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 3, 0, 16),
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               width: double.infinity,
+              ///высота не должна быть фиксированной
               height: 50,
               child: ElevatedButton(
                 onPressed: (){

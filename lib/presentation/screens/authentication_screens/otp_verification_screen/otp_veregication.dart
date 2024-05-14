@@ -65,7 +65,9 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
   Widget build(BuildContext context) {
     String timerString = '${_minutes.toString()}:${_seconds.toString().padLeft(2, '0')}';
     return Scaffold(
-      body: Padding(
+      body:
+      ///не хватает safeArea
+      Padding(
         padding: const EdgeInsets.fromLTRB(30, 45, 30, 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,6 +93,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                   color: Color.fromARGB(255, 22, 21, 23)
+                                ///не хватает height
                               ),
                             ),
                           )
@@ -108,6 +111,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                       fontFamily: 'Unbounded',
                       fontWeight: FontWeight.w600,
                       fontSize: 32
+                      ///не хватает height
                     ),
                   ),
                 ),
@@ -121,10 +125,12 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                       fontWeight: FontWeight.w300,
                       fontSize: 16,
                       color: Color.fromARGB(255, 130, 133, 137)
+                      ///не хватает height
                     ),
                   ),
                 ),
 
+                ///не по макету. цифры не по середине
                 Padding(
                   padding: const EdgeInsets.fromLTRB(25, 48, 25, 0),
                   child: Row(
@@ -143,22 +149,23 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
                             color: Color.fromARGB(255, 22, 21, 23)
+                            ///не хватает height
                           ),
 
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               if(index == 0){
                                 inputStarted = true;
-                                      
+
                               _timer.cancel();
                                 timer();
                               }
-                              
+
                               FocusScope.of(context).nextFocus();
-                              
+
                             }
                           },
-                          
+
                           inputFormatters: [formatter],
 
                           decoration: const InputDecoration(
@@ -204,6 +211,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                       ? [
                         const TextSpan(
                           text: 'Не получили код?',
+                          ///не по макету стиль
                           style: TextStyle(
                             fontFamily: 'Geologica',
                             fontSize: 14,
@@ -224,6 +232,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                             color: Color.fromARGB(255, 175, 222, 46)
+                            ///не хватает height
                           ),
                         )
                       ]
@@ -235,6 +244,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
                           color: Color.fromARGB(255, 130, 133, 137)
+                          ///не хватает height
                           ),
                         ),
                         TextSpan(
@@ -252,10 +262,12 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                 ) else const SizedBox()
               ],
             ),
+            ///не по макету
             Container(
               margin: const EdgeInsets.only(top: 16),
               child: SizedBox(
                 width: double.infinity,
+                ///высота не должна быть фиксированной
                 height: 62,
                 child: ElevatedButton(
                   onPressed: (){

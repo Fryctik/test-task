@@ -27,12 +27,14 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
 
   bool isValidPhoneNumber(String value) {
     return RegExp(r'^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$').hasMatch(value);
-  }        
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+      body:
+      ///не хватает safeArea
+      Padding(
         padding: const EdgeInsets.fromLTRB(20, 45, 20, 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +50,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                       child: const Icon(Icons.close_sharp, size: 24, color: Color.fromARGB(255, 175, 222, 46), weight: 2,),
                     )
                   ],
-                ), 
+                ),
                 const Padding(
                   padding: EdgeInsets.only(top: 24),
                   child: Text(
@@ -58,6 +60,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                       fontFamily: 'Unbounded',
                       fontWeight: FontWeight.w600,
                       fontSize: 32
+                      ///не хватает height
                     ),
                   ),
                 ),
@@ -71,6 +74,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                       fontWeight: FontWeight.w300,
                       fontSize: 16,
                       color: Color.fromARGB(255, 130, 133, 137)
+                      ///не хватает height
                     ),
                   ),
                 ),
@@ -87,6 +91,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                       fontFamily: 'Geologica',
                       fontSize: 16,
                       fontWeight: FontWeight.w300,
+                      ///не хватает height
                       color: _isValidPhoneNumber ? const Color.fromARGB(255, 22, 21, 33) : const Color.fromARGB(255, 221, 34, 34),
                     ),
 
@@ -104,6 +109,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                         fontSize: 16,
                         fontWeight: FontWeight.w300,
                         color: Color.fromARGB(255, 130, 133, 137)
+                        ///не хватает height
                       ),
 
                       enabledBorder: const OutlineInputBorder(
@@ -131,9 +137,11 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                       errorText: _isValidPhoneNumber ? null : 'Неправильный номер',
                       errorStyle: const TextStyle(
                         fontFamily: 'Geologica',
+                        ///размер не тот
                         fontSize: 14,
                         fontWeight: FontWeight.w300,
                         color: Color.fromARGB(255, 221, 34, 34)
+                        ///не хватает height
                       ),
 
                       fillColor: _isValidPhoneNumber ? const Color.fromARGB(255, 239, 242, 245) : const Color.fromARGB(255, 245, 210, 210),
@@ -148,6 +156,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
 
             Column(
               children: [
+                ///не по макету стили
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
@@ -170,16 +179,18 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                           fontWeight: FontWeight.w300,
                           color: Color.fromARGB(255, 175, 222, 46)
                         ),
-                        
+
                       )
                     ]
                   )
                 ),
+                ///не по макету
                 Container(
                   margin: const EdgeInsets.only(top: 16),
                   child: SizedBox(
                     width: double.infinity,
                     height: 62,
+                    ///высота не должна быть фиксированной
                     child: ElevatedButton(
                       onPressed: (){
                         if(_isNumberValidInputed == true){
@@ -199,6 +210,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
                           color: Color.fromARGB(255, 255, 255, 255)
+                          ///не хватает height
                         ),
                       )
                     ),
