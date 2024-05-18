@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    EditingProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EditingProfileScreen(),
+      );
+    },
     IdentificationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -38,6 +44,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [EditingProfileScreen]
+class EditingProfileRoute extends PageRouteInfo<void> {
+  const EditingProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          EditingProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EditingProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

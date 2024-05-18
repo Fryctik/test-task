@@ -4,6 +4,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:test/presentation/routes/routes.dart';
+import 'package:test/presentation/screens/authentication_screens/common_widgets/common_button.dart';
+import 'package:test/presentation/screens/authentication_screens/otp_verification_screen/widget/back_widget.dart';
+import 'package:test/presentation/screens/authentication_screens/otp_verification_screen/widget/title_otp_widget.dart';
+import 'package:test/presentation/theme/theme.dart';
 
 @RoutePage()
 class OtpVereficationScreen extends StatefulWidget {
@@ -11,18 +16,15 @@ class OtpVereficationScreen extends StatefulWidget {
 
   final String number;
 
-
   @override
   State<OtpVereficationScreen> createState() => _OtpVereficationScreenState();
 }
 
 class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
-
   final formatter = MaskTextInputFormatter(
-    mask: '#',
-    filter: { "#": RegExp(r'[0-9]') },
-    type: MaskAutoCompletionType.lazy
-  );
+      mask: '#',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy);
 
   bool inputStarted = false;
   int _minutes = 1;
@@ -30,7 +32,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
   bool _isTimeExpired = false;
   late Timer _timer;
 
-  void timer () {
+  void timer() {
     _isTimeExpired = false;
     _minutes = 1;
     _seconds = 0;
@@ -47,7 +49,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
         }
       });
     });
-  } 
+  }
 
   @override
   void initState() {
@@ -63,235 +65,180 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String timerString = '${_minutes.toString()}:${_seconds.toString().padLeft(2, '0')}';
+    String timerString =
+        '${_minutes.toString()}:${_seconds.toString().padLeft(2, '0')}';
+    final theme = Theme.of(context);
     return Scaffold(
-      body:
-      ///не хватает safeArea
-      Padding(
-        padding: const EdgeInsets.fromLTRB(30, 45, 30, 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        _timer.cancel();
-                        context.router.back();
-                      },
-                      child: const Row(
-                        children: [
-                          Icon(Icons.arrow_back, size: 24, color: Color.fromARGB(255, 175, 222, 46), weight: 2,),
-                          Padding(
-                            padding: EdgeInsets.only(left: 4),
-                            child: Text(
-                              'Назад',
-                              style: TextStyle(
-                                  fontFamily: 'Geologica',
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 14,
-                                  color: Color.fromARGB(255, 22, 21, 23)
-                                ///не хватает height
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(30, 45, 30, 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          _timer.cancel();
+                          context.router.back();
+                        },
+                        child: const BackWidget(),
+                      )
+                    ],
+                  ),
+                  TitleOtpWidget(widget: widget),
+
+                  ///не по макету. цифры не по середине
+                  /// ТУТ НУЖНА ПОМОЩЬ, я не могу оцентровать их
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(39, 48, 39, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: List.generate(
+                        4,
+                        (index) {
+                          return SizedBox(
+                            width: 54,
+                            height: 58,
+                            child: TextField(
+                              textAlign: TextAlign.center,
+                              keyboardType: TextInputType.phone,
+                              cursorColor: Colors.transparent,
+                              style: const TextStyle(
+                                fontFamily: 'Unbounded',
+                                fontSize: 22,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.black,
+                                height: 27.28 / 22,
+                              ),
+                              onChanged: (value) {
+                                if (value.isNotEmpty) {
+                                  if (index == 0) {
+                                    inputStarted = true;
+
+                                    _timer.cancel();
+                                    timer();
+                                  }
+
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
+                              inputFormatters: [formatter],
+                              decoration: const InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                  borderSide: BorderSide(
+                                      color: AppColors.main,
+                                      width: 1),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                  borderSide: BorderSide.none,
+                                ),
+                                fillColor: Color.fromARGB(255, 239, 242, 245),
+                                filled: true,
+                                contentPadding:
+                                    EdgeInsets.symmetric(vertical: 15),
                               ),
                             ),
-                          )
-                        ],
-                      )
-                    )
-                  ],
-                ), 
-                const Padding(
-                  padding: EdgeInsets.only(top: 24),
-                  child: Text(
-                    'Введите код',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Unbounded',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 32
-                      ///не хватает height
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Text(
-                    'Мы отправили СМС с кодом подтверждения на ваш номер ${widget.number}',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontFamily: 'Geologica',
-                      fontWeight: FontWeight.w300,
-                      fontSize: 16,
-                      color: Color.fromARGB(255, 130, 133, 137)
-                      ///не хватает height
-                    ),
-                  ),
-                ),
-
-                ///не по макету. цифры не по середине
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 48, 25, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(4, (index) {
-                      return SizedBox(
-                        width: 54,
-                        height: 58,
-                        child: TextField(
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.phone,
-                          cursorColor: Colors.transparent,
-
-                          style: const TextStyle(
-                            fontFamily: 'Unbounded',
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 22, 21, 23)
-                            ///не хватает height
-                          ),
-
-                          onChanged: (value) {
-                            if (value.isNotEmpty) {
-                              if(index == 0){
-                                inputStarted = true;
-
-                              _timer.cancel();
-                                timer();
-                              }
-
-                              FocusScope.of(context).nextFocus();
-
-                            }
-                          },
-
-                          inputFormatters: [formatter],
-
-                          decoration: const InputDecoration(
-
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide.none
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(
-                                color: Color.fromARGB(255, 186, 132, 246),
-                                width: 1
-                              )
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide.none
-                            ),
-
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide.none
-                            ),
-                            fillColor: Color.fromARGB(255, 239, 242, 245),
-                            filled: true,
-                            contentPadding: EdgeInsets.symmetric(vertical: 15)
-                          ),
-                        ),
-                      );
-                    }
-                    )
-                  )
-                ),
-                if (inputStarted) Padding(
-                  padding: const EdgeInsets.only(top: 24),
-                  child: 
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: 
-                      _isTimeExpired
-                      ? [
-                        const TextSpan(
-                          text: 'Не получили код?',
-                          ///не по макету стиль
-                          style: TextStyle(
-                            fontFamily: 'Geologica',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 22, 21, 23)
-                          ),
-                        ),
-                        TextSpan(
-                        recognizer: TapGestureRecognizer()..onTap = (){
-                          setState(() {
-                            _isTimeExpired = false;
-                          });
-                          timer();
+                          );
                         },
-                        text: ' Отправить повторно',
-                          style: const TextStyle(
-                            fontFamily: 'Geologica',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 175, 222, 46)
-                            ///не хватает height
-                          ),
-                        )
-                      ]
-                      : [
-                        const TextSpan(
-                        text: 'Новый код можно будет запросить через ',
-                        style: TextStyle(
-                          fontFamily: 'Geologica',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color.fromARGB(255, 130, 133, 137)
-                          ///не хватает height
-                          ),
+                      ),
+                    ),
+                  ),
+                  if (inputStarted)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 24),
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          children: _isTimeExpired
+                              ? [
+                                  TextSpan(
+                                    text: 'Не получили код?',
+                                    style: theme.textTheme.displayMedium?.copyWith(
+                                      color: AppColors.black,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        setState(() {
+                                          _isTimeExpired = false;
+                                        });
+                                        timer();
+                                      },
+                                    text: ' Отправить повторно',
+                                    style: theme.textTheme.displayLarge?.copyWith(
+                                      color: AppColors.accent,
+                                    ),
+                                  )
+                                ]
+                              : [
+                                  TextSpan(
+                                    text:
+                                        'Новый код можно будет запросить через ',
+                                    style: theme.textTheme.displayMedium?.copyWith(
+                                      color: AppColors.shade3,
+                                      height: 17.5 / 14,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: timerString,
+                                    style: theme.textTheme.displayMedium?.copyWith(
+                                      color: AppColors.shade3,
+                                      height: 17.5 / 14,
+                                    ),
+                                  ),
+                                ],
                         ),
-                        TextSpan(
-                          text: timerString,
-                          style: const TextStyle(
-                            fontFamily: 'Geologica',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300,
-                            color: Color.fromARGB(255, 130, 133, 137)
-                          ),
-                        )
-                      ]
+                      ),
                     )
-                  )
-                ) else const SizedBox()
-              ],
-            ),
-            ///не по макету
-            Container(
-              margin: const EdgeInsets.only(top: 16),
-              child: SizedBox(
+                  else
+                    const SizedBox()
+                ],
+              ),
+              SizedBox(
                 width: double.infinity,
-                ///высота не должна быть фиксированной
-                height: 62,
                 child: ElevatedButton(
-                  onPressed: (){
-
+                  onPressed: () {
+                    _timer.cancel();
+                    context.router.push(EditingProfileRoute());
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 186, 132, 246),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24)
-                    )
-                  ),
-                  child: const Text(
+                      backgroundColor: AppColors.main,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 20)),
+                  child: Text(
                     'подтвердить',
-                    style: TextStyle(
-                      fontFamily: 'Unbounded',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Color.fromARGB(255, 255, 255, 255)
+                    style: theme.textTheme.headlineMedium?.copyWith(
+                      color: AppColors.white,
                     ),
-                  )
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/editing_profile.dart';
 import 'package:test/presentation/screens/authentication_screens/identification_screen/identification.dart';
 import 'package:test/presentation/screens/authentication_screens/onboard_screen/onboard.dart';
 import 'package:test/presentation/screens/authentication_screens/otp_verification_screen/otp_veregication.dart';
@@ -15,6 +16,7 @@ class AppRouter extends _$AppRouter {
     AutoRoute(page: OnboardRoute.page, path: '/'),
     AutoRoute(page: IdentificationRoute.page, path: '/identification'),
     AutoRoute(page: OtpVereficationRoute.page, path: '/otp_verefication'),
+    AutoRoute(page: EditingProfileRoute.page, path: '/editing_profile'),
   ];
 }
 
