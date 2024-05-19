@@ -12,7 +12,7 @@ class LogoWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/icons/heart.png'),
+          Image.asset('assets/icons/heart.png', width: 40, height: 33.33,),
           const Padding(
             padding: EdgeInsets.only(left: 12),
             child: Row(

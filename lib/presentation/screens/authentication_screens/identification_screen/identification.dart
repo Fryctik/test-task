@@ -14,12 +14,12 @@ class IdentificationScreen extends StatefulWidget {
 }
 
 class _IdentificationScreenState extends State<IdentificationScreen> {
-  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController(text: '+7');
 
   final maskFormatter = MaskTextInputFormatter(
       mask: '+7 (###) ###-##-##',
       filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
+      type: MaskAutoCompletionType.lazy,);
   bool _isValidPhoneNumber = true;
   bool _isNumberValidInputed = false;
 

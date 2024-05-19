@@ -36,7 +36,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
             const Padding(
               padding: EdgeInsets.fromLTRB(20, 0, 20, 38),
               child: CommonWidgetButton(
-                text: 'войти',
+                text: 'ВОЙТИ',
                 colorButton: Colors.white,
                 textColor: Color.fromARGB(255, 186, 132, 246),
                 pathRoute: IdentificationRoute(),

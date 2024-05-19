@@ -37,7 +37,7 @@ class AgreementWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 16),
           child: CommonWidgetButton(
-            text: 'получить код',
+            text: 'ПОЛУЧИТЬ КОД',
             colorButton: AppColors.main,
             textColor: AppColors.white,
             pathRoute: OtpVereficationRoute(

@@ -230,7 +230,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 20)),
                   child: Text(
-                    'подтвердить',
+                    'ПОДТВЕРДИТЬ',
                     style: theme.textTheme.headlineMedium?.copyWith(
                       color: AppColors.white,
                     ),

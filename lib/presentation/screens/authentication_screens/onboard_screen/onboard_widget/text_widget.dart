@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/presentation/theme/theme.dart';
 
 class TextWidget extends StatelessWidget {
   const TextWidget({
@@ -7,44 +8,33 @@ class TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final theme = Theme.of(context);
+    return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Добро пожаловать в ',
-              style: TextStyle(
-                fontFamily: 'Geologica',
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Color.fromARGB(255, 230, 216, 246),
-                height: 20 / 16,
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: AppColors.mainSoft,
               ),
             ),
             Text(
               'Re',
-              style: TextStyle(
-                fontFamily: 'Geologica',
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Color.fromARGB(255, 175, 222, 46),
-                height: 20 / 16,
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: AppColors.accent,
               ),
             ),
             Text(
               'Лав',
-              style: TextStyle(
-                fontFamily: 'Geologica',
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Color.fromARGB(255, 230, 216, 246),
-                height: 20 / 16,
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: AppColors.mainSoft,
               ),
             ),
           ],
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(top: 10),
           child: Text(
             'Собирай, Сдавай, Сохраняй',
@@ -59,17 +49,13 @@ class TextWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 4),
+          padding: const EdgeInsets.only(top: 4),
           child: Text(
             'Управляйте вашими отходами: приложение для организации вывоза'
             ' вторсырья, учета и отслеживания вашего эковклада',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'Geologica',
-              fontSize: 16,
-              fontWeight: FontWeight.w300,
-              color: Color.fromARGB(255, 230, 216, 246),
-              height: 20 / 16,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: AppColors.mainSoft,
             ),
           ),
         )

@@ -35,7 +35,6 @@ class CommonWidgetButton extends StatelessWidget {
           text,
           style: theme.textTheme.headlineMedium?.copyWith(
             color: textColor,
-            height: 22 / 16,
           ),
         ),
       ),
