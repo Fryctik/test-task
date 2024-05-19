@@ -1,9 +1,9 @@
-
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:test/presentation/routes/routes.dart';
+import 'package:test/presentation/screens/authentication_screens/identification_screen/widgets/agreement_widget.dart';
+import 'package:test/presentation/screens/authentication_screens/identification_screen/widgets/title_identification_widget.dart';
+import 'package:test/presentation/theme/theme.dart';
 
 @RoutePage()
 class IdentificationScreen extends StatefulWidget {
@@ -14,14 +14,12 @@ class IdentificationScreen extends StatefulWidget {
 }
 
 class _IdentificationScreenState extends State<IdentificationScreen> {
-
-  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController(text: '+7');
 
   final maskFormatter = MaskTextInputFormatter(
-    mask: '+7 (###) ###-##-##',
-    filter: { "#": RegExp(r'[0-9]') },
-    type: MaskAutoCompletionType.lazy
-  );
+      mask: '+7 (###) ###-##-##',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy,);
   bool _isValidPhoneNumber = true;
   bool _isNumberValidInputed = false;
 
@@ -31,194 +29,104 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      body:
-      ///не хватает safeArea
-      Padding(
-        padding: const EdgeInsets.fromLTRB(20, 45, 20, 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        context.router.back();
-                      },
-                      child: const Icon(Icons.close_sharp, size: 24, color: Color.fromARGB(255, 175, 222, 46), weight: 2,),
-                    )
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 24),
-                  child: Text(
-                    'Вход\n и регистрация',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Unbounded',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 32
-                      ///не хватает height
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 12),
-                  child: Text(
-                    'Для получения кода введите \n свой номер телефона',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Geologica',
-                      fontWeight: FontWeight.w300,
-                      fontSize: 16,
-                      color: Color.fromARGB(255, 130, 133, 137)
-                      ///не хватает height
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 48),
-                  child: TextField(
-
-                    controller: _phoneNumberController,
-                    keyboardType: TextInputType.phone,
-                    inputFormatters: [maskFormatter],
-
-                    cursorColor: const Color.fromARGB(255, 186, 132, 246),
-                    style:TextStyle(
-                      fontFamily: 'Geologica',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                      ///не хватает height
-                      color: _isValidPhoneNumber ? const Color.fromARGB(255, 22, 21, 33) : const Color.fromARGB(255, 221, 34, 34),
-                    ),
-
-                    onChanged: (value) {
-                      setState(() {
-                        _isValidPhoneNumber = isValidPhoneNumber(value);
-                        _isValidPhoneNumber ? _isNumberValidInputed = true : _isNumberValidInputed = false;
-                      });
-                    },
-
-                    decoration: InputDecoration(
-                      hintText: '+7',
-                      hintStyle: const TextStyle(
-                        fontFamily: 'Geologica',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w300,
-                        color: Color.fromARGB(255, 130, 133, 137)
-                        ///не хватает height
-                      ),
-
-                      enabledBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        borderSide: BorderSide.none
-                      ),
-                      focusedBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 186, 132, 246),
-                          width: 1
-                        )
-                      ),
-                      errorBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        borderSide: BorderSide.none
-                      ),
-
-                      focusedErrorBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        borderSide: BorderSide.none
-                      ),
-
-
-                      errorText: _isValidPhoneNumber ? null : 'Неправильный номер',
-                      errorStyle: const TextStyle(
-                        fontFamily: 'Geologica',
-                        ///размер не тот
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                        color: Color.fromARGB(255, 221, 34, 34)
-                        ///не хватает height
-                      ),
-
-                      fillColor: _isValidPhoneNumber ? const Color.fromARGB(255, 239, 242, 245) : const Color.fromARGB(255, 245, 210, 210),
-                      filled: true,
-
-                      suffixIcon: _isNumberValidInputed ? const Icon(Icons.check, size: 24, color: Color.fromARGB(255, 175, 222, 46), weight: 3,) : null,
-                    )
-                  ),
-                ),
-              ],
-            ),
-
-            Column(
-              children: [
-                ///не по макету стили
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 45, 20, 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Row(
                     children: [
-                      const TextSpan(
-                        text: 'Продолжая, вы соглашаетесь на ',
-                        style: TextStyle(
-                          fontFamily: 'Geologica',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color.fromARGB(255, 130, 133, 137)
+                      InkWell(
+                        onTap: () {
+                          context.router.back();
+                        },
+                        child: const Icon(
+                          Icons.close_sharp,
+                          size: 24,
+                          color: AppColors.accent,
+                          weight: 2,
                         ),
-                      ),
-                      TextSpan(
-                        text: 'сбор,\n обработку и хранение персональных данных',
-                        recognizer: TapGestureRecognizer()..onTap = (){},
-                        style: const TextStyle(
-                          fontFamily: 'Geologica',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color.fromARGB(255, 175, 222, 46)
-                        ),
-
                       )
-                    ]
-                  )
-                ),
-                ///не по макету
-                Container(
-                  margin: const EdgeInsets.only(top: 16),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 62,
-                    ///высота не должна быть фиксированной
-                    child: ElevatedButton(
-                      onPressed: (){
-                        if(_isNumberValidInputed == true){
-                          context.router.push(OtpVereficationRoute(number: _phoneNumberController.text));
-                        }
+                    ],
+                  ),
+                  const TitleIdentificationWidget(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 48),
+                    child: TextField(
+                      controller: _phoneNumberController,
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [maskFormatter],
+                      cursorColor: const Color.fromARGB(255, 186, 132, 246),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        height: 20 / 16,
+                        color: _isValidPhoneNumber
+                            ? AppColors.black
+                            : AppColors.red,
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          _isValidPhoneNumber = isValidPhoneNumber(value);
+                          _isValidPhoneNumber
+                              ? _isNumberValidInputed = true
+                              : _isNumberValidInputed = false;
+                        });
                       },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 186, 132, 246),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24)
-                        )
-                      ),
-                      child: const Text(
-                        'получить код',
-                        style: TextStyle(
-                          fontFamily: 'Unbounded',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Color.fromARGB(255, 255, 255, 255)
-                          ///не хватает height
+                      decoration: InputDecoration(
+                        hintText: '+7',
+                        hintStyle: theme.textTheme.bodyMedium?.copyWith(
+                          color: AppColors.shade3,
+                          height: 20 / 16,
                         ),
-                      )
+                        enabledBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide(
+                            color: AppColors.main,
+                            width: 1,
+                          ),
+                        ),
+                        errorBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedErrorBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide.none,
+                        ),
+                        errorText:
+                            _isValidPhoneNumber ? null : 'Неправильный номер',
+                        errorStyle: theme.textTheme.bodyMedium?.copyWith(
+                          color: AppColors.red,
+                          height: 20 / 16,
+                        ),
+                        fillColor: _isValidPhoneNumber
+                            ? AppColors.shade1
+                            : AppColors.softRed,
+                        filled: true,
+                        suffixIcon: _isNumberValidInputed
+                            ? const Icon(
+                                Icons.check,
+                                size: 24,
+                                color: AppColors.accent,
+                                weight: 3,
+                              )
+                            : null,
+                      ),
                     ),
                   ),
-                )
-              ],
-            )
-          ],
+                ],
+              ),
+              AgreementWidget(phoneNumberController: _phoneNumberController)
+            ],
+          ),
         ),
       ),
     );
