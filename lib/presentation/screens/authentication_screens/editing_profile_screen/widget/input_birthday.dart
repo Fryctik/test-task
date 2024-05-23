@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:test/presentation/theme/theme.dart';
+import 'package:test/presentation/widgets/custom_text_field.dart';
 
 class InputBirthdayWidget extends StatefulWidget {
   const InputBirthdayWidget({
@@ -40,31 +41,36 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
             ),
           ),
         ),
-        TextFormField(
+        CustomTextField(
           controller: _birthdayController,
           keyboardType: TextInputType.number,
-          textCapitalization: TextCapitalization.sentences,
-          cursorColor: AppColors.main,
-          style: widget.theme.textTheme.bodyMedium
-              ?.copyWith(color: AppColors.black),
           inputFormatters: [DateTextFormatter()],
-          decoration: const InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              borderSide: BorderSide.none,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              borderSide: BorderSide(
-                color: AppColors.main,
-                width: 1,
-              ),
-            ),
-            fillColor: AppColors.shade1,
-            contentPadding: EdgeInsetsDirectional.all(16),
-            filled: true,
-          ),
-        )
+        ),
+        // TextFormField(
+        //   controller: _birthdayController,
+        //   keyboardType: TextInputType.number,
+        //   textCapitalization: TextCapitalization.sentences,
+        //   cursorColor: AppColors.main,
+        //   style: widget.theme.textTheme.bodyMedium
+        //       ?.copyWith(color: AppColors.black),
+        //   inputFormatters: [DateTextFormatter()],
+        //   decoration: const InputDecoration(
+        //     enabledBorder: OutlineInputBorder(
+        //       borderRadius: BorderRadius.all(Radius.circular(20)),
+        //       borderSide: BorderSide.none,
+        //     ),
+        //     focusedBorder: OutlineInputBorder(
+        //       borderRadius: BorderRadius.all(Radius.circular(20)),
+        //       borderSide: BorderSide(
+        //         color: AppColors.main,
+        //         width: 1,
+        //       ),
+        //     ),
+        //     fillColor: AppColors.shade1,
+        //     contentPadding: EdgeInsetsDirectional.all(16),
+        //     filled: true,
+        //   ),
+        // )
       ],
     );
   }
