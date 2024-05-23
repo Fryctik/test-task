@@ -29,7 +29,7 @@ class TitleOtpWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 12),
           child: Text(
-            'Мы отправили СМС с кодом подтверждения на ваш номер ${widget.number}',
+            'Мы отправили СМС с кодом подтверждения на ваш номер \n ${widget.number}',
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium?.copyWith(
               color: AppColors.shade3,

@@ -5,7 +5,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:test/presentation/routes/routes.dart';
-import 'package:test/presentation/screens/authentication_screens/common_widgets/common_button.dart';
 import 'package:test/presentation/screens/authentication_screens/otp_verification_screen/widget/back_widget.dart';
 import 'package:test/presentation/screens/authentication_screens/otp_verification_screen/widget/title_otp_widget.dart';
 import 'package:test/presentation/theme/theme.dart';

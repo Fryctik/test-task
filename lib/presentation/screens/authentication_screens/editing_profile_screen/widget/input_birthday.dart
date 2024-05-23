@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:test/presentation/theme/theme.dart';
 
@@ -23,23 +26,6 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
     type: MaskAutoCompletionType.lazy,
   );
 
-  String _validateDate(String value) {
-    List<String> parts = value.split('.');
-    int day = int.tryParse(parts[0])!;
-    int month = int.tryParse(parts[1])!;
-
-    if (day == null ||
-        day < 1 ||
-        day > 31 ||
-        month == null ||
-        month < 1 ||
-        month > 12) {
-      return 'Invalid date';
-    }
-
-    return '';
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -56,15 +42,12 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
         ),
         TextFormField(
           controller: _birthdayController,
-          keyboardType: TextInputType.datetime,
+          keyboardType: TextInputType.number,
           textCapitalization: TextCapitalization.sentences,
           cursorColor: AppColors.main,
           style: widget.theme.textTheme.bodyMedium
               ?.copyWith(color: AppColors.black),
-          inputFormatters: [maskFormatter],
-          onChanged: (value) {
-            _validateDate(value);
-          },
+          inputFormatters: [DateTextFormatter()],
           decoration: const InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -78,6 +61,7 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
               ),
             ),
             fillColor: AppColors.shade1,
+            contentPadding: EdgeInsetsDirectional.all(16),
             filled: true,
           ),
         )
@@ -85,3 +69,33 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
     );
   }
 }
+
+class DateTextFormatter extends TextInputFormatter {
+  static const _maxChars = 6;
+
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    var text = _format(newValue.text, '.');
+    return newValue.copyWith(text: text, selection: updateCursorPosition(text));
+  }
+
+  String _format(String value, String seperator) {
+    value = value.replaceAll(seperator, '');
+    var newString = '';
+
+    for (int i = 0; i < min(value.length, _maxChars); i++) {
+      newString += value[i];
+      if ((i == 1 || i == 3) && i != value.length - 1) {
+        newString += seperator;
+      }
+    }
+
+    return newString;
+  }
+
+  TextSelection updateCursorPosition(String text) {
+    return TextSelection.fromPosition(TextPosition(offset: text.length));
+  }
+}
+

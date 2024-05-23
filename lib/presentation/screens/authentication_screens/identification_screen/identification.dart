@@ -14,14 +14,17 @@ class IdentificationScreen extends StatefulWidget {
 }
 
 class _IdentificationScreenState extends State<IdentificationScreen> {
-  final TextEditingController _phoneNumberController = TextEditingController(text: '+7');
+  final TextEditingController _phoneNumberController =
+      TextEditingController(text: '+7');
 
   final maskFormatter = MaskTextInputFormatter(
-      mask: '+7 (###) ###-##-##',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy,);
+    mask: '+7 (###) ###-##-##',
+    filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.lazy,
+  );
   bool _isValidPhoneNumber = true;
   bool _isNumberValidInputed = false;
+  bool _isInputStart = false;
 
   bool isValidPhoneNumber(String value) {
     return RegExp(r'^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$').hasMatch(value);
@@ -63,10 +66,11 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                       inputFormatters: [maskFormatter],
                       cursorColor: const Color.fromARGB(255, 186, 132, 246),
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        height: 20 / 16,
-                        color: _isValidPhoneNumber
-                            ? AppColors.black
-                            : AppColors.red,
+                        color: _isInputStart
+                            ? _isValidPhoneNumber
+                                ? AppColors.black
+                                : AppColors.red
+                            : AppColors.shade3,
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -74,14 +78,14 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                           _isValidPhoneNumber
                               ? _isNumberValidInputed = true
                               : _isNumberValidInputed = false;
+                          _isInputStart = true;
                         });
                       },
                       decoration: InputDecoration(
-                        hintText: '+7',
-                        hintStyle: theme.textTheme.bodyMedium?.copyWith(
-                          color: AppColors.shade3,
-                          height: 20 / 16,
-                        ),
+                        // hintText: '+7',
+                        // hintStyle: theme.textTheme.bodyMedium?.copyWith(
+                        //   color: AppColors.shade3,
+                        // ),
                         enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           borderSide: BorderSide.none,

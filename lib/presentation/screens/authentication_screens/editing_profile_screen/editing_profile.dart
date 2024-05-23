@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:test/presentation/screens/authentication_screens/common_widgets/common_button.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_birthday.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_email.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_name.dart';
@@ -17,6 +16,8 @@ class EditingProfileScreen extends StatefulWidget {
 }
 
 class _EditingProfileScreenState extends State<EditingProfileScreen> {
+  final _nameKey = GlobalKey<FormState>();
+  final _emailKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -71,20 +72,117 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                       child: SizedBox(
                         width: 158,
                         height: 158,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            image: const DecorationImage(
-                              image: AssetImage('assets/image/human.png'),
-                              fit: BoxFit.fill,
+                        child: GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) {
+                                return Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 37),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                            color: AppColors.shade2,
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              width: double.infinity,
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                vertical: 15,
+                                              ),
+                                              child: GestureDetector(
+                                                child: Text(
+                                                  textAlign: TextAlign.center,
+                                                  'Выбрать фото из галереи',
+                                                  style: theme
+                                                      .textTheme.bodyMedium
+                                                      ?.copyWith(
+                                                    color: const Color.fromARGB(
+                                                        255, 21, 117, 214),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            const Divider(
+                                              color: Color.fromRGBO(116, 116, 130, 0.357),
+                                              height: 0,
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                vertical: 15,
+                                              ),
+                                              child: GestureDetector(
+                                                child: Text(
+                                                  'Сделать фото',
+                                                  textAlign: TextAlign.center,
+                                                  style: theme
+                                                      .textTheme.bodyMedium
+                                                      ?.copyWith(
+                                                    color: const Color.fromARGB(
+                                                        255, 21, 117, 214),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            const Divider(
+                                              color: Color.fromRGBO(116, 116, 130, 0.357),
+                                              height: 0,
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                vertical: 15,
+                                              ),
+                                              child: GestureDetector(
+                                                child: Text(
+                                                  'Удалить фото',
+                                                  textAlign: TextAlign.center,
+                                                  style: theme
+                                                      .textTheme.bodyMedium
+                                                      ?.copyWith(
+                                                    color: const Color.fromARGB(
+                                                        255, 21, 117, 214),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              image: const DecorationImage(
+                                image: AssetImage(
+                                  'assets/image/human.png',
+                                ),
+                                fit: BoxFit.fill,
+                              ),
                             ),
-                          ),
-                          child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: Image.asset(
-                              'assets/icons/camera.png',
-                              width: 36,
-                              height: 36,
+                            child: Align(
+                              alignment: Alignment.bottomRight,
+                              child: Image.asset(
+                                'assets/icons/camera.png',
+                                width: 36,
+                                height: 36,
+                              ),
                             ),
                           ),
                         ),
@@ -92,14 +190,23 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                     ),
                     Column(
                       children: [
-                        InputNameWidget(theme: theme),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 32),
-                          child: InputEmailWidget(theme: theme),
+                        InputNameWidget(
+                          theme: theme,
+                          formKey: _nameKey,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 32),
-                          child: SelectionCityWidget(theme: theme),
+                          child: InputEmailWidget(
+                            theme: theme,
+                            formKey: _emailKey,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 32),
+                          child: SelectionCityWidget(
+                            theme: theme,
+                            onSelectionChanged: (isSelected) {},
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 32),
@@ -111,14 +218,30 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                         ),
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 24),
-                      child: CommonWidgetButton(
-                        text: 'СОХРАНИТЬ',
-                        colorButton: AppColors.main,
-                        textColor: AppColors.white,
-                      ),
-                    )
+                    Padding(
+                        padding: const EdgeInsets.only(top: 24),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (_nameKey.currentState!.validate()) {}
+                              if (_emailKey.currentState!.validate()) {}
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.main,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 20)),
+                            child: Text(
+                              'СОХРАНИТЬ',
+                              style: theme.textTheme.headlineMedium?.copyWith(
+                                color: AppColors.white,
+                              ),
+                            ),
+                          ),
+                        ))
                   ],
                 ),
               ),
@@ -129,12 +252,3 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
