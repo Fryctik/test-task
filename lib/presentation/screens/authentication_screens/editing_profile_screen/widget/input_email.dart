@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test/presentation/theme/theme.dart';
+import 'package:test/presentation/widgets/custom_text_field.dart';
 
 class InputEmailWidget extends StatefulWidget {
   const InputEmailWidget({
@@ -10,6 +11,7 @@ class InputEmailWidget extends StatefulWidget {
 
   final ThemeData theme;
   final GlobalKey<FormState> formKey;
+
   @override
   State<InputEmailWidget> createState() => _InputEmailWidgetState();
 }
@@ -63,7 +65,7 @@ class _InputEmailWidgetState extends State<InputEmailWidget> {
               ],
             ),
           ),
-          TextFormField(
+          CustomTextField(
             validator: (value) {
               if (value == null || value.isEmpty) {
                 setState(() {
@@ -74,33 +76,51 @@ class _InputEmailWidgetState extends State<InputEmailWidget> {
             },
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
-            cursorColor: AppColors.main,
-            style: widget.theme.textTheme.bodyMedium
-                ?.copyWith(color: AppColors.black),
             onChanged: (value) {
               setState(() {
                 _isValid = true;
               });
             },
-            decoration: InputDecoration(
-              enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                borderSide: BorderSide.none,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
-                borderSide: _isValid
-                    ? const BorderSide(
-                        color: AppColors.main,
-                        width: 1,
-                      )
-                    : BorderSide.none,
-              ),
-              fillColor: _isValid ? AppColors.shade1 : AppColors.softRed,
-              contentPadding: const EdgeInsetsDirectional.all(16),
-              filled: true,
-            ),
-          )
+            isValid: _isValid,
+          ),
+          // TextFormField(
+          //   validator: (value) {
+          //     if (value == null || value.isEmpty) {
+          //       setState(() {
+          //         _isValid = false;
+          //       });
+          //     }
+          //     return null;
+          //   },
+          //   controller: _emailController,
+          //   keyboardType: TextInputType.emailAddress,
+          //   cursorColor: AppColors.main,
+          //   style: widget.theme.textTheme.bodyMedium
+          //       ?.copyWith(color: AppColors.black),
+          //   onChanged: (value) {
+          //     setState(() {
+          //       _isValid = true;
+          //     });
+          //   },
+          //   decoration: InputDecoration(
+          //     enabledBorder: const OutlineInputBorder(
+          //       borderRadius: BorderRadius.all(Radius.circular(20)),
+          //       borderSide: BorderSide.none,
+          //     ),
+          //     focusedBorder: OutlineInputBorder(
+          //       borderRadius: const BorderRadius.all(Radius.circular(20)),
+          //       borderSide: _isValid
+          //           ? const BorderSide(
+          //               color: AppColors.main,
+          //               width: 1,
+          //             )
+          //           : BorderSide.none,
+          //     ),
+          //     fillColor: _isValid ? AppColors.shade1 : AppColors.softRed,
+          //     contentPadding: const EdgeInsetsDirectional.all(16),
+          //     filled: true,
+          //   ),
+          // )
         ],
       ),
     );

@@ -67,7 +67,7 @@ flutter:
     - assets/icons/heart.png
     - assets/image/onboard-image.png
     - assets/image/human.png
-    - assets\icons\camera.png
+    - assets/icons/camera.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
