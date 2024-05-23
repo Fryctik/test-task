@@ -1,8 +1,12 @@
+import 'dart:ui';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_birthday.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_email.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_name.dart';
+import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/photo_mobal_bottom_sheet.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/selection_city.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/selection_gender.dart';
 import 'package:test/presentation/theme/theme.dart';
@@ -72,120 +76,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                       child: SizedBox(
                         width: 158,
                         height: 158,
-                        child: GestureDetector(
-                          onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              backgroundColor: Colors.transparent,
-                              builder: (context) {
-                                return Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 37),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                            color: AppColors.shade2,
-                                            borderRadius:
-                                                BorderRadius.circular(12)),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              width: double.infinity,
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                vertical: 15,
-                                              ),
-                                              child: GestureDetector(
-                                                child: Text(
-                                                  textAlign: TextAlign.center,
-                                                  'Выбрать фото из галереи',
-                                                  style: theme
-                                                      .textTheme.bodyMedium
-                                                      ?.copyWith(
-                                                    color: const Color.fromARGB(
-                                                        255, 21, 117, 214),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const Divider(
-                                              color: Color.fromRGBO(116, 116, 130, 0.357),
-                                              height: 0,
-                                            ),
-                                            Container(
-                                              width: double.infinity,
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                vertical: 15,
-                                              ),
-                                              child: GestureDetector(
-                                                child: Text(
-                                                  'Сделать фото',
-                                                  textAlign: TextAlign.center,
-                                                  style: theme
-                                                      .textTheme.bodyMedium
-                                                      ?.copyWith(
-                                                    color: const Color.fromARGB(
-                                                        255, 21, 117, 214),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const Divider(
-                                              color: Color.fromRGBO(116, 116, 130, 0.357),
-                                              height: 0,
-                                            ),
-                                            Container(
-                                              width: double.infinity,
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                vertical: 15,
-                                              ),
-                                              child: GestureDetector(
-                                                child: Text(
-                                                  'Удалить фото',
-                                                  textAlign: TextAlign.center,
-                                                  style: theme
-                                                      .textTheme.bodyMedium
-                                                      ?.copyWith(
-                                                    color: const Color.fromARGB(
-                                                        255, 21, 117, 214),
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              image: const DecorationImage(
-                                image: AssetImage(
-                                  'assets/image/human.png',
-                                ),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: Image.asset(
-                                'assets/icons/camera.png',
-                                width: 36,
-                                height: 36,
-                              ),
-                            ),
-                          ),
-                        ),
+                        child: PhotoModalBottomSheet(theme: theme),
                       ),
                     ),
                     Column(
