@@ -70,7 +70,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(30, 45, 30, 16),
+          padding: const EdgeInsets.fromLTRB(30, 74, 30, 38),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

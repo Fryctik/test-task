@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test/presentation/theme/theme.dart';
-import 'package:test/presentation/widgets/custom_text_field.dart';
+import 'package:test/presentation/screens/authentication_screens/common_widgets/custom_text_field.dart';
 
 class InputEmailWidget extends StatefulWidget {
   const InputEmailWidget({

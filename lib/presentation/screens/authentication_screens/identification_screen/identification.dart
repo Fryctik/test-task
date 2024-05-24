@@ -36,7 +36,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 45, 20, 16),
+          padding: const EdgeInsets.fromLTRB(20, 74, 20, 38),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

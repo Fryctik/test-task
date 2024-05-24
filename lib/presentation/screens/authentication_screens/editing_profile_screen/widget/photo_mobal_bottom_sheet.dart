@@ -15,6 +15,7 @@ class PhotoModalBottomSheet extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
+          isScrollControlled: true,
           context: context,
           backgroundColor: Colors.transparent,
           builder: (context) {

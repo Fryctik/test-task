@@ -27,7 +27,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
               children: [
                 const LogoWidget(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 12),
+                  padding: const EdgeInsets.only(top: 0),
                   child: Image.asset('assets/image/onboard-image.png'),
                 ),
                 const TextWidget(),

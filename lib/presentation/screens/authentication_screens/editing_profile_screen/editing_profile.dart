@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_birthday.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_email.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_name.dart';
@@ -30,7 +27,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
         child: CustomScrollView(
           slivers: [
             SliverPadding(
-              padding: const EdgeInsets.fromLTRB(20, 70, 20, 38),
+              padding: const EdgeInsets.fromLTRB(20, 74, 20, 38),
               sliver: SliverToBoxAdapter(
                 child: Column(
                   children: [
