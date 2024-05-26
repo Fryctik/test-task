@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:test/presentation/routes/routes.dart';
+import 'package:test/presentation/screens/common_widgets/common_back_button.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_birthday.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_email.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/input_name.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/photo_mobal_bottom_sheet.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/selection_city.dart';
 import 'package:test/presentation/screens/authentication_screens/editing_profile_screen/widget/selection_gender.dart';
+import 'package:test/presentation/screens/common_widgets/common_button.dart';
 import 'package:test/presentation/theme/theme.dart';
 
 @RoutePage()
@@ -32,30 +35,11 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () => context.router.back(),
+                      onTap: () => context.router.push(const IdentificationRoute()),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.arrow_back,
-                                size: 24,
-                                color: AppColors.accent,
-                                weight: 2,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 4),
-                                child: Text(
-                                  'Назад',
-                                  style:
-                                      theme.textTheme.displayMedium?.copyWith(
-                                    color: AppColors.black,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                          CommonBackButton(theme: theme),
                           Text(
                             'ПРОФИЛЬ',
                             style: theme.textTheme.headlineMedium?.copyWith(
@@ -108,28 +92,11 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                     ),
                     Padding(
                         padding: const EdgeInsets.only(top: 24),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (_nameKey.currentState!.validate()) {}
+                        child: CommonWidgetButton(text: 'СОХРАНИТЬ', onTap: () {
+                          if (_nameKey.currentState!.validate()) {}
                               if (_emailKey.currentState!.validate()) {}
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.main,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(24),
-                                ),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 20)),
-                            child: Text(
-                              'СОХРАНИТЬ',
-                              style: theme.textTheme.headlineMedium?.copyWith(
-                                color: AppColors.white,
-                              ),
-                            ),
-                          ),
-                        ))
+                        },colorButton: AppColors.main, textColor: AppColors.white,)
+                        )
                   ],
                 ),
               ),
@@ -140,3 +107,4 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
     );
   }
 }
+

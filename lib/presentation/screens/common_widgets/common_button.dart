@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class CommonWidgetButton extends StatelessWidget {
@@ -7,13 +6,16 @@ class CommonWidgetButton extends StatelessWidget {
     required this.text,
     this.colorButton,
     this.textColor,
-    this.pathRoute,
+    this.onTap,
+
   });
 
   final String text;
   final Color? colorButton;
   final Color? textColor;
-  final dynamic pathRoute;
+  final void Function()? onTap;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,8 @@ class CommonWidgetButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {
-          
-          context.router.push(pathRoute);
-        },
+        onPressed: onTap,
+        
         style: ElevatedButton.styleFrom(
             backgroundColor: colorButton,
             shape: RoundedRectangleBorder(

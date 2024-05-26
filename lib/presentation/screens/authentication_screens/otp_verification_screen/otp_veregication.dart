@@ -5,8 +5,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:test/presentation/routes/routes.dart';
+import 'package:test/presentation/screens/common_widgets/common_back_button.dart';
 import 'package:test/presentation/screens/authentication_screens/otp_verification_screen/widget/back_widget.dart';
 import 'package:test/presentation/screens/authentication_screens/otp_verification_screen/widget/title_otp_widget.dart';
+import 'package:test/presentation/screens/common_widgets/common_button.dart';
 import 'package:test/presentation/theme/theme.dart';
 
 @RoutePage()
@@ -70,7 +72,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(30, 74, 30, 38),
+          padding: const EdgeInsets.fromLTRB(20, 74, 20, 38),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -83,7 +85,9 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                           _timer.cancel();
                           context.router.back();
                         },
-                        child: const BackWidget(),
+                        child: CommonBackButton(
+                          theme: theme,
+                        ),
                       )
                     ],
                   ),
@@ -137,8 +141,7 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                                     Radius.circular(20),
                                   ),
                                   borderSide: BorderSide(
-                                      color: AppColors.main,
-                                      width: 1),
+                                      color: AppColors.main, width: 1),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
@@ -173,7 +176,8 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                               ? [
                                   TextSpan(
                                     text: 'Не получили код?',
-                                    style: theme.textTheme.displayMedium?.copyWith(
+                                    style:
+                                        theme.textTheme.displayMedium?.copyWith(
                                       color: AppColors.black,
                                     ),
                                   ),
@@ -186,7 +190,8 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                                         timer();
                                       },
                                     text: ' Отправить повторно',
-                                    style: theme.textTheme.displayLarge?.copyWith(
+                                    style:
+                                        theme.textTheme.displayLarge?.copyWith(
                                       color: AppColors.accent,
                                     ),
                                   )
@@ -195,14 +200,16 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                                   TextSpan(
                                     text:
                                         'Новый код можно будет запросить через ',
-                                    style: theme.textTheme.displayMedium?.copyWith(
+                                    style:
+                                        theme.textTheme.displayMedium?.copyWith(
                                       color: AppColors.shade3,
                                       height: 17.5 / 14,
                                     ),
                                   ),
                                   TextSpan(
                                     text: timerString,
-                                    style: theme.textTheme.displayMedium?.copyWith(
+                                    style:
+                                        theme.textTheme.displayMedium?.copyWith(
                                       color: AppColors.shade3,
                                       height: 17.5 / 14,
                                     ),
@@ -215,26 +222,14 @@ class _OtpVereficationScreenState extends State<OtpVereficationScreen> {
                     const SizedBox()
                 ],
               ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    _timer.cancel();
-                    context.router.push(EditingProfileRoute());
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.main,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 20)),
-                  child: Text(
-                    'ПОДТВЕРДИТЬ',
-                    style: theme.textTheme.headlineMedium?.copyWith(
-                      color: AppColors.white,
-                    ),
-                  ),
-                ),
+              CommonWidgetButton(
+                text: 'ПОДТВЕРДИТЬ',
+                onTap: () {
+                  _timer.cancel();
+                  context.router.push(const EditingProfileRoute());
+                },
+                colorButton: AppColors.main,
+                textColor: AppColors.white,
               )
             ],
           ),

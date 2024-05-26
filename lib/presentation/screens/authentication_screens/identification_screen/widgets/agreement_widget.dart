@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:test/presentation/routes/routes.dart';
-import 'package:test/presentation/screens/authentication_screens/common_widgets/common_button.dart';
+import 'package:test/presentation/screens/common_widgets/common_button.dart';
 import 'package:test/presentation/theme/theme.dart';
 
 class AgreementWidget extends StatelessWidget {
@@ -11,6 +12,8 @@ class AgreementWidget extends StatelessWidget {
   }) : _phoneNumberController = phoneNumberController;
 
   final TextEditingController _phoneNumberController;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +43,9 @@ class AgreementWidget extends StatelessWidget {
             text: 'ПОЛУЧИТЬ КОД',
             colorButton: AppColors.main,
             textColor: AppColors.white,
-            pathRoute: OtpVereficationRoute(
-              number: _phoneNumberController.text,
-            ),
+            onTap: () {
+              context.router.push(OtpVereficationRoute(number: _phoneNumberController.text));
+            },
           ),
         ),
       ],

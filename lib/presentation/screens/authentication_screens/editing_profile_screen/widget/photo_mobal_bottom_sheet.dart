@@ -1,4 +1,4 @@
-
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:test/presentation/theme/theme.dart';
 
@@ -20,8 +20,7 @@ class PhotoModalBottomSheet extends StatelessWidget {
           backgroundColor: Colors.transparent,
           builder: (context) {
             return Container(
-              margin: const EdgeInsets.symmetric(
-                  horizontal: 5, vertical: 37),
+              margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 37),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -29,47 +28,38 @@ class PhotoModalBottomSheet extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                         color: AppColors.shade1,
-                        borderRadius:
-                            BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(12)),
                     child: Column(
                       children: [
                         Container(
                           width: double.infinity,
-                          padding:
-                              const EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: 15,
                           ),
                           child: GestureDetector(
                             child: Text(
                               textAlign: TextAlign.center,
                               'Выбрать фото из галереи',
-                              style: theme
-                                  .textTheme.bodyMedium
-                                  ?.copyWith(
-                                color: const Color.fromARGB(
-                                    255, 21, 117, 214),
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: const Color.fromARGB(255, 21, 117, 214),
                               ),
                             ),
                           ),
                         ),
                         const Divider(
-                          color: Color.fromRGBO(
-                              116, 116, 130, 0.357),
+                          color: Color.fromRGBO(116, 116, 130, 0.357),
                           height: 0,
                         ),
                         Container(
                           width: double.infinity,
-                          padding:
-                              const EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: 15,
                           ),
                           child: GestureDetector(
                             child: Text(
                               'Сделать фото',
                               textAlign: TextAlign.center,
-                              style: theme
-                                  .textTheme.bodyMedium
-                                  ?.copyWith(
+                              style: theme.textTheme.bodyMedium?.copyWith(
                                 color: const Color.fromARGB(
                                   255,
                                   21,
@@ -81,25 +71,25 @@ class PhotoModalBottomSheet extends StatelessWidget {
                           ),
                         ),
                         const Divider(
-                          color: Color.fromRGBO(
-                              116, 116, 130, 0.357),
+                          color: Color.fromRGBO(116, 116, 130, 0.357),
                           height: 0,
                         ),
                         Container(
                           width: double.infinity,
-                          padding:
-                              const EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: 15,
                           ),
                           child: GestureDetector(
                             child: Text(
                               'Удалить фото',
                               textAlign: TextAlign.center,
-                              style: theme
-                                  .textTheme.bodyMedium
-                                  ?.copyWith(
+                              style: theme.textTheme.bodyMedium?.copyWith(
                                 color: const Color.fromARGB(
-                                    255, 21, 117, 214),
+                                  255,
+                                  21,
+                                  117,
+                                  214,
+                                ),
                               ),
                             ),
                           ),
@@ -111,18 +101,20 @@ class PhotoModalBottomSheet extends StatelessWidget {
                     margin: const EdgeInsets.only(top: 10),
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+
+                      },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 25,
-                        ),
-                        backgroundColor: AppColors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
-                      ),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 25,
+                          ),
+                          backgroundColor: AppColors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12))),
                       child: Text(
                         'Отмена',
-                        style: theme.textTheme.bodyLarge
-                            ?.copyWith(
+                        style: theme.textTheme.bodyLarge?.copyWith(
                           color: const Color.fromARGB(
                             255,
                             21,
