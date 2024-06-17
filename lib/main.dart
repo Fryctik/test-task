@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test/presentation/routes/routes.dart';
-import 'package:test/presentation/theme/theme.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test/presentation/routes/go_router.dart';
+import 'package:test/themes/themes.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -8,15 +10,19 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Flutter Demo',
-      theme: theme,
-      routerConfig: _appRouter.config(),
-      debugShowCheckedModeBanner: false,
+    return ScreenUtilInit(
+      designSize: const Size(390, 844),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp.router(
+        title: 'Flutter Demo',
+        theme: theme,
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
