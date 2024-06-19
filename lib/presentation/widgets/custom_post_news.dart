@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
@@ -9,7 +10,7 @@ import 'package:test/presentation/widgets/read_more_text.dart';
 
 class CustomPostNews extends StatefulWidget {
   final String text;
-  final int short = 2;
+
 
   CustomPostNews({required this.text});
 
@@ -18,7 +19,7 @@ class CustomPostNews extends StatefulWidget {
 }
 
 class _CustomPostNewsState extends State<CustomPostNews> {
-
+  bool expanded = false;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -28,23 +29,45 @@ class _CustomPostNewsState extends State<CustomPostNews> {
           crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(Assets.imageDeliveryman),
+          SizedBox(height: 15),
           Text("Запустили доставку в Химках!",style: AppTextStyles.body16GeologicaSemiBold,),
-
-          ReadMoreText(
-            widget.text,
-            numLines: 3,
-
-            readLessText: 'Скрыть',
-
-            readMoreText: 'Подробнее',
-            readMoreAlign: AlignmentDirectional.center,
-            // The main or content text style.
-            style: TextStyle(fontSize: 16,fontWeight: FontWeight.w300,color: AppColors.black, fontFamily: "Geologica-Light"),
-            onReadMoreClicked: _onReadMoreClicked,
-            // Specify the read more/less text style.
-            readMoreIconColor: Colors.black,
+          AnimatedContainer(
+            duration: Duration(milliseconds: 900),
+            curve: Curves.easeInOut,
+            constraints: BoxConstraints(
+              maxHeight: expanded ? MediaQuery.of(context).size.height : 3 * 23.h, // 3 lines with 24.0 font height
+            ),
+            child: Text(
+              widget.text,
+              style: AppTextStyles.body16GeologicaLight,
+              textAlign: TextAlign.justify,
+            ),
           ),
-SizedBox(height: 16,),
+          SizedBox(height: 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    expanded = !expanded;
+                  });
+                },
+                child: expanded ?  Row(
+                  children: [
+                    Text('Скрыть' , style: AppTextStyles.body14GeologicaLight.copyWith(color: AppColors.shade3),),
+                    SvgPicture.asset(Assets.iconsArrowUp ,colorFilter: ColorFilter.mode(AppColors.shade3, BlendMode.srcIn),)
+                  ],
+                ) :   Row(
+                  children: [
+                    Text('Подробнее' , style: AppTextStyles.body14GeologicaLight.copyWith(color: AppColors.shade3,),),
+                    SvgPicture.asset(Assets.assetsIconsArrowDown,colorFilter: ColorFilter.mode(AppColors.shade3, BlendMode.srcIn),)
+                  ],
+                ) ,
+              ),
+            ],
+          ),
+          SizedBox(height: 16,),
           Divider(
             height: 1,
             color: AppColors.shade1,
@@ -53,7 +76,10 @@ SizedBox(height: 16,),
       ),
     );
   }
-  void _onReadMoreClicked() {}
+
 
 }
+
+
+
 

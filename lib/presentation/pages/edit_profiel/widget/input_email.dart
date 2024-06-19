@@ -57,7 +57,7 @@ class _InputEmailWidgetState extends State<InputEmailWidget> {
           textCapitalization: TextCapitalization.sentences,
           style: AppTextStyles.body16GeologicaLight.copyWith(color: widget.isEmailValid? AppColors.black : AppColors.red ),
           decoration:  InputDecoration(
-            hintText: "alina@mail.ru",
+            hintText: "example@mail.ru",
             hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),

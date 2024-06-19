@@ -58,7 +58,7 @@ class _InputNameWidgetState extends State<InputNameWidget> {
           style: AppTextStyles.body16GeologicaLight,
           onChanged: (value) {},
           decoration:  InputDecoration(
-            hintText: "Алина",
+            hintText: "Введите имя",
             hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),

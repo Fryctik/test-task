@@ -1,13 +1,11 @@
 import 'dart:async';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/presentation/widgets/custom_back_button.dart';
@@ -17,16 +15,14 @@ import 'package:test/presentation/widgets/custom_otp_textfield.dart';
 import '../components/title_otp_widget.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({super.key, required this.number});
+  const OtpVerificationScreen({super.key});
 
-  final String number;
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
-
   FocusNode focusNode = FocusNode();
 
   String otpNumbers = '';
@@ -59,7 +55,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   String getFormattedTime(int seconds) {
     int minutes = seconds ~/ 60;
     int remainingSeconds = seconds % 60;
-    String formattedTime = '$minutes:${remainingSeconds.toString().padLeft(2, '0')}';
+    String formattedTime =
+        '$minutes:${remainingSeconds.toString().padLeft(2, '0')}';
     return formattedTime;
   }
 
@@ -78,18 +75,23 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   void _onCodeChanged(String code) {
     otpNumbers = code;
-    setState(() {
-    });
+    setState(() {});
     print("Code changed: $code");
   }
 
-  void _onSubmit(String code) {
+  bool isValid = true;
+
+  void onSubmit(String code) {
     otpNumbers = code;
-    _timer?.cancel();
-    Future.delayed(Duration(milliseconds: 300), () {
-      // context.goNamed('/editing_profile');
-    });
     print("Code submitted: $code");
+  }
+
+  void isValidated(){
+    if(otpNumbers.length > 3){
+      isValid = true;
+    }else{
+      isValid = false;
+    }
   }
 
   @override
@@ -104,103 +106,120 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         backgroundColor: AppColors.white,
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top <= 52? 27.h: 0,),
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).viewPadding.top <= 52 ? 27.h : 0,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left:  20.w, right: 20.w, ),
+                  padding: EdgeInsets.only(
+                    left: 20.w,
+                    right: 20.w,
+                  ),
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          CustomBackButton(
-                              onBack: () {
-                                context.pop();
+                          CustomBackButton(onBack: () {
+                            context.pop();
                           })
                         ],
                       ),
                     ],
                   ),
                 ),
-                TitleOtpWidget(widget: widget),
+                TitleOtpWidget(),
                 SizedBox(
                   height: 48.h,
                 ),
                 SizedBox(
                   height: 58,
                   child: CustomOtpTextField(
-
                     numberOfFields: 4,
                     onCodeChanged: _onCodeChanged,
-                    onSubmit: _onSubmit,
+                    onSubmit: onSubmit,
                     focusNode: focusNode,
+                    otpNumber: otpNumbers, isValid: isValid,
                   ),
                 ),
                 SizedBox(
                   height: 24.h,
                 ),
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: _start == 0 && _attempts > 0
-                          ? [
-                              TextSpan(
-                                text: 'Не получили код?',
-                                style: AppTextStyles.body16GeologicaLight.copyWith(
-                                  color: AppColors.black,
-                                ),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: _start == 0 && _attempts > 0
+                        ? [
+                            TextSpan(
+                              text: 'Не получили код?',
+                              style:
+                                  AppTextStyles.body16GeologicaLight.copyWith(
+                                color: AppColors.black,
                               ),
-                              TextSpan(
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    if (_attempts > 0) {
-                                      startTimer();
-                                    }
-                                  },
-                                text: ' Отправить повторно',
-                                style: AppTextStyles.body14GeologicaLight.copyWith(
-                                  color: AppColors.accent,
-                                ),
-                              )
-                            ]
-                          : [
-                              TextSpan(
-                                text:
-                                    'Новый код можно будет запросить через ',
-                                style: AppTextStyles.body14GeologicaLight.copyWith(
-                                  color: AppColors.shade3,
-                                  height: 17.5 / 14,
-                                ),
+                            ),
+                            TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  if (_attempts > 0) {
+                                    startTimer();
+                                  }
+                                },
+                              text: ' Отправить повторно',
+                              style:
+                                  AppTextStyles.body14GeologicaLight.copyWith(
+                                color: AppColors.accent,
                               ),
-                              TextSpan(
-                                text: '${getFormattedTime(_start)}',
-                                style: AppTextStyles.body16GeologicaLight.copyWith(
-                                  color: AppColors.shade3,
-                                  height: 17.5 / 14,
-                                ),
+                            )
+                          ]
+                        : [
+                            TextSpan(
+                              text: 'Новый код можно будет запросить через ',
+                              style:
+                                  AppTextStyles.body14GeologicaLight.copyWith(
+                                color: AppColors.shade3,
+                                height: 17.5 / 14,
                               ),
-                            ],
-                    ),
+                            ),
+                            TextSpan(
+                              text: '${getFormattedTime(_start)}',
+                              style:
+                                  AppTextStyles.body16GeologicaLight.copyWith(
+                                color: AppColors.shade3,
+                                height: 17.5 / 14,
+                              ),
+                            ),
+                          ],
                   ),
+                ),
                 const Spacer(),
                 CommonWidgetButton(
                     text: 'ПОДТВЕРДИТЬ',
                     colorButton: AppColors.main,
                     textColor: AppColors.white,
-                    ignorePoint: otpNumbers.length > 3? false: true,
+                    // ignorePoint: otpNumbers.length > 3 ? false : true,
                     openPath: () {
-                      _timer!.cancel();
-                      Future.delayed(Duration(milliseconds: 300), () {
-                        context.pushNamed('/editing_profile');
-                      });
-                    }
-                ),
-                if(MediaQuery.of(context).viewPadding.bottom <= 20 && !focusNode.hasFocus)...[
+                      isValidated();
+                      // _timer!.cancel();
+                          if( isValid == true){
+                            Future.delayed(Duration(milliseconds: 300), () {
+                              context.pushNamed('/editing_profile');
+                            });
+                            print("if");
+                          }else{
+                           setState(() {
+
+                           });
+                            print("Else");
+                          }
+
+                    }),
+                if (MediaQuery.of(context).viewPadding.bottom <= 20 &&
+                    !focusNode.hasFocus) ...[
                   SizedBox(
                     height: 35.h,
                   )
-                ] else...[
+                ] else ...[
                   SizedBox(
                     height: 14.h,
                   )

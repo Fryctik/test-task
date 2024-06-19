@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:test/presentation/manager/injects.dart';
+import 'package:test/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:test/presentation/routes/go_router.dart';
 import 'package:test/themes/themes.dart';
 
-void main() {
+Future<void> main() async{
+  await initMain();
   runApp(MyApp());
 }
 
@@ -17,11 +22,17 @@ class MyApp extends StatelessWidget {
       designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp.router(
-        title: 'Flutter Demo',
-        theme: theme,
-        routerConfig: router,
-        debugShowCheckedModeBanner: false,
+      child: MultiBlocProvider(
+
+        providers: [
+          BlocProvider(create: (context)=> Get.find<ProfileCubit>()),
+        ],
+        child: MaterialApp.router(
+          title: 'Flutter Demo',
+          theme: theme,
+          routerConfig: router,
+          debugShowCheckedModeBanner: false,
+        ),
       ),
     );
   }

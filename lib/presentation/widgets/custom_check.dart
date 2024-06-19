@@ -48,6 +48,7 @@ class _CustomDropdownState extends State<CustomDropdown>
   }
 
   void toggleDropdown() {
+      FocusManager.instance.primaryFocus!.unfocus();
       isOpen = !isOpen;
       if (isOpen) {
           isShowError = false;

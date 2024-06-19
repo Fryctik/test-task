@@ -178,6 +178,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: ListView.builder(
+                        padding: EdgeInsets.only(top: 10, bottom: 30),
                         controller: _scrollController,
                         itemCount: 6,
                         itemBuilder: (__, _) {

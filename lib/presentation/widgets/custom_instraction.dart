@@ -34,7 +34,7 @@ class _CustomInstractionState extends State<CustomInstraction> {
                 widget.img,
                 height: 43,
                 width: 43,
-                fit: BoxFit.cover,
+                fit: BoxFit.scaleDown,
               ),
               SizedBox(width: 8.0),
               Expanded(

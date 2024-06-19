@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/generated/assets.dart';
+import 'package:test/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:test/presentation/pages/edit_profiel/widget/input_birthday.dart';
 import 'package:test/presentation/pages/edit_profiel/widget/input_email.dart';
 import 'package:test/presentation/pages/edit_profiel/widget/selection_city.dart';
@@ -113,13 +115,20 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       _validateName = true;
     }
   }
+  final TextEditingController _birthdayController = TextEditingController();
 
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _birthdayController = TextEditingController();
   final RegExp emailRegex =
       RegExp(r'^[a-zA-Z0-9._%+-]+@(mail\.ru|gmail\.com|yandex\.ru)$');
   bool _isEmailValid = true;
+
+  String removeTrailingSpaces(String input) {
+    return input.replaceAll(RegExp(r'\s+$'), '');
+  }
+
+
   bool validateEmail(String email) {
+    email = removeTrailingSpaces(email);
     _isEmailValid = emailRegex.hasMatch(email);
     setState(() {});
     return emailRegex.hasMatch(email);
@@ -138,6 +147,8 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       });
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -248,20 +259,20 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                           Padding(
                             padding: const EdgeInsets.only(
                                 left: 20, right: 20, top: 25),
-                            child: SelectionCityWidget(
-                              selectedItem: selectedItem,
-                              onTap: selectedCity,
-                              isError: isError,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 25),
                             child: InputBirthdayWidget(
                               isValidBirthday: isDateBirthError,
                               birthdayController: _birthdayController,
                               isValidBirthdayText: isDateErrorText,
                               focusNode: focusNode2,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20, right: 20, top: 25),
+                            child: SelectionCityWidget(
+                              selectedItem: selectedItem,
+                              onTap: selectedCity,
+                              isError: isError,
                             ),
                           ),
                           Padding(
@@ -282,18 +293,29 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                           colorButton: AppColors.main,
                           textColor: AppColors.white,
                           openPath: () {
+
                             errorCheckerG();
+                            context.read<ProfileCubit>().changeGender(selectedItemG);
                             print("1");
                             errorChecker();
+                            context.read<ProfileCubit>().changeCity(selectedItem);
+
                             print("2");
                             validateName(_nameController.text);
+                            context.read<ProfileCubit>().changeName(_nameController.text);
                             print("3");
                             validateEmail(_emailController.text);
+                            context.read<ProfileCubit>().changeEmail(_emailController.text);
                             print("4");
 
                             isDateErrorText =
                                 validateDateOfBirth(_birthdayController.text) ??
                                     '';
+                            context.read<ProfileCubit>().changeBirthday(_birthdayController.text);
+
+                            focusNode.unfocus();
+                            focusNode1.unfocus();
+                            focusNode2.unfocus();
 
                             if (isError == true ||
                                 isErrorG == true ||
@@ -303,7 +325,10 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                               setState(() {});
                             } else {
                               print("else");
-                              context.pushNamed("/main");
+                              Future.delayed(Duration(milliseconds: 350), () {
+                                context.pushNamed("/main");
+                              });
+
                             }
                           },
                         ),

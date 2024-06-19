@@ -15,7 +15,7 @@ class CustomBackButton extends StatelessWidget {
       onTap: onBack,
       child: Row(
         children: [
-            SvgPicture.asset(Assets.iconsBackButtonAccent),
+            SvgPicture.asset(Assets.iconsBackButtonAccent,height: 24,width: 24,fit: BoxFit.cover,),
             Text("Назад",style: AppTextStyles.body14GeologicaLight,),
         ],
       ),

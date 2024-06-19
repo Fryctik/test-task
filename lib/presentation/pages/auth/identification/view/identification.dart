@@ -1,14 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:test/config/contstants/app_colors.dart';
+import 'package:test/data/local/models/profile_model.dart';
 import 'package:test/presentation/pages/auth/identification/components/agreement_widget.dart';
 import 'package:test/presentation/pages/auth/identification/components/title_identification_widget.dart';
 import 'package:test/presentation/widgets/custom_common_button.dart';
 import 'package:test/presentation/widgets/custom_num_textfield.dart';
+
+import '../../../../manager/profile_cubit/profile_cubit.dart';
 
 class IdentificationScreen extends StatefulWidget {
   const IdentificationScreen({super.key});
@@ -110,7 +114,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                       ],
                     ),
                   ),
-                  const Spacer(),
+                  // const Spacer(),
                   Column(
                     children: [
                       AgreementText(phoneNumberController: _phoneNumberController),
@@ -133,9 +137,8 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                                       : _isNumberValidInputed = false;
                                 });
                                 if(_isValidPhoneNumber) {
-                                  context.pushNamed('/otp_verefication', pathParameters: {
-                                    'number': '+7${_phoneNumberController.text}'
-                                  });
+                                  context.read<ProfileCubit>().updatePhoneNumber('+7${_phoneNumberController.text}');
+                                  context.pushNamed('/otp_verefication');
                                 } else {
                                   setState(() {
                                     _isValidPhoneNumber = isValidPhoneNumber(_phoneNumberController.text);
@@ -155,13 +158,14 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                             });
                           }
                       ),
-                      if(MediaQuery.of(context).viewPadding.bottom <= 20 && !focusNode.hasFocus)...[
+                      if(MediaQuery.of(context).viewPadding.bottom == 20 && !focusNode.hasFocus)...[
                         SizedBox(
                           height: 35.h,
                         )
-                      ] else...[
+                      ]
+                      else...[
                         SizedBox(
-                          height: 14.h,
+                          height: 20.h,
                         )
                       ]
                     ],

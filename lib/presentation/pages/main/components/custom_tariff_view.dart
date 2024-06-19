@@ -33,7 +33,7 @@ class _CustomTariffViewState extends State<CustomTariffView> {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,30 +54,126 @@ class _CustomTariffViewState extends State<CustomTariffView> {
             customList: citiesList,
             onTap: selectedCity,
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          const CustomPriceTariff(
-            available: true,
-            price: 780,
-            typeTariff: TypeTariff.courierExport,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const CustomPriceTariff(
-            available: true,
-            price: 780,
-            typeTariff: TypeTariff.truckExport,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const CustomPriceTariff(
-            available: false,
-            price: 1000,
-            typeTariff: TypeTariff.warehouseExport,
-          ),
+          if (selectedItem == "Выбрать") ...{
+            const Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: true,
+                  price: "от 780",
+                  typeTariff: TypeTariff.courierExport,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: true,
+                  price: "780",
+                  typeTariff: TypeTariff.truckExport,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: true,
+                  price: "1000",
+                  typeTariff: TypeTariff.warehouseExport,
+                ),
+              ],
+            )
+            },
+          if (selectedItem == "Королев") ...{
+            const Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: true,
+                  price: "780",
+                  typeTariff: TypeTariff.courierExport,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: true,
+                  price: "780",
+                  typeTariff: TypeTariff.truckExport,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: true,
+                  price: "1000",
+                  typeTariff: TypeTariff.warehouseExport,
+                ),
+              ],
+            )
+          },
+          if (selectedItem == "Москва") ...{
+            const Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: true,
+                  price: "780",
+                  typeTariff: TypeTariff.courierExport,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: true,
+                  price: "780",
+                  typeTariff: TypeTariff.truckExport,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: false,
+                  price: "1000",
+                  typeTariff: TypeTariff.warehouseExport,
+                ),
+              ],
+            )
+          },
+          if (selectedItem == "Мытищи") ...{
+            const Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: false,
+                  price: "780",
+                  typeTariff: TypeTariff.courierExport,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: false,
+                  price: "780",
+                  typeTariff: TypeTariff.truckExport,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomPriceTariff(
+                  available: false,
+                  price: "1000",
+                  typeTariff: TypeTariff.warehouseExport,
+                ),
+              ],
+            )
+          }
         ],
       ),
     );

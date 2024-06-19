@@ -13,11 +13,6 @@ final router = GoRouter(routes: [
     builder: (context, state) => const SplashPage(),
   ),
   GoRoute(
-      name: '/main',
-      path: '/main',
-      builder: (context, state) => const MainPage(),
-      ),
-  GoRoute(
       name: '/onboarding',
       path: '/onboarding',
       builder: (context, state) => const OnboardScreen(),
@@ -29,14 +24,19 @@ final router = GoRouter(routes: [
   ),
   GoRoute(
     name: '/otp_verefication',
-    path: '/otp_verefication/:number',
-    builder: (context, state) =>
-        OtpVerificationScreen(number: state.pathParameters['number'] ?? ''),
+    path: '/otp_verefication',
+    builder: (context, state) =>  OtpVerificationScreen(),
   ),
   GoRoute(
     name: '/editing_profile',
     path: '/editing_profile',
     builder: (context, state) => const EditingProfileScreen(),
+  ),
+
+  GoRoute(
+    name: '/main',
+    path: '/main',
+    builder: (context, state) => const MainPage(),
   ),
 
 

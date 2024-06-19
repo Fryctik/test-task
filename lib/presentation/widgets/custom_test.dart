@@ -1,76 +1,70 @@
-// import 'package:flutter/material.dart';
-//
-// class PlaylistScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SliverFab(
-//         floatingWidget: FloatingActionButton(
-//           backgroundColor: const Color(0xffD933C3),
-//           onPressed: () {},
-//           child: Icon(
-//             Icons.play_arrow,
-//             color: Colors.white,
-//             size: 38,
-//           ),
-//         ),
-//         floatingPosition: FloatingPosition(
-//           right: 32,
-//         ),
-//         expandedHeight: MediaQuery.of(context).size.height * 0.4,
-//         slivers: [
-//           SliverAppBar(
-//             expandedHeight: MediaQuery.of(context).size.height * 0.4,
-//             backgroundColor: const Color(0xff1c0436),
-//             pinned: true,
-//             floating: true,
-//             leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
-//             actions: [
-//               IconButton(icon: Icon(Icons.more_vert), onPressed: () {})
-//             ],
-//             flexibleSpace: Container(
-//                 decoration: BoxDecoration(
-//                   image: DecorationImage(
-//                     image: NetworkImage(
-//                         'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4bb82b72535211.5bead62fe26d5.jpg'), //your image
-//                     fit: BoxFit.cover,
-//                   ),
-//                   borderRadius: BorderRadius.vertical(
-//                     bottom:
-//                     Radius.circular(50),
-//                   ),
-//                 ),
-//                 child: FlexibleSpaceBar(
-//                     collapseMode: CollapseMode.pin,
-//                     centerTitle: true,
-//                     title: Text('A Synthwave Mix'))),
-//           ),
-//           SliverList(
-//               delegate: SliverChildListDelegate([
-//                 Column(
-//                   children: [
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                     SongTile(),
-//                   ],
-//                 )
-//               ]))
-//         ],
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  final List<int> containerNumbers = List.generate(10, (index) => index + 1);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Horizontal Scrollable Containers'),
+        ),
+        body: Container(
+          height: 120,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: containerNumbers.length,
+            itemBuilder: (context, index) {
+              return ContainerWidget(
+                number: containerNumbers[index],
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ContainerWidget extends StatelessWidget {
+  final int number;
+
+  ContainerWidget({required this.number});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        // Handle tap, move this container to the center
+        Scrollable.ensureVisible(
+          context,
+          alignment: 0.5, // Move to the center of the viewport
+          duration: Duration(milliseconds: 500), // Optional: Animation duration
+        );
+      },
+      child: Container(
+        width: 80,
+        height: 120,
+        margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            '$number',
+            style: TextStyle(fontSize: 24, color: Colors.white),
+          ),
+        ),
+      ),
+    );
+  }
+}
