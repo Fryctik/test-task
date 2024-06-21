@@ -17,6 +17,7 @@ abstract class AppStrings {
 
   static const String imageBigTruck = 'assets/image/big_truck.png';
   static const String imageNormalTruck = 'assets/image/normal_truck.png';
+  static const String  imageEditProfile = 'assets/icons/edit.png';
 }
 
 final List<String> citiesList = ['Мытищи', 'Москва', 'Королев'];
