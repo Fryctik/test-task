@@ -1,6 +1,11 @@
+
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/config/contstants/strings.dart';
@@ -22,35 +27,7 @@ class MoreDetailsView extends StatefulWidget {
 
 class _MoreDetailsViewState extends State<MoreDetailsView> {
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController desController = TextEditingController();
 
-  bool _validateName = true;
-  void validateName(String name) {
-    if (nameController.text.isEmpty) {
-      _validateName = false;
-    } else {
-      _validateName = true;
-    }
-  }
-
-  String selectedItem = 'Выбрать';
-
-  bool isError = false;
-
-  void selectedCity(String item) {
-    selectedItem = item;
-    setState(() {});
-  }
-
-  void errorChecker() {
-    if (selectedItem == "Выбрать") {
-      setState(() {});
-      isError = true;
-    } else {
-      isError = false;
-    }
-  }
 
 
   @override
@@ -228,135 +205,20 @@ class _MoreDetailsViewState extends State<MoreDetailsView> {
               colorButton: AppColors.main,
               textColor: AppColors.white,
               openPath: () {
+                setState(() {
+
+                });
                 showModalBottomSheet(
                   scrollControlDisabledMaxHeightRatio: 1,
                   context: context,
 
                   builder: (context) {
-                    return Container(
-                      height: 616,
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 25,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("Оформление заявки",style: AppTextStyles.body16UnboundedMedium,),
-                                      GestureDetector(
-                                        onTap: (){
-                                          Navigator.pop(context);
-
-                                        },
-                                        child: Container(height: 24,width: 24,decoration: BoxDecoration(borderRadius: BorderRadius.circular(100),color: AppColors.shade1),
-                                          child: SvgPicture.asset(Assets.iconsClose16x16,height: 16,width: 16,fit: BoxFit.scaleDown,),),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(height: 12,),
-                                  Text("Для оформления заявки укажите адрес вывоза, опишите и сфотографируйте ваше вторсырье",style: AppTextStyles.body16GeologicaLight,),
-                                  SizedBox(height: 22),
-                                  Text("Город",style: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),)
-                                  ,SizedBox(height: 10,),
-
-                                  CustomDropdown(isError: isError, selectedItem: selectedItem, customList: citiesList, onTap:selectedCity)
-                                  ,   SizedBox(height: 16,),
-                                  Text("Адрес вывоза",style: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),)
-                                  ,SizedBox(height: 10,),
-                                  TextField(
-                                    textInputAction: TextInputAction.next,
-                                    keyboardType: TextInputType.text,
-                                    controller:nameController,
-                                    cursorColor: AppColors.main,
-                                    textCapitalization: TextCapitalization.sentences,
-                                    style: AppTextStyles.body16GeologicaLight,
-                                    onChanged: (value) {},
-                                    decoration:  InputDecoration(
-                                      hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        borderSide: BorderSide.none,
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        borderSide: _validateName? BorderSide(
-                                          color: AppColors.main,
-                                          width: 1,
-                                        ): BorderSide.none,
-                                      ),
-
-                                      fillColor: _validateName ? AppColors.shade1 : AppColors.softRed,
-                                      filled: true,
-                                    ),
-                                  ),
-                                  SizedBox(height: 16,),
-
-                                  Text("Описание сырья",style: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),)
-                                  ,SizedBox(height: 10,),
-                                  TextField(
-                                    textInputAction: TextInputAction.next,
-                                    keyboardType: TextInputType.text,
-                                      controller:desController,
-                                    cursorColor: AppColors.main,
-                                    textCapitalization: TextCapitalization.sentences,
-                                    style: AppTextStyles.body16GeologicaLight,
-                                    onChanged: (value) {},
-                                    decoration:  InputDecoration(
-                                      hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        borderSide: BorderSide.none,
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        borderSide: _validateName? BorderSide(
-                                          color: AppColors.main,
-                                          width: 1,
-                                        ): BorderSide.none,
-                                      ),
-
-                                      fillColor:  AppColors.shade1 ,
-                                      filled: true,
-                                    ),
-                                  ),
-                                  SizedBox(height: 16,),
-
-                                  Row(
-                                    children: [
-                                      Container(
-                                        height: 38,
-                                        width:  38,
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16),color: AppColors.shade1),
-                                        child: SvgPicture.asset(Assets.assetsIconsAttachments,height: 24,width: 24, fit: BoxFit.scaleDown,colorFilter: ColorFilter.mode(AppColors.accent, BlendMode.srcIn),),
-                                      ),
-                                      SizedBox(width: 12,),
-                                      Text("Прикрепить фото",style: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),)
-                                    ],
-                                  ),
-                                  SizedBox(height: 32,),
 
 
 
-                                ],
-                              ),
-                            ),
-                            CommonWidgetButton(text: "ОТПРАВИТЬ",colorButton: AppColors.main, textColor: AppColors.white, openPath: (){},)
+                       return  const ShowModalBottomSheetUpdate();
 
-                          ],
-                        ),
-                      ),
 
-                    );
                   },
                 );
               }
@@ -368,3 +230,222 @@ class _MoreDetailsViewState extends State<MoreDetailsView> {
     );
   }
 }
+
+
+  class ShowModalBottomSheetUpdate extends StatefulWidget {
+
+    const ShowModalBottomSheetUpdate({super.key});
+
+
+    @override
+    State<ShowModalBottomSheetUpdate> createState() => _ShowModalBottomSheetUpdateState();
+  }
+
+bool _validateName = true;
+bool _validateDes=true;
+
+
+TextEditingController nameController = TextEditingController();
+TextEditingController desController = TextEditingController();
+
+void validateNameFunc() {
+  if (nameController.text.isEmpty) {
+    _validateName = false;
+  } else {
+    _validateName = true;
+  }
+}
+void validateDesFunc() {
+  if (desController.text.isEmpty) {
+    _validateDes = false;
+  } else {
+    _validateDes = true;
+  }
+}
+
+String selectedItem = 'Выбрать';
+
+bool isError = false;
+
+
+
+  class _ShowModalBottomSheetUpdateState extends State<ShowModalBottomSheetUpdate> {
+
+    ///imagePicker
+    File? _image;
+
+    Future<void> _pickImage() async {
+      final picker = ImagePicker();
+      final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+
+      if (pickedImage != null) {
+        setState(() {
+          _image = File(pickedImage.path);
+        });
+      }
+    }
+
+    void selectedCity(String item) {
+      selectedItem = item;
+      setState(() {});
+    }
+
+    void errorChecker() {
+      if (selectedItem == "Выбрать") {
+        setState(() {});
+        isError = true;
+      } else {
+        isError = false;
+      }
+    }
+
+    @override
+    Widget build(BuildContext context) {
+      return   Container(
+        height: 616,
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+        ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 25,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Оформление заявки",style: AppTextStyles.body16UnboundedMedium,),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.pop(context);
+
+                          },
+                          child: Container(height: 24,width: 24,decoration: BoxDecoration(borderRadius: BorderRadius.circular(100),color: AppColors.shade1),
+                            child: SvgPicture.asset(Assets.iconsClose16x16,height: 16,width: 16,fit: BoxFit.scaleDown,),),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 12,),
+                    Text("Для оформления заявки укажите адрес вывоза, опишите и сфотографируйте ваше вторсырье",style: AppTextStyles.body16GeologicaLight,),
+                    SizedBox(height: 22),
+                    Text("Город",style: AppTextStyles.body16GeologicaLight.copyWith(color:  isError? AppColors.red: AppColors.shade3),)
+                    ,SizedBox(height: 10,),
+
+                    CustomDropdown(isError: isError, selectedItem: selectedItem, customList: citiesList, onTap:selectedCity)
+                    ,   SizedBox(height: 16,),
+                    Text("Адрес вывоза",style: AppTextStyles.body16GeologicaLight.copyWith(color:  !_validateName? AppColors.red: AppColors.shade3),)
+                    ,SizedBox(height: 10,),
+                    TextField(
+                      textInputAction: TextInputAction.next,
+
+
+                      keyboardType: TextInputType.text,
+                      controller:nameController,
+                      cursorColor: AppColors.main,
+                      textCapitalization: TextCapitalization.sentences,
+                      style: AppTextStyles.body16GeologicaLight,
+
+                      decoration:  InputDecoration(
+
+                        hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide.none,
+
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: _validateName? BorderSide(
+                            color: AppColors.main,
+                            width: 1,
+                          ): BorderSide.none,
+                        ),
+
+                        fillColor: _validateName ? AppColors.shade1 : AppColors.softRed,
+                        filled: true,
+                      ),
+                    ),
+                    SizedBox(height: 16,),
+
+                    Text("Описание сырья",style: AppTextStyles.body16GeologicaLight.copyWith(color:  !_validateDes? AppColors.red: AppColors.shade3),)
+                    ,SizedBox(height: 10,),
+                    TextField(
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.text,
+                      controller:desController,
+                      cursorColor: AppColors.main,
+                      textCapitalization: TextCapitalization.sentences,
+                      style: AppTextStyles.body16GeologicaLight,
+                      onChanged: (value) {},
+                      decoration:  InputDecoration(
+                        hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: _validateName? BorderSide(
+                            color: AppColors.main,
+                            width: 1,
+                          ): BorderSide.none,
+                        ),
+
+                        fillColor: _validateDes? AppColors.shade1:AppColors.softRed ,
+                        filled: true,
+                      ),
+                    ),
+                    SizedBox(height: 16,),
+
+                    Row(
+                      children: [
+                        GestureDetector(
+                           onTap:(){
+                             _pickImage();
+                           },
+                          child: Container(
+                            height: 38,
+                            width:  38,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16),color: AppColors.shade1),
+                            child: SvgPicture.asset(Assets.assetsIconsAttachments,height: 24,width: 24, fit: BoxFit.scaleDown,colorFilter: ColorFilter.mode(AppColors.accent, BlendMode.srcIn),),
+                          ),
+                        ),
+                        SizedBox(width: 12,),
+                        Text("Прикрепить фото",style: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),)
+                      ],
+                    ),
+                    SizedBox(height: 32,),
+
+
+
+                  ],
+                ),
+              ),
+              CommonWidgetButton(text: "ОТПРАВИТЬ",colorButton: AppColors.main, textColor: AppColors.white, openPath: (){
+                validateDesFunc();
+                errorChecker();
+                validateNameFunc();
+
+                debugPrint("TAP '${nameController.text}' 2 '${desController.text}'");
+                debugPrint(_validateName.toString());
+                debugPrint(_validateDes.toString());
+
+                setState(() {
+
+                });
+              },)
+
+            ],
+          ),
+        ),
+
+      );;
+    }
+  }
+

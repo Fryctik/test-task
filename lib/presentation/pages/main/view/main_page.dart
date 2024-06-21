@@ -6,6 +6,7 @@ import 'package:test/generated/assets.dart';
 import 'package:test/presentation/pages/main/view/custom_service_view.dart';
 import 'package:test/presentation/pages/main/view/home_page.dart';
 import 'package:test/presentation/pages/main/view/more_details_view.dart';
+import 'package:test/presentation/pages/main/view/profile_edit_page.dart';
 import 'package:test/presentation/widgets/custom_price_tariff.dart';
 import '../../../../config/contstants/app_colors.dart';
 import '../../../widgets/custom_bottom_navigation.dart';
@@ -119,7 +120,8 @@ class _MainPageState extends State<MainPage> {
                 CustomService(
                   pageController: _pageController,
                 ),
-                MoreDetailsView(typeTariff: TypeTariff.courierExport, pageController: _pageController,)
+                MoreDetailsView(typeTariff: TypeTariff.courierExport, pageController: _pageController,),
+                ProfileEditPage(pageController: _pageController,)
                 // Add more pages here
               ],
             ),

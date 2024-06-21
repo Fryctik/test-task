@@ -5,12 +5,14 @@ import 'package:test/config/contstants/app_text_styles.dart';
 
 class CommonWidgetButton extends StatelessWidget {
   const CommonWidgetButton({
+    this.margin,
     super.key,
     required this.text,
     this.colorButton,
     this.textColor,
     this.ignorePoint,
     required this.openPath,
+
   });
 
   final String text;
@@ -18,13 +20,14 @@ class CommonWidgetButton extends StatelessWidget {
   final Color? textColor;
   final bool? ignorePoint;
   final Function() openPath;
+  final double ? margin;
 
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
       ignoring: ignorePoint == null? false: ignorePoint!,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        padding: EdgeInsets.symmetric(horizontal: margin?? 20.w),
         width: double.infinity,
         child: ElevatedButton(
           onPressed: openPath,

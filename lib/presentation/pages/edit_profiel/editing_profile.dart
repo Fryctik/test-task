@@ -156,7 +156,8 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
     ));
-    return PopScope(
+    return
+      PopScope(
       canPop: false,
       child: GestureDetector(
         onTap: () {
@@ -174,27 +175,40 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                   ),
                   child: Column(
                     children: [
-                      Row(
+                      Stack(
+                         alignment: Alignment.topLeft,
                         children: [
-                          const SizedBox(
-                            width: 20,
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+
+
+                                CustomBackButton(
+                                  onBack: () {
+                                    context.pop();
+                                  },
+                                ),
+
+
+
+
+
+                              ],
+                            ),
                           ),
-                          CustomBackButton(
-                            onBack: () {
-                              context.pop();
-                            },
+                          Center(
+                            child: Text(
+                              "ПРОФИЛЬ",
+                              style: AppTextStyles.body16UnboundedMedium,
+                            ),
                           ),
-                          const SizedBox(
-                            width: 50,
-                          ),
-                          Text(
-                            "ПРОФИЛЬ",
-                            style: AppTextStyles.body16UnboundedMedium,
-                          ),
+
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 35,
                       ),
                       Stack(
                         children: [
@@ -336,7 +350,8 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                       if (MediaQuery.of(context).viewPadding.bottom <= 20) ...[
                         SizedBox(
                           height: 35.h,
-                        )
+                        ),
+
                       ]
                     ],
                   ),

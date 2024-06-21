@@ -105,7 +105,7 @@ class _CustomDropdownState extends State<CustomDropdown>
                     Assets.iconsArrowDown,
                     height: 24,
                     width: 24,
-                    colorFilter: ColorFilter.mode(AppColors.shade3, BlendMode.srcIn),
+                    colorFilter: ColorFilter.mode(widget.isError? AppColors.red: AppColors.shade3, BlendMode.srcIn),
                   ),
                   const SizedBox(width: 16),
                 ],

@@ -6,7 +6,8 @@ import 'package:test/presentation/pages/edit_profiel/editing_profile.dart';
 import '../pages/main/view/main_page.dart';
 import '../pages/splash/view/splash_page.dart';
 
-final router = GoRouter(routes: [
+final router = GoRouter(
+  routes: [
   GoRoute(
     name: '/',
     path: '/',

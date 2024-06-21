@@ -50,9 +50,9 @@ class _InputNameWidgetState extends State<InputNameWidget> {
           focusNode: widget.focusNode,
           keyboardType: TextInputType.name,
           controller: widget.nameController,
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp(r'[а-яА-Я\s]')),
-          ],
+          // inputFormatters: [
+          //   FilteringTextInputFormatter.allow(RegExp(r'[а-яА-Я\s]')),
+          // ],
           cursorColor: AppColors.main,
           textCapitalization: TextCapitalization.sentences,
           style: AppTextStyles.body16GeologicaLight,
