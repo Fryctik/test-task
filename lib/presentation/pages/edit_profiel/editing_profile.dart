@@ -31,9 +31,9 @@ class EditingProfileScreen extends StatefulWidget {
 }
 
 class _EditingProfileScreenState extends State<EditingProfileScreen> {
-  FocusNode focusNode = FocusNode();
-  FocusNode focusNode1 = FocusNode();
-  FocusNode focusNode2 = FocusNode();
+  // FocusNode focusNode = FocusNode();
+  // FocusNode focusNode1 = FocusNode();
+  // FocusNode focusNode2 = FocusNode();
 
   bool isDateBirthError = false;
   String isDateErrorText = '';
@@ -115,6 +115,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       _validateName = true;
     }
   }
+
   final TextEditingController _birthdayController = TextEditingController();
 
   final TextEditingController _emailController = TextEditingController();
@@ -125,7 +126,6 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
   String removeTrailingSpaces(String input) {
     return input.replaceAll(RegExp(r'\s+$'), '');
   }
-
 
   bool validateEmail(String email) {
     email = removeTrailingSpaces(email);
@@ -147,8 +147,6 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       });
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +242,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                                 nameController: _nameController,
                                 onSubmitted: (value) {},
                                 isValidateName: _validateName,
-                                focusNode: focusNode,
+                                // focusNode: focusNode,
                               )),
                           Padding(
                             padding: const EdgeInsets.only(
@@ -253,7 +251,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                               emailController: _emailController,
                               isEmailValid: _isEmailValid,
                               onSubmitted: (value) {},
-                              focusNode: focusNode1,
+                              // focusNode: focusNode1,
                             ),
                           ),
                           Padding(
@@ -263,7 +261,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                               isValidBirthday: isDateBirthError,
                               birthdayController: _birthdayController,
                               isValidBirthdayText: isDateErrorText,
-                              focusNode: focusNode2,
+                              // focusNode: focusNode2,
                             ),
                           ),
                           Padding(
@@ -293,29 +291,38 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                           colorButton: AppColors.main,
                           textColor: AppColors.white,
                           openPath: () {
-
                             errorCheckerG();
-                            context.read<ProfileCubit>().changeGender(selectedItemG);
+                            context
+                                .read<ProfileCubit>()
+                                .changeGender(selectedItemG);
                             print("1");
                             errorChecker();
-                            context.read<ProfileCubit>().changeCity(selectedItem);
+                            context
+                                .read<ProfileCubit>()
+                                .changeCity(selectedItem);
 
                             print("2");
                             validateName(_nameController.text);
-                            context.read<ProfileCubit>().changeName(_nameController.text);
+                            context
+                                .read<ProfileCubit>()
+                                .changeName(_nameController.text);
                             print("3");
                             validateEmail(_emailController.text);
-                            context.read<ProfileCubit>().changeEmail(_emailController.text);
+                            context
+                                .read<ProfileCubit>()
+                                .changeEmail(_emailController.text);
                             print("4");
 
                             isDateErrorText =
                                 validateDateOfBirth(_birthdayController.text) ??
                                     '';
-                            context.read<ProfileCubit>().changeBirthday(_birthdayController.text);
+                            context
+                                .read<ProfileCubit>()
+                                .changeBirthday(_birthdayController.text);
 
-                            focusNode.unfocus();
-                            focusNode1.unfocus();
-                            focusNode2.unfocus();
+                            // focusNode.unfocus();
+                            // focusNode1.unfocus();
+                            // focusNode2.unfocus();
 
                             if (isError == true ||
                                 isErrorG == true ||
@@ -328,7 +335,6 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                               Future.delayed(Duration(milliseconds: 350), () {
                                 context.pushNamed("/main");
                               });
-
                             }
                           },
                         ),
@@ -347,6 +353,3 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
     );
   }
 }
-
-
-

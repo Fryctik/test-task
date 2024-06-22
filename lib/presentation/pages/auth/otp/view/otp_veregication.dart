@@ -17,13 +17,12 @@ import '../components/title_otp_widget.dart';
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({super.key});
 
-
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
-  FocusNode focusNode = FocusNode();
+  // FocusNode focusNode = FocusNode();
 
   String otpNumbers = '';
   Timer? _timer;
@@ -86,10 +85,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     print("Code submitted: $code");
   }
 
-  void isValidated(){
-    if(otpNumbers.length > 3){
+  void isValidated() {
+    if (otpNumbers.length > 3) {
       isValid = true;
-    }else{
+    } else {
       isValid = false;
     }
   }
@@ -139,7 +138,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     numberOfFields: 4,
                     onCodeChanged: _onCodeChanged,
                     onSubmit: onSubmit,
-                    focusNode: focusNode,
+                    // focusNode: focusNode,
                     otpNumber: otpNumbers, isValid: isValid,
                   ),
                 ),
@@ -201,21 +200,19 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     openPath: () {
                       isValidated();
                       // _timer!.cancel();
-                          if( isValid == true){
-                            Future.delayed(Duration(milliseconds: 300), () {
-                              context.pushNamed('/editing_profile');
-                            });
-                            print("if");
-                          }else{
-                           setState(() {
-
-                           });
-                            print("Else");
-                          }
-
+                      if (isValid == true) {
+                        Future.delayed(Duration(milliseconds: 300), () {
+                          context.pushNamed('/editing_profile');
+                        });
+                        print("if");
+                      } else {
+                        setState(() {});
+                        print("Else");
+                      }
                     }),
-                if (MediaQuery.of(context).viewPadding.bottom <= 20 &&
-                    !focusNode.hasFocus) ...[
+                if (MediaQuery.of(context).viewPadding.bottom <= 20
+                    // &&   !focusNode.hasFocus
+                    ) ...[
                   SizedBox(
                     height: 35.h,
                   )

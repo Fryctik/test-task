@@ -9,7 +9,7 @@ class CustomOtpTextField extends StatefulWidget {
   final int numberOfFields;
   final ValueChanged<String> onCodeChanged;
   final ValueChanged<String> onSubmit;
-  final FocusNode focusNode;
+  // final FocusNode focusNode;
   final bool isValid;
 
   const CustomOtpTextField({
@@ -18,7 +18,8 @@ class CustomOtpTextField extends StatefulWidget {
     required this.numberOfFields,
     required this.onCodeChanged,
     required this.onSubmit,
-    required this.focusNode, required this.isValid,
+    // required this.focusNode,
+    required this.isValid,
   }) : super(key: key);
 
   @override
@@ -26,9 +27,6 @@ class CustomOtpTextField extends StatefulWidget {
 }
 
 class _CustomOtpTextFieldState extends State<CustomOtpTextField> {
-
-
-
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -36,20 +34,20 @@ class _CustomOtpTextFieldState extends State<CustomOtpTextField> {
       height: 58,
       textStyle: AppTextStyles.body16UnboundedSemiBold,
       decoration: BoxDecoration(
-        color:  widget.isValid? AppColors.shade1 : AppColors.softRed ,
+        color: widget.isValid ? AppColors.shade1 : AppColors.softRed,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: widget.isValid? AppColors.shade1 : AppColors.softRed,
+          color: widget.isValid ? AppColors.shade1 : AppColors.softRed,
         ),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyWith(
       decoration: BoxDecoration(
-        color: widget.isValid? AppColors.shade1 : AppColors.softRed,
+        color: widget.isValid ? AppColors.shade1 : AppColors.softRed,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color:  widget.isValid? AppColors.main  : AppColors.red,
+          color: widget.isValid ? AppColors.main : AppColors.red,
         ),
       ),
     );
@@ -58,19 +56,18 @@ class _CustomOtpTextFieldState extends State<CustomOtpTextField> {
       child: Pinput(
         closeKeyboardWhenCompleted: false,
         autofocus: false,
-        focusNode: widget.focusNode,
+        //            focusNode: widget.focusNode,
         length: widget.numberOfFields,
         defaultPinTheme: defaultPinTheme,
         focusedPinTheme: focusedPinTheme,
         showCursor: false,
         onChanged: widget.onCodeChanged,
-        onCompleted: (value) {widget.onSubmit;},
-        onSubmitted: widget.onSubmit,
-
-
-        keyboardType: TextInputType.number,
-        onTapOutside: (point) {
+        onCompleted: (value) {
+          widget.onSubmit;
         },
+        onSubmitted: widget.onSubmit,
+        keyboardType: TextInputType.number,
+        onTapOutside: (point) {},
       ),
     );
   }

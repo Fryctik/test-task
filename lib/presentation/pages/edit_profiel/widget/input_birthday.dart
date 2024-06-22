@@ -5,15 +5,15 @@ import 'package:test/config/contstants/app_text_styles.dart';
 
 import '../../../../../config/contstants/app_colors.dart';
 
-
 class InputBirthdayWidget extends StatefulWidget {
   const InputBirthdayWidget({
     super.key,
     required this.isValidBirthday,
     required this.birthdayController,
-    required this.isValidBirthdayText, required this.focusNode
+    required this.isValidBirthdayText,
+    // required this.focusNode,
   });
-  final FocusNode focusNode;
+  // final FocusNode focusNode;
   final TextEditingController birthdayController;
   final bool isValidBirthday;
   final String isValidBirthdayText;
@@ -23,8 +23,6 @@ class InputBirthdayWidget extends StatefulWidget {
 }
 
 class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
-
-
   final maskFormatter = MaskTextInputFormatter(
     mask: '##.##.####',
     filter: {"#": RegExp(r'[0-9]')},
@@ -42,7 +40,10 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
         day > 31 ||
         month == null ||
         month < 1 ||
-        month > 12 || year == null || year <= 1900 || year <=2024) {
+        month > 12 ||
+        year == null ||
+        year <= 1900 ||
+        year <= 2024) {
       return 'Invalid date';
     }
 
@@ -64,47 +65,51 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
           ),
         ),
         TextFormField(
-          focusNode: widget.focusNode,
+          //            focusNode: widget.focusNode,
           textInputAction: TextInputAction.next,
           controller: widget.birthdayController,
           keyboardType: TextInputType.datetime,
           textCapitalization: TextCapitalization.sentences,
           cursorColor: AppColors.main,
-          style:AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.black),
+          style: AppTextStyles.body16GeologicaLight
+              .copyWith(color: AppColors.black),
           inputFormatters: [
             maskFormatter,
-
           ],
-
-
-          decoration:  InputDecoration(
+          decoration: InputDecoration(
             hintText: "20.04.2004",
-            hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
+            hintStyle: AppTextStyles.body16GeologicaLight
+                .copyWith(color: AppColors.shade3),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
               borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
-              borderSide: !widget.isValidBirthday ?BorderSide(
-                color: AppColors.main,
-                width: 1,
-              ):BorderSide.none ,
+              borderSide: !widget.isValidBirthday
+                  ? BorderSide(
+                      color: AppColors.main,
+                      width: 1,
+                    )
+                  : BorderSide.none,
             ),
-            fillColor:  widget.isValidBirthday ? AppColors.softRed : AppColors.shade1,
+            fillColor:
+                widget.isValidBirthday ? AppColors.softRed : AppColors.shade1,
             filled: true,
           ),
         ),
-        widget.isValidBirthday ? Container(
-          margin: EdgeInsets.only(top: 8),
-          child: Text(widget.isValidBirthdayText, style: AppTextStyles.body14GeologicaLight.copyWith(
-            color: AppColors.red,
-          ),
-          ),
-        ) : SizedBox.shrink(),
+        widget.isValidBirthday
+            ? Container(
+                margin: EdgeInsets.only(top: 8),
+                child: Text(
+                  widget.isValidBirthdayText,
+                  style: AppTextStyles.body14GeologicaLight.copyWith(
+                    color: AppColors.red,
+                  ),
+                ),
+              )
+            : SizedBox.shrink(),
       ],
     );
   }
 }
-
-

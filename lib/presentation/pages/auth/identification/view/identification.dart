@@ -24,7 +24,7 @@ class IdentificationScreen extends StatefulWidget {
 class _IdentificationScreenState extends State<IdentificationScreen> {
   final TextEditingController _phoneNumberController = TextEditingController();
 
-  final FocusNode focusNode = FocusNode();
+  // final FocusNode focusNode = FocusNode();
 
   bool _isValidPhoneNumber = true;
   bool _isNumberValidInputed = false;
@@ -41,21 +41,26 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
       statusBarIconBrightness: Brightness.dark,
     ));
     return PopScope(
-        canPop: false,
+      canPop: false,
       child: GestureDetector(
         onTap: () {
-          focusNode.unfocus();
+          // focusNode.unfocus();
         },
         child: Scaffold(
           backgroundColor: AppColors.white,
           body: SafeArea(
             child: Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top <= 52? 27.h: 0,),
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).viewPadding.top <= 52 ? 27.h : 0,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left:  20.w, right: 20.w, ),
+                    padding: EdgeInsets.only(
+                      left: 20.w,
+                      right: 20.w,
+                    ),
                     child: Column(
                       children: [
                         Row(
@@ -74,22 +79,22 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                           ],
                         ),
                         const TitleIdentificationWidget(),
-                        if(MediaQuery.sizeOf(context).height < 666)...[
+                        if (MediaQuery.sizeOf(context).height < 666) ...[
                           SizedBox(
                             height: 20.h,
                           ),
                         ] else ...[
-                            SizedBox(
-                              height: 48.h,
-                            ),
+                          SizedBox(
+                            height: 48.h,
+                          ),
                         ],
                         CustomNumTextfield(
-                          focusNode: focusNode,
+                          // focusNode: focusNode,
                           phoneNumberController: _phoneNumberController,
                           isValidPhoneNumber: _isValidPhoneNumber,
                           isNumberValidInputed: _isNumberValidInputed,
                           onChange: (value) {
-                            if(_phoneNumberController.text.length > 14) {
+                            if (_phoneNumberController.text.length > 14) {
                               setState(() {
                                 _isValidPhoneNumber = isValidPhoneNumber(value);
                                 _isValidPhoneNumber
@@ -97,9 +102,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                                     : _isNumberValidInputed = false;
                               });
                             } else {
-                              setState(() {
-
-                              });
+                              setState(() {});
                             }
                           },
                           onSubmitted: (value) {
@@ -117,7 +120,8 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                   // const Spacer(),
                   Column(
                     children: [
-                      AgreementText(phoneNumberController: _phoneNumberController),
+                      AgreementText(
+                          phoneNumberController: _phoneNumberController),
                       SizedBox(
                         height: 16.h,
                       ),
@@ -125,23 +129,30 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                           text: 'ПОЛУЧИТЬ КОД',
                           colorButton: AppColors.main,
                           textColor: AppColors.white,
-                          ignorePoint: _phoneNumberController.text.length > 3? false : true,
+                          ignorePoint: _phoneNumberController.text.length > 3
+                              ? false
+                              : true,
                           openPath: () {
-                            focusNode.unfocus();
+                            // focusNode.unfocus();
                             Future.delayed(Duration(milliseconds: 300), () {
-                              if(_isValidPhoneNumber) {
+                              if (_isValidPhoneNumber) {
                                 setState(() {
-                                  _isValidPhoneNumber = isValidPhoneNumber(_phoneNumberController.text);
+                                  _isValidPhoneNumber = isValidPhoneNumber(
+                                      _phoneNumberController.text);
                                   _isValidPhoneNumber
                                       ? _isNumberValidInputed = true
                                       : _isNumberValidInputed = false;
                                 });
-                                if(_isValidPhoneNumber) {
-                                  context.read<ProfileCubit>().updatePhoneNumber('+7${_phoneNumberController.text}');
+                                if (_isValidPhoneNumber) {
+                                  context
+                                      .read<ProfileCubit>()
+                                      .updatePhoneNumber(
+                                          '+7${_phoneNumberController.text}');
                                   context.pushNamed('/otp_verefication');
                                 } else {
                                   setState(() {
-                                    _isValidPhoneNumber = isValidPhoneNumber(_phoneNumberController.text);
+                                    _isValidPhoneNumber = isValidPhoneNumber(
+                                        _phoneNumberController.text);
                                     _isValidPhoneNumber
                                         ? _isNumberValidInputed = true
                                         : _isNumberValidInputed = false;
@@ -149,28 +160,28 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                                 }
                               } else {
                                 setState(() {
-                                  _isValidPhoneNumber = isValidPhoneNumber(_phoneNumberController.text);
+                                  _isValidPhoneNumber = isValidPhoneNumber(
+                                      _phoneNumberController.text);
                                   _isValidPhoneNumber
                                       ? _isNumberValidInputed = true
                                       : _isNumberValidInputed = false;
                                 });
                               }
                             });
-                          }
-                      ),
-                      if(MediaQuery.of(context).viewPadding.bottom == 20 && !focusNode.hasFocus)...[
+                          }),
+                      if (MediaQuery.of(context).viewPadding.bottom == 20
+                          // &&    !focusNode.hasFocus
+                          ) ...[
                         SizedBox(
                           height: 35.h,
                         )
-                      ]
-                      else...[
+                      ] else ...[
                         SizedBox(
                           height: 20.h,
                         )
                       ]
                     ],
                   ),
-
                 ],
               ),
             ),

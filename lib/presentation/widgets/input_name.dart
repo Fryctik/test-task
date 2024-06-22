@@ -8,14 +8,15 @@ import '../../../config/contstants/app_colors.dart';
 class InputNameWidget extends StatefulWidget {
   const InputNameWidget({
     super.key,
-  required this.nameController, this.onSubmitted, required this.isValidateName, required this.focusNode,
+    required this.nameController,
+    this.onSubmitted,
+    required this.isValidateName,
+    // required this.focusNode,
   });
   final TextEditingController nameController;
   final Function(String)? onSubmitted;
   final bool isValidateName;
-  final FocusNode focusNode;
-
-
+  // final FocusNode focusNode;
 
   @override
   State<InputNameWidget> createState() => _InputNameWidgetState();
@@ -47,7 +48,7 @@ class _InputNameWidgetState extends State<InputNameWidget> {
         ),
         TextField(
           textInputAction: TextInputAction.next,
-          focusNode: widget.focusNode,
+          //            focusNode: widget.focusNode,
           keyboardType: TextInputType.name,
           controller: widget.nameController,
           inputFormatters: [
@@ -57,36 +58,45 @@ class _InputNameWidgetState extends State<InputNameWidget> {
           textCapitalization: TextCapitalization.sentences,
           style: AppTextStyles.body16GeologicaLight,
           onChanged: (value) {},
-          decoration:  InputDecoration(
+          decoration: InputDecoration(
             hintText: "Введите имя",
-            hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
+            hintStyle: AppTextStyles.body16GeologicaLight
+                .copyWith(color: AppColors.shade3),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
               borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
-              borderSide: widget.isValidateName? BorderSide(
-                color: AppColors.main,
-                width: 1,
-              ): BorderSide.none,
+              borderSide: widget.isValidateName
+                  ? BorderSide(
+                      color: AppColors.main,
+                      width: 1,
+                    )
+                  : BorderSide.none,
             ),
-
-            fillColor: widget.isValidateName ? AppColors.shade1 : AppColors.softRed,
+            fillColor:
+                widget.isValidateName ? AppColors.shade1 : AppColors.softRed,
             filled: true,
           ),
           onSubmitted: widget.onSubmitted,
         ),
-        widget.isValidateName ? SizedBox.shrink(): Container(
-          margin: EdgeInsets.only(top: 8,),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Text('Введите имя', style: AppTextStyles.body14GeologicaLight.copyWith(
-              color: AppColors.red,
-            ),
-            ),
-          ),
-        ),
+        widget.isValidateName
+            ? SizedBox.shrink()
+            : Container(
+                margin: EdgeInsets.only(
+                  top: 8,
+                ),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Введите имя',
+                    style: AppTextStyles.body14GeologicaLight.copyWith(
+                      color: AppColors.red,
+                    ),
+                  ),
+                ),
+              ),
       ],
     );
   }

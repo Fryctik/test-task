@@ -7,14 +7,13 @@ import 'package:test/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:test/presentation/routes/go_router.dart';
 import 'package:test/themes/themes.dart';
 
-Future<void> main() async{
+Future<void> main() async {
   await initMain();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +22,8 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MultiBlocProvider(
-
         providers: [
-          BlocProvider(create: (context)=> Get.find<ProfileCubit>()),
+          BlocProvider(create: (context) => Get.find<ProfileCubit>()),
         ],
         child: MaterialApp.router(
           title: 'Flutter Demo',
