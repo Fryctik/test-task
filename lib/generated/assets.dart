@@ -2,39 +2,62 @@
 class Assets {
   Assets._();
 
+  static const String assetsImageChat = 'assets/image/messages.png';
   static const String assetsIconsActiveHome = 'assets/icons/active_home.svg';
   static const String assetsIconsArrowDown = 'assets/icons/arrow_down.svg';
   static const String assetsIconsArrowUp = 'assets/icons/arrow_up.svg';
   static const String assetsIconsAttachments = 'assets/icons/attachments.svg';
-  static const String assetsIconsAttachmentsWhite = 'assets/icons/attachments_white.svg';
+  static const String assetsIconsAttachmentsWhite =
+      'assets/icons/attachments_white.svg';
   static const String assetsIconsLocationTag = 'assets/icons/location_tag.svg';
   static const String assetsIconsCalendar = 'assets/icons/сalendar.svg';
   static const String assetsImageBigTruck = 'assets/image/big_truck.svg';
   static const String assetsImageDeliveryman = 'assets/image/deliveryman.svg';
-  static const String assetsImageOnboardImage = 'assets/image/onboard-image.png';
-  static const String componentsAgreementWidget = 'lib/presentation/pages/auth/identification/components/agreement_widget.dart';
-  static const String componentsCustomInstractionView = 'lib/presentation/pages/main/components/custom_instraction_view.dart';
-  static const String componentsCustomTariffView = 'lib/presentation/pages/main/components/custom_tariff_view.dart';
-  static const String componentsLogoWidget = 'lib/presentation/pages/auth/onboarding/components/logo_widget.dart';
-  static const String componentsTextWidget = 'lib/presentation/pages/auth/onboarding/components/text_widget.dart';
-  static const String componentsTitleIdentificationWidget = 'lib/presentation/pages/auth/identification/components/title_identification_widget.dart';
-  static const String componentsTitleOtpWidget = 'lib/presentation/pages/auth/otp/components/title_otp_widget.dart';
-  static const String configContstantsAppColors = 'lib/config/contstants/app_colors.dart';
-  static const String contstantsAppColors = 'lib/config/contstants/app_colors.dart';
-  static const String contstantsAppTextStyles = 'lib/config/contstants/app_text_styles.dart';
+  static const String assetsImageOnboardImage =
+      'assets/image/onboard-image.png';
+  static const String componentsAgreementWidget =
+      'lib/presentation/pages/auth/identification/components/agreement_widget.dart';
+  static const String componentsCustomInstractionView =
+      'lib/presentation/pages/main/components/custom_instraction_view.dart';
+  static const String componentsCustomTariffView =
+      'lib/presentation/pages/main/components/custom_tariff_view.dart';
+  static const String componentsLogoWidget =
+      'lib/presentation/pages/auth/onboarding/components/logo_widget.dart';
+  static const String componentsTextWidget =
+      'lib/presentation/pages/auth/onboarding/components/text_widget.dart';
+  static const String componentsTitleIdentificationWidget =
+      'lib/presentation/pages/auth/identification/components/title_identification_widget.dart';
+  static const String componentsTitleOtpWidget =
+      'lib/presentation/pages/auth/otp/components/title_otp_widget.dart';
+  static const String configContstantsAppColors =
+      'lib/config/contstants/app_colors.dart';
+  static const String contstantsAppColors =
+      'lib/config/contstants/app_colors.dart';
+  static const String contstantsAppTextStyles =
+      'lib/config/contstants/app_text_styles.dart';
   static const String contstantsStrings = 'lib/config/contstants/strings.dart';
   static const String contstantsUrls = 'lib/config/contstants/urls.dart';
-  static const String editProfielEditingProfile = 'lib/presentation/pages/edit_profiel/editing_profile.dart';
-  static const String fontsGeologicaGeologicaBold = 'assets/fonts/Geologica/Geologica-Bold.ttf';
+  static const String editProfielEditingProfile =
+      'lib/presentation/pages/edit_profiel/editing_profile.dart';
+  static const String fontsGeologicaGeologicaBold =
+      'assets/fonts/Geologica/Geologica-Bold.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
-  static const String geologicaGeologicaBlack = 'assets/fonts/Geologica/Geologica-Black.ttf';
-  static const String geologicaGeologicaBold = 'assets/fonts/Geologica/Geologica-Bold.ttf';
-  static const String geologicaGeologicaExtraBold = 'assets/fonts/Geologica/Geologica-ExtraBold.ttf';
-  static const String geologicaGeologicaExtraLight = 'assets/fonts/Geologica/Geologica-ExtraLight.ttf';
-  static const String geologicaGeologicaLight = 'assets/fonts/Geologica/Geologica-Light.ttf';
-  static const String geologicaGeologicaMedium = 'assets/fonts/Geologica/Geologica-Medium.ttf';
-  static const String geologicaGeologicaRegular = 'assets/fonts/Geologica/Geologica-Regular.ttf';
-  static const String geologicaGeologicaSemiBold = 'assets/fonts/Geologica/Geologica-SemiBold.ttf';
+  static const String geologicaGeologicaBlack =
+      'assets/fonts/Geologica/Geologica-Black.ttf';
+  static const String geologicaGeologicaBold =
+      'assets/fonts/Geologica/Geologica-Bold.ttf';
+  static const String geologicaGeologicaExtraBold =
+      'assets/fonts/Geologica/Geologica-ExtraBold.ttf';
+  static const String geologicaGeologicaExtraLight =
+      'assets/fonts/Geologica/Geologica-ExtraLight.ttf';
+  static const String geologicaGeologicaLight =
+      'assets/fonts/Geologica/Geologica-Light.ttf';
+  static const String geologicaGeologicaMedium =
+      'assets/fonts/Geologica/Geologica-Medium.ttf';
+  static const String geologicaGeologicaRegular =
+      'assets/fonts/Geologica/Geologica-Regular.ttf';
+  static const String geologicaGeologicaSemiBold =
+      'assets/fonts/Geologica/Geologica-SemiBold.ttf';
   static const String iconsActiveCart = 'assets/icons/active_cart.svg';
   static const String iconsActiveCaution = 'assets/icons/active_caution.svg';
   static const String iconsActiveHistory = 'assets/icons/active_history.svg';
@@ -54,9 +77,12 @@ class Assets {
   static const String iconsArrowRight = 'assets/icons/arrow_right.svg';
   static const String iconsArrowUp = 'assets/icons/arrowUp.svg';
   static const String iconsAttachments = 'assets/icons/attachments.svg';
-  static const String iconsAttachmentsGreen = 'assets/icons/attachments_green.svg';
-  static const String iconsAttachmentsWhite = 'assets/icons/attachments_white.svg';
-  static const String iconsBackButtonAccent = 'assets/icons/back_button_accent.svg';
+  static const String iconsAttachmentsGreen =
+      'assets/icons/attachments_green.svg';
+  static const String iconsAttachmentsWhite =
+      'assets/icons/attachments_white.svg';
+  static const String iconsBackButtonAccent =
+      'assets/icons/back_button_accent.svg';
   static const String iconsBoxBerry36x36 = 'assets/icons/box_berry36x36.svg';
   static const String iconsCalendar = 'assets/icons/calendar.svg';
   static const String iconsCamera = 'assets/icons/camera.png';
@@ -65,29 +91,39 @@ class Assets {
   static const String iconsClock = 'assets/icons/clock.svg';
   static const String iconsClose = 'assets/icons/close.svg';
   static const String iconsClose16x16 = 'assets/icons/close16x16.svg';
-  static const String iconsDefaultCloseButton = 'assets/icons/default_closeButton.svg';
+  static const String iconsDefaultCloseButton =
+      'assets/icons/default_closeButton.svg';
   static const String iconsDefaultMarket = 'assets/icons/default_market.svg';
   static const String iconsDefaultProfile = 'assets/icons/default_profile.svg';
   static const String iconsDisabledCart = 'assets/icons/disabled_cart.svg';
-  static const String iconsDisabledCaution = 'assets/icons/disabled_caution.svg';
-  static const String iconsDisabledHistory = 'assets/icons/disabled_history.svg';
+  static const String iconsDisabledCaution =
+      'assets/icons/disabled_caution.svg';
+  static const String iconsDisabledHistory =
+      'assets/icons/disabled_history.svg';
   static const String iconsDisabledHome = 'assets/icons/disabled_home.svg';
   static const String iconsDisabledInfo = 'assets/icons/disabled_info.svg';
   static const String iconsDisabledLike = 'assets/icons/disabled_like.svg';
-  static const String iconsDisabledLocation = 'assets/icons/disabled_location.svg';
-  static const String iconsDisabledMessages = 'assets/icons/disabled_messages.svg';
-  static const String iconsDisabledRewards = 'assets/icons/disabled_rewards.svg';
+  static const String iconsDisabledLocation =
+      'assets/icons/disabled_location.svg';
+  static const String iconsDisabledMessages =
+      'assets/icons/disabled_messages.svg';
+  static const String iconsDisabledRewards =
+      'assets/icons/disabled_rewards.svg';
   static const String iconsDisabledTrash = 'assets/icons/disabled_trash.svg';
   static const String iconsDisabledTruck = 'assets/icons/disabled_truck.svg';
-  static const String iconsDoubleCheck16x16 = 'assets/icons/double_check16x16.svg';
+  static const String iconsDoubleCheck16x16 =
+      'assets/icons/double_check16x16.svg';
   static const String iconsEdit = 'assets/icons/edit.svg';
   static const String iconsFile36x36 = 'assets/icons/file36x36.svg';
   static const String iconsFiller36x36 = 'assets/icons/filler36x36.svg';
   static const String iconsHeart = 'assets/icons/heart.png';
-  static const String iconsInstructionCaution1 = 'assets/icons/instruction/caution1.png';
-  static const String iconsInstructionSteklo73 = 'assets/icons/instruction/steklo73.png';
+  static const String iconsInstructionCaution1 =
+      'assets/icons/instruction/caution1.png';
+  static const String iconsInstructionSteklo73 =
+      'assets/icons/instruction/steklo73.png';
   static const String iconsLocationTag = 'assets/icons/location_tag.svg';
-  static const String iconsLocationTag16x16 = 'assets/icons/location_tag16x16.svg';
+  static const String iconsLocationTag16x16 =
+      'assets/icons/location_tag16x16.svg';
   static const String iconsMenu = 'assets/icons/menu.svg';
   static const String iconsMinus16x16 = 'assets/icons/minus16x16.svg';
   static const String iconsOffCheckBox = 'assets/icons/off_checkBox.svg';
@@ -99,14 +135,17 @@ class Assets {
   static const String iconsPhone = 'assets/icons/phone.svg';
   static const String iconsPlus16x16 = 'assets/icons/plus16x16.svg';
   static const String iconsPlusBottom = 'assets/icons/plus_bottom.svg';
-  static const String iconsPressedCloseButton = 'assets/icons/pressed_closeButton.svg';
+  static const String iconsPressedCloseButton =
+      'assets/icons/pressed_closeButton.svg';
   static const String iconsSbpLogo36x36 = 'assets/icons/sbp_logo36x36.svg';
   static const String iconsSdek36x36 = 'assets/icons/sdek36x36.svg';
   static const String iconsStar = 'assets/icons/star.svg';
   static const String iconsStar16x16 = 'assets/icons/star16x16.svg';
   static const String iconsStarStroke = 'assets/icons/star_stroke.svg';
-  static const String iconsStarStroke16x16 = 'assets/icons/star_stroke16x16.svg';
-  static const String identificationViewIdentification = 'lib/presentation/pages/auth/identification/view/identification.dart';
+  static const String iconsStarStroke16x16 =
+      'assets/icons/star_stroke16x16.svg';
+  static const String identificationViewIdentification =
+      'lib/presentation/pages/auth/identification/view/identification.dart';
   static const String imageBigTruck = 'assets/image/big_truck.png';
   static const String imageCustomBigT = 'assets/image/custom_bigT.png';
   static const String imageCustomCar = 'assets/image/custom_car.png';
@@ -123,97 +162,179 @@ class Assets {
   static const String imageSmallPacket = 'assets/image/small_packet.svg';
   static const String imageSmallTruck = 'assets/image/small_truck.svg';
   static const String imageTruck = 'assets/image/truck.png';
-  static const String instructionCaution1 = 'assets/icons/instruction/caution1.png';
-  static const String instructionCaution2 = 'assets/icons/instruction/caution2.png';
-  static const String instructionCaution3 = 'assets/icons/instruction/caution3.png';
-  static const String instructionCaution4 = 'assets/icons/instruction/caution4.png';
-  static const String instructionCaution5 = 'assets/icons/instruction/caution5.png';
-  static const String instructionCaution6 = 'assets/icons/instruction/caution6.png';
-  static const String instructionCaution7 = 'assets/icons/instruction/caution7.png';
-  static const String instructionCaution9 = 'assets/icons/instruction/caution9.png';
-  static const String instructionMakalatura20 = 'assets/icons/instruction/makalatura20.png';
-  static const String instructionMakalatura21 = 'assets/icons/instruction/makalatura21.png';
-  static const String instructionMakalatura22 = 'assets/icons/instruction/makalatura22.png';
-  static const String instructionMakalatura23 = 'assets/icons/instruction/makalatura23.png';
-  static const String instructionMetal40 = 'assets/icons/instruction/metal40.png';
-  static const String instructionMetal41 = 'assets/icons/instruction/metal41.png';
-  static const String instructionSteklo70 = 'assets/icons/instruction/steklo70.png';
-  static const String instructionSteklo71 = 'assets/icons/instruction/steklo71.png';
-  static const String instructionSteklo72 = 'assets/icons/instruction/steklo72.png';
-  static const String instructionSteklo73 = 'assets/icons/instruction/steklo73.png';
-  static const String instructionSteklo74 = 'assets/icons/instruction/steklo74.png';
+  static const String instructionCaution1 =
+      'assets/icons/instruction/caution1.png';
+  static const String instructionCaution2 =
+      'assets/icons/instruction/caution2.png';
+  static const String instructionCaution3 =
+      'assets/icons/instruction/caution3.png';
+  static const String instructionCaution4 =
+      'assets/icons/instruction/caution4.png';
+  static const String instructionCaution5 =
+      'assets/icons/instruction/caution5.png';
+  static const String instructionCaution6 =
+      'assets/icons/instruction/caution6.png';
+  static const String instructionCaution7 =
+      'assets/icons/instruction/caution7.png';
+  static const String instructionCaution9 =
+      'assets/icons/instruction/caution9.png';
+  static const String instructionMakalatura20 =
+      'assets/icons/instruction/makalatura20.png';
+  static const String instructionMakalatura21 =
+      'assets/icons/instruction/makalatura21.png';
+  static const String instructionMakalatura22 =
+      'assets/icons/instruction/makalatura22.png';
+  static const String instructionMakalatura23 =
+      'assets/icons/instruction/makalatura23.png';
+  static const String instructionMetal40 =
+      'assets/icons/instruction/metal40.png';
+  static const String instructionMetal41 =
+      'assets/icons/instruction/metal41.png';
+  static const String instructionSteklo70 =
+      'assets/icons/instruction/steklo70.png';
+  static const String instructionSteklo71 =
+      'assets/icons/instruction/steklo71.png';
+  static const String instructionSteklo72 =
+      'assets/icons/instruction/steklo72.png';
+  static const String instructionSteklo73 =
+      'assets/icons/instruction/steklo73.png';
+  static const String instructionSteklo74 =
+      'assets/icons/instruction/steklo74.png';
   static const String libGeneratedAssets = 'lib/generated/assets.dart';
   static const String libMain = 'lib/main.dart';
   static const String managerInjects = 'lib/presentation/manager/injects.dart';
-  static const String modelsProfileModel = 'lib/data/local/models/profile_model.dart';
-  static const String presentationWidgetsAddMinusButtons = 'lib/presentation/widgets/add_minus_buttons.dart';
-  static const String presentationWidgetsCustomCart = 'lib/presentation/widgets/custom_cart.dart';
-  static const String profileCubitProfileCubit = 'lib/presentation/manager/profile_cubit/profile_cubit.dart';
+  static const String modelsProfileModel =
+      'lib/data/local/models/profile_model.dart';
+  static const String presentationWidgetsAddMinusButtons =
+      'lib/presentation/widgets/add_minus_buttons.dart';
+  static const String presentationWidgetsCustomCart =
+      'lib/presentation/widgets/custom_cart.dart';
+  static const String profileCubitProfileCubit =
+      'lib/presentation/manager/profile_cubit/profile_cubit.dart';
   static const String routesGoRouter = 'lib/presentation/routes/go_router.dart';
   static const String routesRoutes = 'lib/presentation/routes/routes.dart';
-  static const String tabBarActiveHistory = 'assets/icons/tab_bar/active_history.svg';
+  static const String tabBarActiveHistory =
+      'assets/icons/tab_bar/active_history.svg';
   static const String tabBarActiveHome = 'assets/icons/tab_bar/active_home.svg';
-  static const String tabBarActiveMessages = 'assets/icons/tab_bar/active_messages.svg';
-  static const String tabBarActiveRewards = 'assets/icons/tab_bar/active_rewards.svg';
-  static const String tabBarDefaultHistory = 'assets/icons/tab_bar/default_history.svg';
-  static const String tabBarDefaultHome = 'assets/icons/tab_bar/default_home.svg';
-  static const String tabBarDefaultMessage = 'assets/icons/tab_bar/default_message.svg';
-  static const String tabBarDefaultReward = 'assets/icons/tab_bar/default_reward.svg';
+  static const String tabBarActiveMessages =
+      'assets/icons/tab_bar/active_messages.svg';
+  static const String tabBarActiveRewards =
+      'assets/icons/tab_bar/active_rewards.svg';
+  static const String tabBarDefaultHistory =
+      'assets/icons/tab_bar/default_history.svg';
+  static const String tabBarDefaultHome =
+      'assets/icons/tab_bar/default_home.svg';
+  static const String tabBarDefaultMessage =
+      'assets/icons/tab_bar/default_message.svg';
+  static const String tabBarDefaultReward =
+      'assets/icons/tab_bar/default_reward.svg';
   static const String tabBarOrder = 'assets/icons/tab_bar/order.svg';
   static const String tabBarPlusBottom = 'assets/icons/tab_bar/plus_bottom.svg';
   static const String themesThemes = 'lib/themes/themes.dart';
-  static const String unboundedUnboundedBlack = 'assets/fonts/Unbounded/Unbounded-Black.ttf';
-  static const String unboundedUnboundedBold = 'assets/fonts/Unbounded/Unbounded-Bold.ttf';
-  static const String unboundedUnboundedExtraBold = 'assets/fonts/Unbounded/Unbounded-ExtraBold.ttf';
-  static const String unboundedUnboundedExtraLight = 'assets/fonts/Unbounded/Unbounded-ExtraLight.ttf';
-  static const String unboundedUnboundedLight = 'assets/fonts/Unbounded/Unbounded-Light.ttf';
-  static const String unboundedUnboundedMedium = 'assets/fonts/Unbounded/Unbounded-Medium.ttf';
-  static const String unboundedUnboundedRegular = 'assets/fonts/Unbounded/Unbounded-Regular.ttf';
-  static const String unboundedUnboundedSemiBold = 'assets/fonts/Unbounded/Unbounded-SemiBold.ttf';
-  static const String viewCustomServiceView = 'lib/presentation/pages/main/view/custom_service_view.dart';
-  static const String viewHomePage = 'lib/presentation/pages/main/view/home_page.dart';
-  static const String viewIdentification = 'lib/presentation/pages/auth/identification/view/identification.dart';
-  static const String viewMainPage = 'lib/presentation/pages/main/view/main_page.dart';
-  static const String viewMoreDetailsView = 'lib/presentation/pages/main/view/more_details_view.dart';
-  static const String viewOnboard = 'lib/presentation/pages/auth/onboarding/view/onboard.dart';
-  static const String viewOtpVeregication = 'lib/presentation/pages/auth/otp/view/otp_veregication.dart';
-  static const String viewSplashPage = 'lib/presentation/pages/splash/view/splash_page.dart';
-  static const String widgetInputBirthday = 'lib/presentation/pages/edit_profiel/widget/input_birthday.dart';
-  static const String widgetInputEmail = 'lib/presentation/pages/edit_profiel/widget/input_email.dart';
-  static const String widgetInputName = 'lib/presentation/pages/edit_profiel/widget/input_name.dart';
-  static const String widgetSelectionCity = 'lib/presentation/pages/edit_profiel/widget/selection_city.dart';
-  static const String widgetSelectionGender = 'lib/presentation/pages/edit_profiel/widget/selection_gender.dart';
-  static const String widgetsAddMinusButtons = 'lib/presentation/widgets/add_minus_buttons.dart';
-  static const String widgetsCustomBackButton = 'lib/presentation/widgets/custom_back_button.dart';
-  static const String widgetsCustomBottomNavigation = 'lib/presentation/widgets/custom_bottom_navigation.dart';
-  static const String widgetsCustomButtonS = 'lib/presentation/widgets/custom_button_s.dart';
-  static const String widgetsCustomButtonS2 = 'lib/presentation/widgets/custom_button_s2.dart';
-  static const String widgetsCustomButtonUp = 'lib/presentation/widgets/custom_button_up.dart';
-  static const String widgetsCustomCardOrder = 'lib/presentation/widgets/custom_card_order.dart';
-  static const String widgetsCustomCardProduct = 'lib/presentation/widgets/custom_card_product.dart';
-  static const String widgetsCustomCart = 'lib/presentation/widgets/custom_cart.dart';
-  static const String widgetsCustomCheck = 'lib/presentation/widgets/custom_check.dart';
-  static const String widgetsCustomCommonButton = 'lib/presentation/widgets/custom_common_button.dart';
-  static const String widgetsCustomData = 'lib/presentation/widgets/custom_data.dart';
-  static const String widgetsCustomDropdownGender = 'lib/presentation/widgets/custom_dropdown_gender.dart';
-  static const String widgetsCustomIconupButton = 'lib/presentation/widgets/custom_iconup_button.dart';
-  static const String widgetsCustomInputNumber = 'lib/presentation/widgets/custom_input_number.dart';
-  static const String widgetsCustomInstraction = 'lib/presentation/widgets/custom_instraction.dart';
-  static const String widgetsCustomMenuButton = 'lib/presentation/widgets/custom_menu_button.dart';
-  static const String widgetsCustomNumTextfield = 'lib/presentation/widgets/custom_num_textfield.dart';
-  static const String widgetsCustomOtpTextfield = 'lib/presentation/widgets/custom_otp_textfield.dart';
-  static const String widgetsCustomPostNews = 'lib/presentation/widgets/custom_post_news.dart';
-  static const String widgetsCustomPriceTariff = 'lib/presentation/widgets/custom_price_tariff.dart';
-  static const String widgetsCustomQuitButton = 'lib/presentation/widgets/custom_quit_button.dart';
-  static const String widgetsCustomSericeCard = 'lib/presentation/widgets/custom_serice_card.dart';
-  static const String widgetsCustomTest = 'lib/presentation/widgets/custom_test.dart';
-  static const String widgetsCustomTextCheckbox = 'lib/presentation/widgets/custom_text_checkbox.dart';
-  static const String widgetsEmailChecker = 'lib/presentation/widgets/email_checker.dart';
-  static const String widgetsInputBirthday = 'lib/presentation/widgets/input_birthday.dart';
-  static const String widgetsInputEmail = 'lib/presentation/widgets/input_email.dart';
-  static const String widgetsInputName = 'lib/presentation/widgets/input_name.dart';
-  static const String widgetsReadMoreText = 'lib/presentation/widgets/read_more_text.dart';
-  static const String widgetsSelectionGender = 'lib/presentation/widgets/selection_gender.dart';
-  static const String widgetsTextButton = 'lib/presentation/widgets/text_button.dart';
-
+  static const String unboundedUnboundedBlack =
+      'assets/fonts/Unbounded/Unbounded-Black.ttf';
+  static const String unboundedUnboundedBold =
+      'assets/fonts/Unbounded/Unbounded-Bold.ttf';
+  static const String unboundedUnboundedExtraBold =
+      'assets/fonts/Unbounded/Unbounded-ExtraBold.ttf';
+  static const String unboundedUnboundedExtraLight =
+      'assets/fonts/Unbounded/Unbounded-ExtraLight.ttf';
+  static const String unboundedUnboundedLight =
+      'assets/fonts/Unbounded/Unbounded-Light.ttf';
+  static const String unboundedUnboundedMedium =
+      'assets/fonts/Unbounded/Unbounded-Medium.ttf';
+  static const String unboundedUnboundedRegular =
+      'assets/fonts/Unbounded/Unbounded-Regular.ttf';
+  static const String unboundedUnboundedSemiBold =
+      'assets/fonts/Unbounded/Unbounded-SemiBold.ttf';
+  static const String viewCustomServiceView =
+      'lib/presentation/pages/main/view/custom_service_view.dart';
+  static const String viewHomePage =
+      'lib/presentation/pages/main/view/home_page.dart';
+  static const String viewIdentification =
+      'lib/presentation/pages/auth/identification/view/identification.dart';
+  static const String viewMainPage =
+      'lib/presentation/pages/main/view/main_page.dart';
+  static const String viewMoreDetailsView =
+      'lib/presentation/pages/main/view/more_details_view.dart';
+  static const String viewOnboard =
+      'lib/presentation/pages/auth/onboarding/view/onboard.dart';
+  static const String viewOtpVeregication =
+      'lib/presentation/pages/auth/otp/view/otp_veregication.dart';
+  static const String viewSplashPage =
+      'lib/presentation/pages/splash/view/splash_page.dart';
+  static const String widgetInputBirthday =
+      'lib/presentation/pages/edit_profiel/widget/input_birthday.dart';
+  static const String widgetInputEmail =
+      'lib/presentation/pages/edit_profiel/widget/input_email.dart';
+  static const String widgetInputName =
+      'lib/presentation/pages/edit_profiel/widget/input_name.dart';
+  static const String widgetSelectionCity =
+      'lib/presentation/pages/edit_profiel/widget/selection_city.dart';
+  static const String widgetSelectionGender =
+      'lib/presentation/pages/edit_profiel/widget/selection_gender.dart';
+  static const String widgetsAddMinusButtons =
+      'lib/presentation/widgets/add_minus_buttons.dart';
+  static const String widgetsCustomBackButton =
+      'lib/presentation/widgets/custom_back_button.dart';
+  static const String widgetsCustomBottomNavigation =
+      'lib/presentation/widgets/custom_bottom_navigation.dart';
+  static const String widgetsCustomButtonS =
+      'lib/presentation/widgets/custom_button_s.dart';
+  static const String widgetsCustomButtonS2 =
+      'lib/presentation/widgets/custom_button_s2.dart';
+  static const String widgetsCustomButtonUp =
+      'lib/presentation/widgets/custom_button_up.dart';
+  static const String widgetsCustomCardOrder =
+      'lib/presentation/widgets/custom_card_order.dart';
+  static const String widgetsCustomCardProduct =
+      'lib/presentation/widgets/custom_card_product.dart';
+  static const String widgetsCustomCart =
+      'lib/presentation/widgets/custom_cart.dart';
+  static const String widgetsCustomCheck =
+      'lib/presentation/widgets/custom_check.dart';
+  static const String widgetsCustomCommonButton =
+      'lib/presentation/widgets/custom_common_button.dart';
+  static const String widgetsCustomData =
+      'lib/presentation/widgets/custom_data.dart';
+  static const String widgetsCustomDropdownGender =
+      'lib/presentation/widgets/custom_dropdown_gender.dart';
+  static const String widgetsCustomIconupButton =
+      'lib/presentation/widgets/custom_iconup_button.dart';
+  static const String widgetsCustomInputNumber =
+      'lib/presentation/widgets/custom_input_number.dart';
+  static const String widgetsCustomInstraction =
+      'lib/presentation/widgets/custom_instraction.dart';
+  static const String widgetsCustomMenuButton =
+      'lib/presentation/widgets/custom_menu_button.dart';
+  static const String widgetsCustomNumTextfield =
+      'lib/presentation/widgets/custom_num_textfield.dart';
+  static const String widgetsCustomOtpTextfield =
+      'lib/presentation/widgets/custom_otp_textfield.dart';
+  static const String widgetsCustomPostNews =
+      'lib/presentation/widgets/custom_post_news.dart';
+  static const String widgetsCustomPriceTariff =
+      'lib/presentation/widgets/custom_price_tariff.dart';
+  static const String widgetsCustomQuitButton =
+      'lib/presentation/widgets/custom_quit_button.dart';
+  static const String widgetsCustomSericeCard =
+      'lib/presentation/widgets/custom_serice_card.dart';
+  static const String widgetsCustomTest =
+      'lib/presentation/widgets/custom_test.dart';
+  static const String widgetsCustomTextCheckbox =
+      'lib/presentation/widgets/custom_text_checkbox.dart';
+  static const String widgetsEmailChecker =
+      'lib/presentation/widgets/email_checker.dart';
+  static const String widgetsInputBirthday =
+      'lib/presentation/widgets/input_birthday.dart';
+  static const String widgetsInputEmail =
+      'lib/presentation/widgets/input_email.dart';
+  static const String widgetsInputName =
+      'lib/presentation/widgets/input_name.dart';
+  static const String widgetsReadMoreText =
+      'lib/presentation/widgets/read_more_text.dart';
+  static const String widgetsSelectionGender =
+      'lib/presentation/widgets/selection_gender.dart';
+  static const String widgetsTextButton =
+      'lib/presentation/widgets/text_button.dart';
 }

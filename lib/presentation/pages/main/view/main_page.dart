@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/generated/assets.dart';
-import 'package:test/presentation/pages/chat/chat.dart';
+import 'package:test/presentation/pages/chat/view/chat.dart';
 import 'package:test/presentation/pages/main/view/custom_service_view.dart';
 import 'package:test/presentation/pages/main/view/home_page.dart';
 import 'package:test/presentation/pages/main/view/more_details_view.dart';
@@ -38,6 +38,7 @@ class _MainPageState extends State<MainPage> {
     ));
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.white,
       drawer: Drawer(
         backgroundColor: AppColors.white,
