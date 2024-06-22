@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/generated/assets.dart';
+import 'package:test/presentation/pages/chat/chat.dart';
 import 'package:test/presentation/pages/main/view/custom_service_view.dart';
 import 'package:test/presentation/pages/main/view/home_page.dart';
 import 'package:test/presentation/pages/main/view/more_details_view.dart';
@@ -29,7 +30,6 @@ class _MainPageState extends State<MainPage> {
     Navigator.pop(context);
   }
 
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -39,7 +39,7 @@ class _MainPageState extends State<MainPage> {
 
     return Scaffold(
       backgroundColor: AppColors.white,
-      drawer:  Drawer(
+      drawer: Drawer(
         backgroundColor: AppColors.white,
         child: Column(
           children: [
@@ -115,11 +115,15 @@ class _MainPageState extends State<MainPage> {
               controller: _pageController,
               physics: const NeverScrollableScrollPhysics(),
               children: [
+                ChatPage(),
                 HomePage(),
                 CustomService(
                   pageController: _pageController,
                 ),
-                MoreDetailsView(typeTariff: TypeTariff.courierExport, pageController: _pageController,)
+                MoreDetailsView(
+                  typeTariff: TypeTariff.courierExport,
+                  pageController: _pageController,
+                )
                 // Add more pages here
               ],
             ),
@@ -130,9 +134,10 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-
-
-  Widget _buildDrawerItem(BuildContext context, {required String asset, required String text, required VoidCallback onTap}) {
+  Widget _buildDrawerItem(BuildContext context,
+      {required String asset,
+      required String text,
+      required VoidCallback onTap}) {
     return GestureDetector(
       onTap: onTap,
       child: Row(
@@ -141,7 +146,8 @@ class _MainPageState extends State<MainPage> {
           const SizedBox(width: 10),
           Text(
             text,
-            style: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
+            style: AppTextStyles.body16GeologicaLight
+                .copyWith(color: AppColors.shade3),
           ),
         ],
       ),
