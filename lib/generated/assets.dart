@@ -2,7 +2,8 @@
 class Assets {
   Assets._();
 
-  static const String assetsImageChat = 'assets/image/messages.png';
+  static const String assetsIconsChatPhone = 'assets/icons/chat_phone.svg';
+  static const String assetsIconsDoubleCheck = 'assets/icons/double_check.svg';
   static const String assetsIconsActiveHome = 'assets/icons/active_home.svg';
   static const String assetsIconsArrowDown = 'assets/icons/arrow_down.svg';
   static const String assetsIconsArrowUp = 'assets/icons/arrow_up.svg';
@@ -15,6 +16,8 @@ class Assets {
   static const String assetsImageDeliveryman = 'assets/image/deliveryman.svg';
   static const String assetsImageOnboardImage =
       'assets/image/onboard-image.png';
+  static const String assetsImageChat = 'assets/image/messages.png';
+
   static const String componentsAgreementWidget =
       'lib/presentation/pages/auth/identification/components/agreement_widget.dart';
   static const String componentsCustomInstractionView =
