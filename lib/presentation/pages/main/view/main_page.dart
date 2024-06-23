@@ -116,6 +116,8 @@ class _MainPageState extends State<MainPage> {
               controller: _pageController,
               physics: const NeverScrollableScrollPhysics(),
               children: [
+                ChatPage(),
+
                 HomePage(),
                 CustomService(
                   pageController: _pageController,
@@ -125,7 +127,6 @@ class _MainPageState extends State<MainPage> {
                   pageController: _pageController,
                 ),
                 // Add more pages here
-                ChatPage(),
               ],
             ),
           ),

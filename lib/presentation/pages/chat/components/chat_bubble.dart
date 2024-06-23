@@ -31,8 +31,9 @@ class ChatBubble extends StatelessWidget {
       ),
       offset: const Offset(40, -4),
     );
-    const menuItemStyleData = MenuItemStyleData(
-      padding: EdgeInsets.only(left: 16, right: 16),
+    final menuItemStyleData = MenuItemStyleData(
+      customHeights: _getCustomItemsHeights(),
+      padding: EdgeInsets.zero,
     );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
@@ -75,16 +76,26 @@ class ChatBubble extends StatelessWidget {
                 items: [
                   DropdownMenuItem<String>(
                     value: 'Copy',
-                    child: Text(
-                      'Копировать текст',
-                      style: AppTextStyles.body14GeologicaLight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      child: Text(
+                        'Копировать текст',
+                        style: AppTextStyles.body14GeologicaLight,
+                      ),
                     ),
+                  ),
+                  const DropdownMenuItem<String>(
+                    enabled: false,
+                    child: Divider(),
                   ),
                   DropdownMenuItem<String>(
                     value: 'Delete',
-                    child: Text(
-                      'Удалить',
-                      style: AppTextStyles.body14GeologicaLight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      child: Text(
+                        'Удалить',
+                        style: AppTextStyles.body14GeologicaLight,
+                      ),
                     ),
                   ),
                 ],
@@ -121,5 +132,18 @@ class ChatBubble extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<double> _getCustomItemsHeights() {
+    final List<double> itemsHeights = [];
+    for (int i = 0; i < 3; i++) {
+      if (i.isEven) {
+        itemsHeights.add(40);
+      }
+      if (i.isOdd) {
+        itemsHeights.add(4);
+      }
+    }
+    return itemsHeights;
   }
 }
