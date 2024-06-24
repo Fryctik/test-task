@@ -8,7 +8,9 @@ import 'package:test/themes/themes.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class CustomNavigationBar extends StatefulWidget {
-  const CustomNavigationBar({super.key});
+  const CustomNavigationBar({super.key, required this.pageController});
+
+  final PageController pageController;
 
   @override
   State<CustomNavigationBar> createState() => _CustomNavigationBarState();
@@ -43,6 +45,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                 setState(() {
                   selectedIndex = 0;
                   animationController.reset();
+                  widget.pageController.jumpToPage(0);
                 });
               }),
           _buildBottomNavItem(1 == selectedIndex? Assets.iconsActiveHistory: Assets.tabBarDefaultHistory, 'История', 1,
@@ -50,6 +53,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                 setState(() {
                   selectedIndex = 1;
                   animationController.reset();
+                  widget.pageController.jumpToPage(7);
                 });
               }),
           _buildBottomNavItem(2 == selectedIndex ? Assets.tabBarPlusBottom: Assets.tabBarPlusBottom, 'Заказать', 2,
@@ -102,7 +106,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                   label,
                   style: AppTextStyles.body11GeologicaRegular.copyWith(
                     color:
-                    selectedIndex == 2 ? AppColors.black : selectedIndex == itemIndex ? AppColors.main : AppColors.shade2,
+                    selectedIndex == itemIndex ? AppColors.main : AppColors.shade2,
                   ),
                 ),
                 Positioned(

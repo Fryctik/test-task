@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -62,7 +63,6 @@ class _MoreDetailsViewState extends State<MoreDetailsView> {
         centerTitle: true,
       ),
       body: Column(
-
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           widget.typeTariff == TypeTariff.courierExport ||
@@ -179,12 +179,24 @@ class _MoreDetailsViewState extends State<MoreDetailsView> {
                     ),
                     Expanded(
                       child: RichText(
+
                           text: TextSpan(
                             style: AppTextStyles.body16GeologicaLight,
                               text:
                                   "Перед тем как заказать услугу, пожалуйста, ознакомьтесь с информацией в",
-                              children: [TextSpan(text: ' инструкции',
+                              children: [
+
+                                TextSpan(
+                                  ///on tap
+
+                                  text: ' инструкции',
                                 style: AppTextStyles.body16GeologicaMedium.copyWith(color: AppColors.accent),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap =(){
+                                    context.pushNamed("/instruction_page");
+                                    print("tapped");
+
+                                      }
                               )])),
                     ),
                   ],
@@ -199,7 +211,8 @@ class _MoreDetailsViewState extends State<MoreDetailsView> {
             child: Text(   widget.typeTariff == TypeTariff.courierExport ? "В ней вы узнаете, какие фракции мы принимаем и как правильно подготовить вторсырье к сдаче на переработку" : "Убедитесь, что ваше вторсырьё подходят под условия оказания услуги, а также подготовьте вторсырьё к сдаче, обеспечив к нему беспрепятственный доступ и возможность погрузки",style: AppTextStyles.body14GeologicaLight.copyWith(color: AppColors.shade3),),
           )
       ,
-          Spacer(),
+          SizedBox(height: 24,)
+          ,
           CommonWidgetButton(
               text:  widget.typeTariff == TypeTariff.courierExport ?'ЗАКАЗАТЬ' : "ОСТАВИТЬ ЗАЯВКУ",
               colorButton: AppColors.main,
@@ -208,7 +221,8 @@ class _MoreDetailsViewState extends State<MoreDetailsView> {
                 setState(() {
 
                 });
-                showModalBottomSheet(
+
+              widget.typeTariff == TypeTariff.warehouseExport ||  widget.typeTariff == TypeTariff.truckExport ? showModalBottomSheet(
                   scrollControlDisabledMaxHeightRatio: 1,
                   context: context,
 
@@ -220,11 +234,11 @@ class _MoreDetailsViewState extends State<MoreDetailsView> {
 
 
                   },
-                );
+                ):null;
               }
           ),
+          SizedBox(height: 20,)
 
-                SizedBox(height: 60,)
         ],
       ),
     );

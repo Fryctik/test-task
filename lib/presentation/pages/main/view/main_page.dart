@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/generated/assets.dart';
+import 'package:test/presentation/pages/chat/view/chat.dart';
+import 'package:test/presentation/pages/main/view/custom_market_view.dart';
 import 'package:test/presentation/pages/main/view/custom_service_view.dart';
 import 'package:test/presentation/pages/main/view/home_page.dart';
 import 'package:test/presentation/pages/main/view/more_details_view.dart';
@@ -117,16 +119,23 @@ class _MainPageState extends State<MainPage> {
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 HomePage(),
-                CustomService(
-                  pageController: _pageController,
+
+                ///Drawer Items
+                CustomService(pageController: _pageController,
                 ),
+                CustomMarketView(pageController: _pageController,),
+                ProfileEditPage(pageController: _pageController,),
+
+                ///Custom Service Items
                 MoreDetailsView(typeTariff: TypeTariff.courierExport, pageController: _pageController,),
-                ProfileEditPage(pageController: _pageController,)
-                // Add more pages here
+                MoreDetailsView(typeTariff: TypeTariff.truckExport, pageController: _pageController,),
+                MoreDetailsView(typeTariff: TypeTariff.warehouseExport, pageController: _pageController,),
+                ChatPage(),
+
               ],
             ),
           ),
-          const CustomNavigationBar(),
+          CustomNavigationBar(pageController: _pageController),
         ],
       ),
     );

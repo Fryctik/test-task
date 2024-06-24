@@ -44,7 +44,6 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       return 'Пожалуйста, введите дату рождения';
     }
 
-    // Define the date format
     final dateFormat = DateFormat('dd.MM.yyyy');
     DateTime? birthDate;
 
@@ -55,14 +54,12 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       return 'Неверный формат даты.';
     }
 
-    // Check if the date is realistic
     final now = DateTime.now();
     if (birthDate.isAfter(now) || birthDate.year < 1900) {
       isDateBirthError = true;
       return 'Неверная дата рождения';
     }
 
-    // Check if the age is at least 16 years
     final age = now.year - birthDate.year;
     if (age < 16 ||
         (age == 16 && now.isBefore(birthDate.add(Duration(days: age * 365))))) {
@@ -106,18 +103,18 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
     }
   }
 
-  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
   bool _validateName = true;
   void validateName(String name) {
-    if (_nameController.text.isEmpty) {
+    if (nameController.text.isEmpty) {
       _validateName = false;
     } else {
       _validateName = true;
     }
   }
-  final TextEditingController _birthdayController = TextEditingController();
+  final TextEditingController birthdayController = TextEditingController();
 
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final RegExp emailRegex =
       RegExp(r'^[a-zA-Z0-9._%+-]+@(mail\.ru|gmail\.com|yandex\.ru)$');
   bool _isEmailValid = true;
@@ -255,7 +252,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
                               child: InputNameWidget(
-                                nameController: _nameController,
+                                nameController: nameController,
                                 onSubmitted: (value) {},
                                 isValidateName: _validateName,
                                 focusNode: focusNode,
@@ -264,7 +261,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                             padding: const EdgeInsets.only(
                                 left: 20, right: 20, top: 25),
                             child: InputEmailWidget(
-                              emailController: _emailController,
+                              emailController: emailController,
                               isEmailValid: _isEmailValid,
                               onSubmitted: (value) {},
                               focusNode: focusNode1,
@@ -275,7 +272,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                                 left: 20, right: 20, top: 25),
                             child: InputBirthdayWidget(
                               isValidBirthday: isDateBirthError,
-                              birthdayController: _birthdayController,
+                              birthdayController: birthdayController,
                               isValidBirthdayText: isDateErrorText,
                               focusNode: focusNode2,
                             ),
@@ -307,7 +304,6 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                           colorButton: AppColors.main,
                           textColor: AppColors.white,
                           openPath: () {
-
                             errorCheckerG();
                             context.read<ProfileCubit>().changeGender(selectedItemG);
                             print("1");
@@ -315,17 +311,18 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                             context.read<ProfileCubit>().changeCity(selectedItem);
 
                             print("2");
-                            validateName(_nameController.text);
-                            context.read<ProfileCubit>().changeName(_nameController.text);
+                            validateName(nameController.text);
+                            context.read<ProfileCubit>().changeName(nameController.text);
                             print("3");
-                            validateEmail(_emailController.text);
-                            context.read<ProfileCubit>().changeEmail(_emailController.text);
+                            validateEmail(emailController.text);
+                            context.read<ProfileCubit>().changeEmail(emailController.text);
                             print("4");
 
                             isDateErrorText =
-                                validateDateOfBirth(_birthdayController.text) ??
+                                validateDateOfBirth(birthdayController.text) ??
                                     '';
-                            context.read<ProfileCubit>().changeBirthday(_birthdayController.text);
+                            context.read<ProfileCubit>().changeBirthday(birthdayController.text);
+                            print( context.read<ProfileCubit>().state.dateOfBirth);
 
                             focusNode.unfocus();
                             focusNode1.unfocus();

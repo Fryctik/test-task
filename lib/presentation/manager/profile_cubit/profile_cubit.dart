@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:test/data/local/models/profile_model.dart';
 
 class ProfileCubit extends Cubit<Profile> {
@@ -35,6 +36,16 @@ class ProfileCubit extends Cubit<Profile> {
 
   void changeCity(String newCity) {
     emit(state.copyWith(city: newCity));
+  }
+
+  String convertDate(String date) {
+    // Parse the date string
+    DateTime parsedDate = DateFormat('dd.MM.yyyy').parse(date);
+
+    // Format the date to the desired format
+    String formattedDate = DateFormat('d MMMM yyyy', 'ru_RU').format(parsedDate);
+
+    return formattedDate;
   }
 
   }

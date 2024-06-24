@@ -54,31 +54,38 @@ class _ServiceCardState extends State<ServiceCard> {
               width: 202.w,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment:MainAxisAlignment.spaceBetween,
                 children: [
-                  widget.typeTariff == TypeTariff.courierExport ||
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      widget.typeTariff == TypeTariff.courierExport ||
                           widget.typeTariff == TypeTariff.truckExport
-                      ? Text(
-                          widget.typeTariff == TypeTariff.courierExport
-                              ? "Вывоз курьером"
-                              : "Грузовой вывоз",
-                          style: AppTextStyles.body16GeologicaSemiBold,
-                          maxLines: 1,
-                        )
-                      : Text(
-                          "Оптовый вывоз",
-                          style: AppTextStyles.body16GeologicaSemiBold,
-                          maxLines: 1,
-                        ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    widget.description,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.body14GeologicaLight
-                        .copyWith(color: AppColors.shade3),
-                  ),
+                          ? Text(
+                        widget.typeTariff == TypeTariff.courierExport
+                            ? "Вывоз курьером"
+                            : "Грузовой вывоз",
+                        style: AppTextStyles.body16GeologicaSemiBold,
+                        maxLines: 1,
+                      )
+                          : Text(
+                        "Оптовый вывоз",
+                        style: AppTextStyles.body16GeologicaSemiBold,
+                        maxLines: 1,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        widget.description,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.body14GeologicaLight
+                            .copyWith(color: AppColors.shade3),
+                      ),
+                    ],
+                  )
+,
                   SizedBox(
                     height: 12,
                   ),

@@ -53,7 +53,7 @@ class CustomService extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: () {
-                  pageController.jumpToPage(2);
+                  pageController.jumpToPage(4);
 
                 },
                 child: ServiceCard(
@@ -67,24 +67,37 @@ class CustomService extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            ServiceCard(
-              description:
-                  'Вывезем отсортированное на фракции и чистое вторсырье',
-              kilogram: 20,
-              price: "750",
-              typeTariff: TypeTariff.truckExport,
-              available: false,
+            GestureDetector(
+              onTap: (){
+                pageController.jumpToPage(5);
+
+              },
+              child: ServiceCard(
+                description:
+                    'Вывезем чистое вторсырье ТОЛЬКО одной фракции',
+                kilogram: 20,
+                price: "750",
+                typeTariff: TypeTariff.truckExport,
+                available: true,
+              ),
             ),
             SizedBox(
               height: 15,
             ),
-            ServiceCard(
-              description:
-                  'Вывезем отсортированное на фракции и чистое вторсырье',
-              kilogram: 20,
-              price: "750",
-              typeTariff: TypeTariff.warehouseExport,
-              available: false,
+            GestureDetector(
+                  onTap: (){
+                    pageController.jumpToPage(6);
+
+
+                  },
+              child: ServiceCard(
+                description:
+                    'Вывезем чистое вторсырье разных фракций',
+                kilogram: 20,
+                price: "750",
+                typeTariff: TypeTariff.warehouseExport,
+                available: true,
+              ),
             ),
             SizedBox(
               height: 15,
