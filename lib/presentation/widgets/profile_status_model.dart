@@ -23,30 +23,28 @@ class BadgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.only(top: 130.h),
-      child: Center(
-        child: Container(
-          width: 200,
-          height: 30,
-          padding: EdgeInsets.symmetric(horizontal: 13),
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(40),
-            border:GradientBoxBorder(
-              gradient: LinearGradient(colors: badge.gradient)
+    return UnconstrainedBox(
+      child: Container(
+        height: 30,
+        padding: const EdgeInsets.symmetric(horizontal: 13),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(40),
+          border:GradientBoxBorder(
+            gradient: LinearGradient(colors: badge.gradient)
+          ),
+        ),
+        child: Row(
+          children: [
+            SvgPicture.asset(badge.img,colorFilter: ColorFilter.mode(badge.color, BlendMode.srcIn),),
+            SizedBox(width: 10),
+            Text(
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              badge.text,
+              style: AppTextStyles.body14GeologicaLight,
             ),
-          ),
-          child: Row(
-            children: [
-              SvgPicture.asset(badge.img,colorFilter: ColorFilter.mode(badge.color, BlendMode.srcIn),),
-              SizedBox(width: 10),
-              Text(
-                badge.text,
-                style: AppTextStyles.body14GeologicaLight,
-              ),
-            ],
-          ),
+          ],
         ),
       ),
     );

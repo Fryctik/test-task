@@ -7,12 +7,10 @@ import 'package:test/config/contstants/strings.dart';
 import 'package:test/generated/assets.dart';
 import 'package:test/presentation/pages/main/components/custom_instraction_view.dart';
 import 'package:test/presentation/pages/main/components/custom_tariff_view.dart';
-import 'package:test/presentation/widgets/custom_check.dart';
-import 'package:test/presentation/widgets/custom_post_news.dart';
-import 'package:test/presentation/widgets/custom_price_tariff.dart';
+import 'package:test/presentation/pages/only_nav_bar/view/scaffold_with_navbar.dart';
 
-import '../../../widgets/custom_instraction.dart';
-import '../../auth/onboarding/components/logo_widget.dart';
+import 'package:test/presentation/widgets/custom_post_news.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -96,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                     Builder(builder: (_) {
                       return GestureDetector(
                           onTap: () {
-                            Scaffold.of(context).openDrawer();
+                            scaffoldGlobalKey.currentState!.openDrawer();
                           },
                           child: SvgPicture.asset(
                             Assets.iconsMenu,

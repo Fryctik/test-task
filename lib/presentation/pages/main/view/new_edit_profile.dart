@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -192,7 +193,6 @@ class _NewEditProfileState extends State<NewEditProfile> {
                                 children: [
                                   CustomBackButton(
                                     onBack: () {
-                                      {
                                         showDialog(
                                           barrierDismissible: false,
                                             context: context,
@@ -203,6 +203,7 @@ class _NewEditProfileState extends State<NewEditProfile> {
                                                   dialogBackgroundColor: Colors.white,
                                                 ),
                                                 child: AlertDialog(
+
                                                   actionsPadding: EdgeInsets.only(left: 15,right: 15,bottom: 20),
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
@@ -225,7 +226,7 @@ class _NewEditProfileState extends State<NewEditProfile> {
                                                       children: [
                                                         GestureDetector(
                                                           onTap: () {
-                                                            context.pop();
+                                                           Navigator.of(context,rootNavigator: true).pop();
                                                           },
                                                           child: Container(
 
@@ -250,7 +251,7 @@ class _NewEditProfileState extends State<NewEditProfile> {
                                                         GestureDetector(
                                                           onTap: () {
                                                             ///custom
-                                                            context.pop();
+                                                            Navigator.of(context,rootNavigator: true).pop();
                                                             context.pop();
                                                           },
                                                           child: Container(
@@ -278,7 +279,7 @@ class _NewEditProfileState extends State<NewEditProfile> {
                                                 ),
                                               );
                                             });
-                                      }
+
                                     },
                                   ),
                                 ],

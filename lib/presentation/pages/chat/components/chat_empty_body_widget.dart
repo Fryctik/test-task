@@ -18,7 +18,9 @@ class ChatEmptyBodyWidget extends StatelessWidget {
         Image(
             width: 120.sp,
             height: 120.sp,
-            image: const AssetImage(Assets.imageMessages)),
+            image: const
+           AssetImage(Assets.imageMessages)
+        ),
         SizedBox(height: 12.sp),
         Text(
           'ЗАДАЙТЕ ВАШ ВОПРОС',

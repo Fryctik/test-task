@@ -18,15 +18,14 @@ import '../../../../config/contstants/app_text_styles.dart';
 import '../../../../generated/assets.dart';
 import '../../../widgets/custom_back_button.dart';
 
-class ProfileEditPage extends StatefulWidget {
-  const ProfileEditPage({super.key, required this.pageController});
-  final PageController pageController;
+class ProfileEditPageView extends StatefulWidget {
+  const ProfileEditPageView({super.key});
 
   @override
-  State<ProfileEditPage> createState() => _ProfileEditPageState();
+  State<ProfileEditPageView> createState() => _ProfileEditPageViewState();
 }
 
-class _ProfileEditPageState extends State<ProfileEditPage> {
+class _ProfileEditPageViewState extends State<ProfileEditPageView> {
   ///imagePicker
   File? _image;
 
@@ -86,12 +85,12 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                               children: [
                                 CustomBackButton(
                                   onBack: () {
-                                    widget.pageController.jumpToPage(0);
+                                    context.pop();
                                   },
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    context.pushNamed('/new_edit_profile');
+                                    context.pushNamed('new_edit_profile');
                                   },
                                   child: SvgPicture.asset(
                                     Assets.iconsEdit,
@@ -119,6 +118,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                          return Column(
                            children: [
                              Stack(
+                               alignment: Alignment.bottomCenter,
                                children: [
                                  Center(
                                    child: Container(
@@ -300,7 +300,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            context.pushNamed('/privacy_policy');
+                            context.pushNamed('privacy_policy');
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -356,7 +356,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                           children: [
                                             GestureDetector(
                                               onTap: () {
-                                                context.pop();
+                                                Navigator.of(context,rootNavigator: true).pop();
                                               },
                                               child: Container(
                                                 padding: EdgeInsets.symmetric(
@@ -381,8 +381,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                             GestureDetector(
                                               onTap: () {
                                                 ///custom
-                                                context.pushNamed(
-                                                    "/onboarding");
+                                                context.pushReplacementNamed("/onboarding");
                                               },
                                               child: Container(
                                                 padding: EdgeInsets.symmetric(
@@ -444,7 +443,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                         children: [
                                           GestureDetector(
                                             onTap: () {
-                                              context.pop();
+                                              Navigator.of(context,rootNavigator: true).pop();
                                             },
                                             child: Container(
                                               padding: EdgeInsets.symmetric(
@@ -468,7 +467,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                           ),
                                           GestureDetector(
                                             onTap: () {
-                                              context.pop();
+                                              // context.pop();
                                             },
                                             child: Container(
                                               padding: EdgeInsets.symmetric(

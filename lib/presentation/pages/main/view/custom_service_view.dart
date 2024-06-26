@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/generated/assets.dart';
-import 'package:test/presentation/pages/main/view/more_details_view.dart';
 import 'package:test/presentation/widgets/custom_back_button.dart';
 import 'package:test/presentation/widgets/custom_price_tariff.dart';
 
 import '../../../widgets/custom_serice_card.dart';
 
-class CustomService extends StatelessWidget {
-  const CustomService({super.key, required this.pageController});
-
-  final PageController pageController;
+class CustomServiceView extends StatelessWidget {
+  const CustomServiceView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +34,7 @@ class CustomService extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: CustomBackButton(onBack: () {
-            pageController.jumpToPage(0);
+            context.pop();
           }),
         ),
         title: Text(
@@ -53,8 +51,7 @@ class CustomService extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: () {
-                  pageController.jumpToPage(4);
-
+                  context.pushNamed('more_detail_courier');
                 },
                 child: ServiceCard(
                   description:
@@ -69,8 +66,7 @@ class CustomService extends StatelessWidget {
             ),
             GestureDetector(
               onTap: (){
-                pageController.jumpToPage(5);
-
+                context.pushNamed('more_detail_truck');
               },
               child: ServiceCard(
                 description:
@@ -86,8 +82,7 @@ class CustomService extends StatelessWidget {
             ),
             GestureDetector(
                   onTap: (){
-                    pageController.jumpToPage(6);
-
+                    context.pushNamed('more_detail_warehouse');
 
                   },
               child: ServiceCard(

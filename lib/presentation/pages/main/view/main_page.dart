@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/generated/assets.dart';
 import 'package:test/presentation/pages/chat/view/chat.dart';
+import 'package:test/presentation/pages/main/manager/main/main_cubit.dart';
 import 'package:test/presentation/pages/main/view/custom_market_view.dart';
 import 'package:test/presentation/pages/main/view/custom_service_view.dart';
 import 'package:test/presentation/pages/main/view/home_page.dart';
@@ -21,17 +23,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final PageController _pageController = PageController();
-  int _selectedIndex = 0;
-
-  void _onDrawerItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    _pageController.jumpToPage(index);
-    Navigator.pop(context);
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,120 +33,41 @@ class _MainPageState extends State<MainPage> {
 
     return Scaffold(
       backgroundColor: AppColors.white,
-      drawer:  Drawer(
-        backgroundColor: AppColors.white,
-        child: Column(
-          children: [
-            const SizedBox(height: 55),
-            Padding(
-              padding: const EdgeInsets.only(left: 13),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/icons/heart.png',
-                    width: 39,
-                    height: 32,
-                    color: AppColors.main,
-                  ),
-                  const SizedBox(width: 8),
-                  Row(
-                    children: [
-                      Text(
-                        'RE',
-                        style: AppTextStyles.body16UnboundedSemiBold
-                            .copyWith(color: AppColors.accent),
-                      ),
-                      Text(
-                        'ЛАВ',
-                        style: AppTextStyles.body16UnboundedSemiBold
-                            .copyWith(color: AppColors.black),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              height: 1,
-              width: 310,
-              decoration: BoxDecoration(color: AppColors.shade1),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, top: 24),
-              child: Column(
-                children: [
-                  _buildDrawerItem(
-                    context,
-                    asset: Assets.iconsDisabledTruck,
-                    text: 'Услуги',
-                    onTap: () => _onDrawerItemTapped(1),
-                  ),
-                  const SizedBox(height: 24),
-                  _buildDrawerItem(
-                    context,
-                    asset: Assets.iconsDefaultMarket,
-                    text: 'Маркет',
-                    onTap: () => _onDrawerItemTapped(2),
-                  ),
-                  const SizedBox(height: 24),
-                  _buildDrawerItem(
-                    context,
-                    asset: Assets.iconsDefaultProfile,
-                    text: 'Профиль',
-                    onTap: () => _onDrawerItemTapped(3),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
       body: Column(
         children: [
           Expanded(
             child: PageView(
-              controller: _pageController,
+              controller:  context.read<MainCubit>().pageController,
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 HomePage(),
-
-                ///Drawer Items
-                CustomService(pageController: _pageController,
-                ),
-                CustomMarketView(pageController: _pageController,),
-                ProfileEditPage(pageController: _pageController,),
-
-                ///Custom Service Items
-                MoreDetailsView(typeTariff: TypeTariff.courierExport, pageController: _pageController,),
-                MoreDetailsView(typeTariff: TypeTariff.truckExport, pageController: _pageController,),
-                MoreDetailsView(typeTariff: TypeTariff.warehouseExport, pageController: _pageController,),
                 ChatPage(),
-
+                ChatPage(),
+                ChatPage(),
+                ChatPage(),
               ],
             ),
           ),
-          CustomNavigationBar(pageController: _pageController),
         ],
       ),
     );
   }
 
-
-
-  Widget _buildDrawerItem(BuildContext context, {required String asset, required String text, required VoidCallback onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Row(
-        children: [
-          SvgPicture.asset(asset),
-          const SizedBox(width: 10),
-          Text(
-            text,
-            style: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
-          ),
-        ],
-      ),
-    );
-  }
+//
+//
+//   Widget _buildDrawerItem(BuildContext context, {required String asset, required String text, required VoidCallback onTap}) {
+//     return GestureDetector(
+//       onTap: onTap,
+//       child: Row(
+//         children: [
+//           SvgPicture.asset(asset),
+//           const SizedBox(width: 10),
+//           Text(
+//             text,
+//             style: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
 }

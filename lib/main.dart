@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:test/presentation/manager/injects.dart';
 import 'package:test/presentation/manager/profile_cubit/profile_cubit.dart';
+import 'package:test/presentation/pages/main/manager/main/main_cubit.dart';
 import 'package:test/presentation/routes/go_router.dart';
 import 'package:test/themes/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'presentation/pages/main/manager/cart/cart_cubit.dart';
 
 Future<void> main() async{
   await initMain();
@@ -24,9 +27,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MultiBlocProvider(
-
         providers: [
+          BlocProvider(create: (context)=> Get.find<MainCubit>()),
           BlocProvider(create: (context)=> Get.find<ProfileCubit>()),
+          BlocProvider(create: (context)=>Get.find<CartCubit>()),
         ],
         child: MaterialApp.router(
           localizationsDelegates:  [

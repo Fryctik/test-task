@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 
 class CommonWidgetButton extends StatelessWidget {

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/generated/assets.dart';
+import 'package:test/presentation/pages/main/manager/main/main_cubit.dart';
 import 'package:test/themes/themes.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class CustomNavigationBar extends StatefulWidget {
-  const CustomNavigationBar({super.key, required this.pageController});
-
-  final PageController pageController;
+  const CustomNavigationBar({super.key});
 
   @override
   State<CustomNavigationBar> createState() => _CustomNavigationBarState();
@@ -45,7 +45,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                 setState(() {
                   selectedIndex = 0;
                   animationController.reset();
-                  widget.pageController.jumpToPage(0);
+                  context.read<MainCubit>().pageController.jumpToPage(0);
                 });
               }),
           _buildBottomNavItem(1 == selectedIndex? Assets.iconsActiveHistory: Assets.tabBarDefaultHistory, 'История', 1,
@@ -53,7 +53,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                 setState(() {
                   selectedIndex = 1;
                   animationController.reset();
-                  widget.pageController.jumpToPage(7);
+                  context.read<MainCubit>().pageController.jumpToPage(1);
                 });
               }),
           _buildBottomNavItem(2 == selectedIndex ? Assets.tabBarPlusBottom: Assets.tabBarPlusBottom, 'Заказать', 2,
@@ -62,7 +62,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                   selectedIndex = 2;
                   animationController.forward().whenComplete(() {
                     animationController.reset();
-
+                    context.read<MainCubit>().pageController.jumpToPage(2);
                   });
                 });
 
@@ -72,6 +72,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                 setState(() {
                   selectedIndex = 3;
                   animationController.reset();
+                  context.read<MainCubit>().pageController.jumpToPage(3);
                 });
               }, badge: 1),
           _buildBottomNavItem(4 == selectedIndex ? Assets.tabBarActiveRewards: Assets.tabBarDefaultReward, 'Достижения', 4,
@@ -79,6 +80,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
                 setState(() {
                   selectedIndex = 4;
                   animationController.reset();
+                  context.read<MainCubit>().pageController.jumpToPage(4);
                 });
               }),
         ],
