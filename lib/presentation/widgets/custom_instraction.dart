@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../config/contstants/app_colors.dart';
 import '../../config/contstants/app_text_styles.dart';
@@ -30,7 +31,7 @@ class _CustomInstractionState extends State<CustomInstraction> {
             crossAxisAlignment:
             CrossAxisAlignment.center,
             children: [
-              Image.asset(
+              SvgPicture.asset(
                 widget.img,
                 height: 43,
                 width: 43,

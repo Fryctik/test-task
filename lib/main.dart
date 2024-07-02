@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:test/presentation/manager/injects.dart';
 import 'package:test/presentation/manager/profile_cubit/profile_cubit.dart';
+import 'package:test/presentation/pages/main/manager/delivery_address/delivery_address_cubit.dart';
 import 'package:test/presentation/pages/main/manager/main/main_cubit.dart';
+import 'package:test/presentation/pages/only_nav_bar/manager/only_nav_bar_cubit.dart';
 import 'package:test/presentation/routes/go_router.dart';
 import 'package:test/themes/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -28,9 +30,11 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MultiBlocProvider(
         providers: [
+          BlocProvider(create: (context)=> Get.find<OnlyNavBarCubit>()),
           BlocProvider(create: (context)=> Get.find<MainCubit>()),
           BlocProvider(create: (context)=> Get.find<ProfileCubit>()),
           BlocProvider(create: (context)=>Get.find<CartCubit>()),
+          BlocProvider(create: (context)=>Get.find<DeliveryAddressCubit>()),
         ],
         child: MaterialApp.router(
           localizationsDelegates:  [

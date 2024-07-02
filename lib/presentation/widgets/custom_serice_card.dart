@@ -87,9 +87,6 @@ class _ServiceCardState extends State<ServiceCard> {
                   )
 ,
                   SizedBox(
-                    height: 12,
-                  ),
-                  SizedBox(
                     height: 25,
                     width: 202.w,
                     child: Row(

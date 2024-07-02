@@ -58,7 +58,7 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
         ),
         TextFormField(
           controller: _birthdayController,
-          keyboardType: TextInputType.datetime,
+          keyboardType: TextInputType.number,
           textCapitalization: TextCapitalization.sentences,
           cursorColor: AppColors.main,
           style: widget.theme.textTheme.bodyMedium

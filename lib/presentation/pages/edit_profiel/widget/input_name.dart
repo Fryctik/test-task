@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:test/config/contstants/app_text_styles.dart';
 
 import '../../../../../config/contstants/app_colors.dart';
 
@@ -7,10 +8,9 @@ import '../../../../../config/contstants/app_colors.dart';
 class InputNameWidget extends StatelessWidget {
   const InputNameWidget({
     super.key,
-    required this.theme,
   });
 
-  final ThemeData theme;
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,13 @@ class InputNameWidget extends StatelessWidget {
             children: [
               Text(
                 'ВАШЕ ИМЯ ',
-                style: theme.textTheme.headlineMedium?.copyWith(
+                style: AppTextStyles.body16UnboundedMedium.copyWith(
                   color: AppColors.black,
                 ),
               ),
               Text(
                 '*',
-                style: theme.textTheme.headlineMedium?.copyWith(
+                style: AppTextStyles.body16UnboundedMedium.copyWith(
                   color: AppColors.red,
                 ),
               )
@@ -43,7 +43,7 @@ class InputNameWidget extends StatelessWidget {
           ],
           cursorColor: AppColors.main,
           textCapitalization: TextCapitalization.sentences,
-          style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.black),
+          style: AppTextStyles.body16GeologicaLight,
           onChanged: (value) {},
           decoration: const InputDecoration(
             enabledBorder: OutlineInputBorder(

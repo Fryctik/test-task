@@ -47,11 +47,10 @@ class _InputEmailWidgetState extends State<InputEmailWidget> {
             ],
           ),
         ),
-
         TextField(
           focusNode: widget.focusNode,
           textInputAction: TextInputAction.next,
-          keyboardType: TextInputType.name,
+          keyboardType: TextInputType.emailAddress,
           controller: widget.emailController,
           cursorColor: AppColors.main,
           textCapitalization: TextCapitalization.sentences,

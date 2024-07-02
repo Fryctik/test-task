@@ -13,7 +13,6 @@ class Assets {
   static const String assetsImageOnboardImage = 'assets/image/onboard-image.png';
   static const String contstantsAppColors = 'lib/config/contstants/app_colors.dart';
   static const String fontsGeologicaGeologicaBold = 'assets/fonts/Geologica/Geologica-Bold.ttf';
-  static const String generatedAssets = 'lib/generated/assets.dart';
   static const String geologicaGeologicaBlack = 'assets/fonts/Geologica/Geologica-Black.ttf';
   static const String geologicaGeologicaBold = 'assets/fonts/Geologica/Geologica-Bold.ttf';
   static const String geologicaGeologicaExtraBold = 'assets/fonts/Geologica/Geologica-ExtraBold.ttf';
@@ -101,9 +100,12 @@ class Assets {
   static const String imageImgBackpack1 = 'assets/image/img_backpack1.png';
   static const String imageImgBackpack2 = 'assets/image/img_backpack2.png';
   static const String imageImgBackpack3 = 'assets/image/img_backpack3.png';
+  static const String imageImgMap = 'assets/image/img_map.png';
   static const String imageImgPack1 = 'assets/image/img_pack1.png';
   static const String imageImgPack2 = 'assets/image/img_pack2.png';
   static const String imageImgShirt = 'assets/image/img_shirt.png';
+  static const String imageImgSmile = 'assets/image/img_smile.png';
+  static const String imageImgSuccess = 'assets/image/img_success.png';
   static const String imageLadaLargus = 'assets/image/lada_largus.svg';
   static const String imageMessages = 'assets/image/messages.png';
   static const String imageNormalTruck = 'assets/image/normal_truck.png';

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/generated/assets.dart';
+import 'package:test/presentation/pages/only_nav_bar/manager/only_nav_bar_cubit.dart';
 import '../../../../config/contstants/app_colors.dart';
 import '../../../widgets/custom_bottom_navigation.dart';
-
-final GlobalKey<ScaffoldState> scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
 class ScaffoldWithNavBar extends StatefulWidget {
   const ScaffoldWithNavBar({super.key, required this.child});
@@ -48,11 +48,11 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
     ));
     return PopScope(
       canPop: false,
-
       child: Scaffold(
-        key: scaffoldGlobalKey,
+        resizeToAvoidBottomInset: false,
+        key: context.read<OnlyNavBarCubit>().scaffoldGlobalKey,
         backgroundColor: AppColors.white,
-        drawer:  Drawer(
+        drawer: Drawer(
           backgroundColor: AppColors.white,
           child: Column(
             children: [

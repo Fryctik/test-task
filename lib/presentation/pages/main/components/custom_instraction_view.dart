@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
@@ -23,7 +24,7 @@ class _CustomTabBarInstractionViewState
     'ПЛАСТИК',
     'СТЕКЛО',
     'МЕТАЛЛ',
-    "МАКАЛАТУРА",
+    "МАКУЛАТУРА",
     "ОДЕЖДА",
     "ДОПОЛНИТЕЛЬНО"
   ];
@@ -100,13 +101,13 @@ class _CustomTabBarInstractionViewState
                     stretch: isStretched,
                     backgroundColor: Colors.transparent,
                     automaticallyImplyLeading: false,
-                    toolbarHeight: 0.h,
+                    toolbarHeight: 0,
                     // pinned: true,
                     elevation: 0,
                     scrolledUnderElevation: 0,
                     titleSpacing: 0,
-                    collapsedHeight: 0.h,
-                    expandedHeight: 330.h,
+                    collapsedHeight: 0,
+                    expandedHeight: 380.w,
                     stretchTriggerOffset: 1,
                     flexibleSpace: FlexibleSpaceBar(
                       titlePadding: EdgeInsets.zero,
@@ -119,7 +120,7 @@ class _CustomTabBarInstractionViewState
                               height: 20,
                             ),
                             Text(
-                              "ЧТО МЫ ПРИНИМАЕМ И КАК ПОДГОТОВИТЬ ВТОРСЫЬЯ\nК СДАЧЕ?",
+                              "ЧТО МЫ ПРИНИМАЕМ И КАК ПОДГОТОВИТЬ ВТОРСЫРЬЕ\nК СДАЧЕ?",
                               style: AppTextStyles.body16UnboundedMedium,
                             ),
                             const SizedBox(
@@ -217,11 +218,16 @@ class _CustomTabBarInstractionViewState
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
+                                      Text(
+                                        "ПЛАСТИК, КОТОРЫЙ МЫ ПРИНИМАЕМ:",
+                                        style: AppTextStyles.body16UnboundedMedium,
+                                      ),
+                                      SizedBox(height: 10,),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Image.asset(
+                                          SvgPicture.asset(
                                             Assets.instructionCaution1,
                                             height: 43,
                                             width: 43,
@@ -306,7 +312,7 @@ class _CustomTabBarInstractionViewState
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 20),
                                   child: Text(
-                                    "ПЛАСТИК,КОТОРЫЙ МЫ НЕ ПРИНЕМАЕМ",
+                                    "ПЛАСТИК, КОТОРЫЙ МЫ НЕ ПРИНИМАЕМ:",
                                     style: AppTextStyles.body16UnboundedMedium,
                                   ),
                                 ),
@@ -330,7 +336,7 @@ class _CustomTabBarInstractionViewState
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Image.asset(
+                                          SvgPicture.asset(
                                             Assets.instructionCaution9,
                                             height: 43,
                                             width: 43,
@@ -492,9 +498,9 @@ class _CustomTabBarInstractionViewState
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                                    child: Text(
-                                      "Принимаем:",
-                                      style: AppTextStyles.body16GeologicaLight,
+                                    child:  Text(
+                                      "СТЕКЛО, КОТОРЫЙ МЫ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(
@@ -528,8 +534,8 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "Не принимаем:",
-                                      style: AppTextStyles.body16GeologicaLight,
+                                      "СТЕКЛО, КОТОРЫЙ МЫ НЕ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(
@@ -557,7 +563,7 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "КАК ПОДГОТОВИТЬ ПЛАСТИК К СДАЧЕ?",
+                                      "КАК ПОДГОТОВИТЬ СТЕКЛО К СДАЧЕ?",
                                       style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
@@ -605,8 +611,8 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "Принимаем:",
-                                      style: AppTextStyles.body16GeologicaLight,
+                                      "МЕТАЛЛ, КОТОРЫЙ МЫ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(
@@ -625,8 +631,8 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "Не принимаем:",
-                                      style: AppTextStyles.body16GeologicaLight,
+                                      "МЕТАЛ, КОТОРЫЙ МЫ НЕ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(
@@ -649,7 +655,7 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "КАК ПОДГОТОВИТЬ ПЛАСТИК К СДАЧЕ??",
+                                      "КАК ПОДГОТОВИТЬ МЕТАЛ К СДАЧЕ?",
                                       style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
@@ -696,8 +702,8 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "Принимаем:",
-                                      style: AppTextStyles.body16GeologicaLight,
+                                      "МАКУЛАТУРА, КОТОРЫЙ МЫ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(height: 20),
@@ -722,8 +728,8 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "Не принимаем:",
-                                      style: AppTextStyles.body16GeologicaLight,
+                                      "МАКУЛАТУРА, КОТОРЫЙ МЫ НЕ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(
@@ -738,7 +744,7 @@ class _CustomTabBarInstractionViewState
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
-                                            Image.asset(
+                                            SvgPicture.asset(
                                               AppStrings.makalatura23,
                                               height: 43,
                                               width: 43,
@@ -793,7 +799,7 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "КАК ПОДГОТОВИТЬ МАКУЛАТУРУ К СДАЧЕ??",
+                                      "КАК ПОДГОТОВИТЬ МАКУЛАТУРУ К СДАЧЕ?",
                                       style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
@@ -836,8 +842,8 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "Принимаем:",
-                                      style: AppTextStyles.body16GeologicaLight,
+                                      "ОДЕЖДА, КОТОРЫЙ МЫ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(
@@ -846,12 +852,7 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      """ТОЛЬКО ту одежду, которую можно передать в благотворительный фонд для нуждающихся, с возможностью дальнейшей носки (новую или в хорошем состоянии).
-                А именно, чистую, постиранную и глаженную одежду, без запахов и дефектов (катышек, дырок, пятен).
-                Головные уборы зимние и летние (чистые, без заломов и следов носки).
-                Новое и обязательно с бирками нижнее белье, колготки, купальники, носки.
-                Сумки (с рабочей молнией, фурнитурой, не потертыми ручками и с чистой подкладкой).
-                Обувь (без потертостей, заломов, с рабочей молнией и фурнитурой).
+                                      """ТОЛЬКО ту одежду, которую можно передать в благотворительный фонд для нуждающихся, с возможностью дальнейшей носки (новую или в хорошем состоянии).А именно, чистую, постиранную и глаженную одежду, без запахов и дефектов (катышек, дырок, пятен).Головные уборы зимние и летние (чистые, без заломов и следов носки).Новое и обязательно с бирками нижнее белье, колготки, купальники, носки.Сумки (с рабочей молнией, фурнитурой, не потертыми ручками и с чистой подкладкой). Обувь (без потертостей, заломов, с рабочей молнией и фурнитурой).
                 """,
                                       style: AppTextStyles.body16GeologicaLight,
                                     ),
@@ -859,8 +860,8 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "Не принимаем:",
-                                      style: AppTextStyles.body16GeologicaLight,
+                                      "ОДЕЖДА, КОТОРЫЙ МЫ НЕ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(
@@ -887,7 +888,7 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "КАК ПОДГОТОВИТЬ ОДЕЖДУ К СДАЧЕ??",
+                                      "КАК ПОДГОТОВИТЬ ОДЕЖДУ К СДАЧЕ?",
                                       style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
@@ -929,8 +930,8 @@ class _CustomTabBarInstractionViewState
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
-                                      "Дополнительно мы принимаем:",
-                                      style: AppTextStyles.body16GeologicaSemiBold,
+                                      "ДОПОЛНИТЕЛЬНО МЫ ПРИНИМАЕМ:",
+                                      style: AppTextStyles.body16UnboundedMedium,
                                     ),
                                   ),
                                   SizedBox(

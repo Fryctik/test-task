@@ -22,7 +22,7 @@ class _CustomPriceTariffState extends State<CustomPriceTariff> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70.h,
+      height: 80.h,
       width:  272,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

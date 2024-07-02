@@ -4,7 +4,6 @@ import 'package:test/config/contstants/app_text_styles.dart';
 
 import '../../../config/contstants/app_colors.dart';
 
-//TODO
 class InputNameWidget extends StatefulWidget {
   const InputNameWidget({
     super.key,

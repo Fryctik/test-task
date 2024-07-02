@@ -96,7 +96,7 @@ class _CustomDropdownState extends State<CustomDropdown>
                   Text(
                     widget.selectedItem,
                     style: AppTextStyles.body16GeologicaLight.copyWith(
-                        color: widget.isError? AppColors.red: widget.selectedItem == 'Выбрать'
+                        color: widget.isError? AppColors.red: widget.selectedItem == 'Выбрать' || widget.selectedItem == "Выберите пункт получения"
                             ? AppColors.shade3
                             : AppColors.black),
                   ),

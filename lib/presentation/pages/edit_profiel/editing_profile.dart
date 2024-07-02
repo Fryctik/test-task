@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +16,7 @@ import 'package:test/presentation/pages/edit_profiel/widget/selection_city.dart'
 import 'package:test/presentation/pages/edit_profiel/widget/selection_gender.dart';
 import 'package:test/presentation/widgets/custom_back_button.dart';
 import 'package:test/presentation/widgets/custom_common_button.dart';
+
 import '../../../../config/contstants/app_colors.dart';
 import '../../widgets/input_name.dart';
 
@@ -107,6 +109,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       _validateName = true;
     }
   }
+
   final TextEditingController birthdayController = TextEditingController();
 
   final TextEditingController emailController = TextEditingController();
@@ -117,7 +120,6 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
   String removeTrailingSpaces(String input) {
     return input.replaceAll(RegExp(r'\s+$'), '');
   }
-
 
   bool validateEmail(String email) {
     email = removeTrailingSpaces(email);
@@ -140,16 +142,13 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
     ));
-    return
-      PopScope(
+    return PopScope(
       canPop: false,
       child: GestureDetector(
         onTap: () {
@@ -168,25 +167,18 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                   child: Column(
                     children: [
                       Stack(
-                         alignment: Alignment.topLeft,
+                        alignment: Alignment.topLeft,
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-
-
                                 CustomBackButton(
                                   onBack: () {
                                     context.pop();
                                   },
                                 ),
-
-
-
-
-
                               ],
                             ),
                           ),
@@ -196,7 +188,6 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                               style: AppTextStyles.body16UnboundedMedium,
                             ),
                           ),
-
                         ],
                       ),
                       const SizedBox(
@@ -300,24 +291,35 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                           textColor: AppColors.white,
                           openPath: () {
                             errorCheckerG();
-                            context.read<ProfileCubit>().changeGender(selectedItemG);
+                            context
+                                .read<ProfileCubit>()
+                                .changeGender(selectedItemG);
                             print("1");
                             errorChecker();
-                            context.read<ProfileCubit>().changeCity(selectedItem);
+                            context
+                                .read<ProfileCubit>()
+                                .changeCity(selectedItem);
 
                             print("2");
                             validateName(nameController.text);
-                            context.read<ProfileCubit>().changeName(nameController.text);
+                            context
+                                .read<ProfileCubit>()
+                                .changeName(nameController.text);
                             print("3");
                             validateEmail(emailController.text);
-                            context.read<ProfileCubit>().changeEmail(emailController.text);
+                            context
+                                .read<ProfileCubit>()
+                                .changeEmail(emailController.text);
                             print("4");
 
                             isDateErrorText =
                                 validateDateOfBirth(birthdayController.text) ??
                                     '';
-                            context.read<ProfileCubit>().changeBirthday(birthdayController.text);
-                            print( context.read<ProfileCubit>().state.dateOfBirth);
+                            context
+                                .read<ProfileCubit>()
+                                .changeBirthday(birthdayController.text);
+                            print(
+                                context.read<ProfileCubit>().state.dateOfBirth);
 
                             focusNode.unfocus();
                             focusNode1.unfocus();
@@ -332,9 +334,8 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                             } else {
                               print("else");
                               Future.delayed(Duration(milliseconds: 350), () {
-                                context.pushNamed("/main");
+                                context.goNamed("/main");
                               });
-
                             }
                           },
                         ),
@@ -343,7 +344,6 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
                         SizedBox(
                           height: 35.h,
                         ),
-
                       ]
                     ],
                   ),
@@ -354,6 +354,3 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
     );
   }
 }
-
-
-

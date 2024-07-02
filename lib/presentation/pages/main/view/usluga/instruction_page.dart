@@ -14,7 +14,9 @@ class InstructionPage extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: Column(
         children: [
-          SizedBox(height: 60,),
+          SizedBox(
+            height: 60,
+          ),
           Row(
             children: [
               Padding(
@@ -23,20 +25,18 @@ class InstructionPage extends StatelessWidget {
                   context.pop();
                 }),
               ),
-              SizedBox(width: 32,),
+              SizedBox(
+                width: 20,
+              ),
               Text(
-                "ИНСТРУКТИЦИИ",
+                "ИНСТРУКТИЦИЯ",
                 style: AppTextStyles.body16UnboundedMedium,
               ),
             ],
           ),
           Expanded(child: CustomTabBarInstractionView()),
-
-
-
         ],
       ),
-
     );
   }
 }

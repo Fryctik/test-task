@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
@@ -30,8 +31,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> with SingleTi
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).viewPadding.bottom);
     return Container(
-      margin: EdgeInsets.only(bottom: 10,right: 10),
+      margin: EdgeInsets.only(bottom: MediaQuery.of(context).viewPadding.bottom > 30 ? 20.h : 10,right: 10),
       height: 57,
       color: AppColors.white,
       width: double.infinity,

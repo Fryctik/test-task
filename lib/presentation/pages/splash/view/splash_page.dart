@@ -13,7 +13,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Future.delayed(Duration(milliseconds: 2000), () {
-      context.pushNamed('/onboarding');
+      context.pushReplacementNamed('onboarding');
     });
     super.initState();
   }

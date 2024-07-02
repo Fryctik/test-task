@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
 import 'package:test/presentation/manager/profile_cubit/profile_cubit.dart';
-import 'package:test/presentation/pages/auth/otp/view/otp_veregication.dart';
 import '../../../../../config/contstants/app_colors.dart';
 
 

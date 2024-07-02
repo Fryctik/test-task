@@ -1,12 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:test/config/contstants/app_colors.dart';
-import 'package:test/data/local/models/profile_model.dart';
 import 'package:test/presentation/pages/auth/identification/components/agreement_widget.dart';
 import 'package:test/presentation/pages/auth/identification/components/title_identification_widget.dart';
 import 'package:test/presentation/widgets/custom_common_button.dart';
@@ -138,7 +135,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                                 });
                                 if(_isValidPhoneNumber) {
                                   context.read<ProfileCubit>().updatePhoneNumber('+7${_phoneNumberController.text}');
-                                  context.pushNamed('/otp_verefication');
+                                  context.pushNamed('otp_verefication');
                                 } else {
                                   setState(() {
                                     _isValidPhoneNumber = isValidPhoneNumber(_phoneNumberController.text);

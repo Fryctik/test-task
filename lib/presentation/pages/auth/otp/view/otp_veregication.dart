@@ -203,7 +203,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       // _timer!.cancel();
                           if( isValid == true){
                             Future.delayed(Duration(milliseconds: 300), () {
-                              context.pushNamed('/editing_profile');
+                              context.pushNamed('editing_profile');
                             });
                             print("if");
                           }else{

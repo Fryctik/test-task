@@ -53,7 +53,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   colorButton: AppColors.white,
                   textColor: AppColors.main,
                   openPath: () {
-                      context.pushNamed('/identification');
+                      context.pushNamed('identification');
                   }
                 ),
                 SizedBox(

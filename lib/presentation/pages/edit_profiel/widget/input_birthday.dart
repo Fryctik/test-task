@@ -67,7 +67,7 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
           focusNode: widget.focusNode,
           textInputAction: TextInputAction.next,
           controller: widget.birthdayController,
-          keyboardType: TextInputType.datetime,
+          keyboardType: TextInputType.number,
           textCapitalization: TextCapitalization.sentences,
           cursorColor: AppColors.main,
           style:AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.black),
