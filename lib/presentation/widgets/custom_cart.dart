@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
@@ -21,7 +22,7 @@ class _CustomCartState extends State<CustomCart> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 350,
+      width: 350.w,
       height: 89,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

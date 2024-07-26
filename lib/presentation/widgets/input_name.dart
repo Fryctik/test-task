@@ -24,24 +24,15 @@ class _InputNameWidgetState extends State<InputNameWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 15, 0, 16),
-          child: Row(
-            children: [
-              Text(
-                'ВАШЕ ИМЯ ',
-                style: AppTextStyles.body16UnboundedMedium.copyWith(
-                  color: AppColors.black,
-                ),
-              ),
-              Text(
-                '*',
-                style: AppTextStyles.body16UnboundedMedium.copyWith(
-                  color: AppColors.red,
-                ),
-              )
-            ],
+          child: Text(
+            'ВАШЕ ИМЯ ',
+            style: AppTextStyles.body16UnboundedMedium.copyWith(
+              color: AppColors.black,
+            ),
           ),
         ),
         TextField(

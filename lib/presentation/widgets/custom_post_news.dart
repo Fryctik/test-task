@@ -20,20 +20,36 @@ class CustomPostNews extends StatefulWidget {
 
 class _CustomPostNewsState extends State<CustomPostNews> {
   bool expanded = false;
+  bool expandedText = false;
+
+
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-
-      width: 350,
+      width: 350.w,
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(Assets.imageDeliveryman),
+           Container(
+               height: 253,
+               width: 350.w,
+               // decoration: const BoxDecoration(
+               //   borderRadius: BorderRadius.all(Radius.circular(16)),
+               // ),
+               // clipBehavior: Clip.hardEdge,
+               child: Image.asset(Assets.imageDeliveryman,
+                 height: 253,
+                 width: 350.w,
+                 fit: BoxFit.cover,
+               )) ,
           SizedBox(height: 15),
-          Text("Запустили доставку в Химках!",style: AppTextStyles.body16GeologicaSemiBold,),
+          Align(
+              alignment: Alignment.topLeft,
+              child: Text("Запустили доставку в Химках!",style: AppTextStyles.body16GeologicaSemiBold,)),
           AnimatedContainer(
-            duration: Duration(milliseconds: 900),
-            curve: Curves.easeInOut,
+            duration: Duration(milliseconds: 200),
+            curve: Curves.linear,
             constraints: BoxConstraints(
               maxHeight: expanded ? MediaQuery.of(context).size.height : 3 * 23.h, // 3 lines with 24.0 font height
             ),
@@ -52,8 +68,22 @@ class _CustomPostNewsState extends State<CustomPostNews> {
                   setState(() {
                     expanded = !expanded;
                   });
+                  if(expandedText) {
+                    Future.delayed(Duration(milliseconds: 200), () {
+                      setState(() {
+                        expandedText = !expandedText;
+                      });
+                    });
+                  } else {
+                    Future.delayed(Duration(milliseconds: 100), () {
+                      setState(() {
+                        expandedText = !expandedText;
+                      });
+                    });
+                  }
+
                 },
-                child: expanded ?  Row(
+                child: expandedText ?  Row(
                   children: [
                     Text('Скрыть' , style: AppTextStyles.body14GeologicaLight.copyWith(color: AppColors.shade3),),
                     SvgPicture.asset(Assets.iconsArrowUp ,colorFilter: ColorFilter.mode(AppColors.shade3, BlendMode.srcIn),)
@@ -61,7 +91,7 @@ class _CustomPostNewsState extends State<CustomPostNews> {
                 ) :   Row(
                   children: [
                     Text('Подробнее' , style: AppTextStyles.body14GeologicaLight.copyWith(color: AppColors.shade3,),),
-                    SvgPicture.asset(Assets.assetsIconsArrowDown,colorFilter: ColorFilter.mode(AppColors.shade3, BlendMode.srcIn),)
+                    SvgPicture.asset(Assets.iconsArrowDown,colorFilter: ColorFilter.mode(AppColors.shade3, BlendMode.srcIn),)
                   ],
                 ) ,
               ),

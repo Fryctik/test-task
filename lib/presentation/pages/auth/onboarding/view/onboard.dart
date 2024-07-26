@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:test/config/contstants/app_colors.dart';
+import 'package:test/generated/assets.dart';
 import 'package:test/presentation/pages/auth/onboarding/components/text_widget.dart';
 import 'package:test/presentation/widgets/custom_common_button.dart';
 
@@ -40,7 +41,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     const LogoWidget(),
                     Padding(
                       padding: EdgeInsets.only(top: 12.h),
-                      child: Image.asset('assets/image/onboard-image.png', width: 390.w, height: 396.h, fit: BoxFit.fitHeight,),
+                      child: Image.asset(Assets.imageOnboardImage1, width: 390.w, height: 396.h, fit: BoxFit.fitHeight,),
                     ),
                     const TextWidget(),
                   ],

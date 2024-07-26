@@ -26,25 +26,15 @@ class _InputEmailWidgetState extends State<InputEmailWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
-          child: Row(
-            children: [
-              Text(
-                'E-MAIL',
-                style: AppTextStyles.body16UnboundedMedium.copyWith(
-                  color: AppColors.black,
-                ),
-              ),
-              Text(
-                '*',
-                style: AppTextStyles.body16UnboundedMedium.copyWith(
-                  color: AppColors.red,
-                ),
-                ),
-
-            ],
+          child: Text(
+            'E-MAIL',
+            style: AppTextStyles.body16UnboundedMedium.copyWith(
+              color: AppColors.black,
+            ),
           ),
         ),
         TextField(
@@ -56,7 +46,7 @@ class _InputEmailWidgetState extends State<InputEmailWidget> {
           textCapitalization: TextCapitalization.sentences,
           style: AppTextStyles.body16GeologicaLight.copyWith(color: widget.isEmailValid? AppColors.black : AppColors.red ),
           decoration:  InputDecoration(
-            hintText: "example@mail.ru",
+            hintText: "Введите email",
             hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),

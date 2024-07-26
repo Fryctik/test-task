@@ -65,7 +65,7 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
         ),
         TextFormField(
           focusNode: widget.focusNode,
-          textInputAction: TextInputAction.next,
+          textInputAction: TextInputAction.done,
           controller: widget.birthdayController,
           keyboardType: TextInputType.number,
           textCapitalization: TextCapitalization.sentences,
@@ -73,12 +73,12 @@ class _InputBirthdayWidgetState extends State<InputBirthdayWidget> {
           style:AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.black),
           inputFormatters: [
             maskFormatter,
-
           ],
-
-
+          onFieldSubmitted: (text) {
+            FocusManager.instance.primaryFocus!.unfocus();
+          },
           decoration:  InputDecoration(
-            hintText: "20.04.2004",
+            hintText: "Введите дату рождения",
             hintStyle: AppTextStyles.body16GeologicaLight.copyWith(color: AppColors.shade3),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),

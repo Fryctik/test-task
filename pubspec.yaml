@@ -46,7 +46,7 @@ dependencies:
   logger: ^2.3.0
   intl: ^0.19.0
   date_format: ^2.0.7
-  easy_date_timeline: ^1.1.3
+#  easy_date_timeline: ^1.1.3
   flutter_otp_text_field: ^1.1.3+2
   pinput: ^5.0.0
   dob_input_field: ^2.0.0
@@ -55,6 +55,16 @@ dependencies:
   flutter_localization: ^0.2.0
   gradient_borders: ^1.0.1
   file_picker: ^8.0.5
+#  top_snackbar_flutter: ^3.1.0
+  timeline_tile: ^2.0.0
+  dotted_border: ^2.0.0
+  flutter_native_splash: ^2.4.1
+  flutter_cached_pdfview: ^0.4.2
+  dio: ^5.5.0+1
+  path_provider: ^2.1.3
+  permission_handler: ^11.3.1
+  glowy_borders: ^1.0.2
+  adaptive_scrollbar: ^2.1.2
 
 dev_dependencies:
   auto_route_generator: 8.0.0
@@ -96,11 +106,11 @@ flutter:
     - assets/image/big_truck.svg
     - lib/config/contstants/app_colors.dart
     - assets/image/onboard-image.png
-    - assets/image/deliveryman.svg
     - lib/presentation/widgets/custom_cart.dart
     - assets/icons/active_home.svg
     - assets/fonts/Geologica/Geologica-Bold.ttf
     - assets/icons/instruction/
+    - assets/pdf/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

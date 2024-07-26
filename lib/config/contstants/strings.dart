@@ -18,7 +18,16 @@ abstract class AppStrings {
   static const String imageBigTruck = 'assets/image/big_truck.png';
   static const String imageNormalTruck = 'assets/image/normal_truck.png';
   static const String  imageEditProfile = 'assets/icons/edit.png';
+  static const String addressImage = "assets/image/address_map.png";
 }
 
 final List<String> citiesList = ['Мытищи', 'Москва', 'Королев'];
+final List<String> typePackages = [
+  'Пластик',
+  'Стекло',
+  'Металл',
+  "Макулатура",
+  "Одежда",
+];
 final List<String> gendersList = ['Мужской', 'Женский'];
+final List<String> amountOfPackage = ['1 пакет', '2 пакета', "3 пакета", "4 пакета"];

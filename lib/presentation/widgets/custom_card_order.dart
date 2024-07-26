@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test/config/contstants/app_colors.dart';
 import 'package:test/config/contstants/app_text_styles.dart';
@@ -29,7 +30,7 @@ class _CustomCardOrderState extends State<CustomCardOrder> {
   Widget build(BuildContext context) {
     return  Container(
     height: widget.address == null ?100 : 122,
-    width: 350,
+    width: 350.w,
     padding: EdgeInsets.only(top: 10,bottom: 10,left: 20,right: 30),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(24), color: AppColors.white),
       child: Column(

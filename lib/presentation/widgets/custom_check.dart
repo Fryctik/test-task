@@ -52,19 +52,19 @@ class _CustomDropdownState extends State<CustomDropdown>
       isOpen = !isOpen;
       if (isOpen) {
           isShowError = false;
-          print("done1");
+
         _controller.forward();
-          print("done2");
+
       } else {
         _controller.reverse();
-        print("done3");
+
         Future.delayed(Duration(milliseconds: 400), () {
           isShowError = true;
-          print("done4");
-          print(isShowError);
+
+
         });
-        print("done5");
-        print(isShowError);
+
+
       }
       setState(() {
 

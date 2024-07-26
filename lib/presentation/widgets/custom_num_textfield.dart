@@ -36,9 +36,15 @@ class _CustomNumTextfieldState extends State<CustomNumTextfield> {
         Stack(
           children: [
             TextField(
+              autocorrect: false,
+              enableSuggestions: false,
+              contextMenuBuilder: (context, state) {
+                return SizedBox();
+              },
               controller: widget.phoneNumberController,
               focusNode: widget.focusNode,
               keyboardType: TextInputType.phone,
+              textInputAction: TextInputAction.done,
               inputFormatters: [maskFormatter],
               cursorColor: AppColors.main,
               style: AppTextStyles.body16GeologicaLight.copyWith(

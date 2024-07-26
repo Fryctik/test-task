@@ -48,7 +48,7 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
       birthDate = dateFormat.parseStrict(value);
     } catch (e) {
       isDateBirthError = true;
-      return 'Неверный формат даты.';
+      return 'Неверный формат даты';
     }
 
     final now = DateTime.now();
@@ -155,199 +155,206 @@ class _EditingProfileScreenState extends State<EditingProfileScreen> {
           FocusManager.instance.primaryFocus!.unfocus();
         },
         child: Scaffold(
+            resizeToAvoidBottomInset: true,
             backgroundColor: AppColors.white,
             body: SafeArea(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top:
-                        MediaQuery.of(context).viewPadding.top <= 52 ? 27.h : 0,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).viewPadding.top <= 52
+                          ? 27.h
+                          : 0,
+                    ),
+                    child: Stack(
+                      alignment: Alignment.topLeft,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              CustomBackButton(
+                                onBack: () {
+                                  context.pop();
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            "ПРОФИЛЬ",
+                            style: AppTextStyles.body16UnboundedMedium,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  child: Column(
-                    children: [
-                      Stack(
-                        alignment: Alignment.topLeft,
+                  const SizedBox(
+                    height: 35,
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
                         children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                CustomBackButton(
-                                  onBack: () {
-                                    context.pop();
-                                  },
+                          Stack(
+                            children: [
+                              Center(
+                                child: Container(
+                                  width: 158,
+                                  height: 158,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: _image != null
+                                      ? Image.file(
+                                          _image!,
+                                          fit: BoxFit.cover,
+                                        )
+                                      : Center(
+                                          child: Image.asset(
+                                          Assets.imageHuman,
+                                          height: 158,
+                                          width: 158,
+                                            gaplessPlayback:true,
+                                          fit: BoxFit.cover,
+                                        )),
                                 ),
-                              ],
-                            ),
-                          ),
-                          Center(
-                            child: Text(
-                              "ПРОФИЛЬ",
-                              style: AppTextStyles.body16UnboundedMedium,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 35,
-                      ),
-                      Stack(
-                        children: [
-                          Center(
-                            child: Container(
-                              width: 158,
-                              height: 158,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
                               ),
-                              child: _image != null
-                                  ? Image.file(
-                                      _image!,
-                                      fit: BoxFit.cover,
-                                    )
-                                  : Center(
-                                      child: Image.asset(
-                                      Assets.imageHuman,
-                                      height: 158,
-                                      width: 158,
-                                      fit: BoxFit.cover,
-                                    )),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 120.h, left: 240.w),
-                            child: GestureDetector(
-                              onTap: () {
-                                _pickImage();
-                              },
-                              child: Image.asset(
-                                'assets/icons/camera.png',
-                                width: 36,
-                                height: 36,
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(top: 120.h, left: 240.w),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    _pickImage();
+                                  },
+                                  child: Image.asset(
+                                    'assets/icons/camera.png',
+                                    width: 36,
+                                    height: 36,
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: InputNameWidget(
-                                nameController: nameController,
-                                onSubmitted: (value) {},
-                                isValidateName: _validateName,
-                                focusNode: focusNode,
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 25),
-                            child: InputEmailWidget(
-                              emailController: emailController,
-                              isEmailValid: _isEmailValid,
-                              onSubmitted: (value) {},
-                              focusNode: focusNode1,
-                            ),
+                          Column(
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: InputNameWidget(
+                                    nameController: nameController,
+                                    onSubmitted: (value) {},
+                                    isValidateName: _validateName,
+                                    focusNode: focusNode,
+                                  )),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20, right: 20, top: 25),
+                                child: InputEmailWidget(
+                                  emailController: emailController,
+                                  isEmailValid: _isEmailValid,
+                                  onSubmitted: (value) {},
+                                  focusNode: focusNode1,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20, right: 20, top: 25),
+                                child: InputBirthdayWidget(
+                                  isValidBirthday: isDateBirthError,
+                                  birthdayController: birthdayController,
+                                  isValidBirthdayText: isDateErrorText,
+                                  focusNode: focusNode2,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20, right: 20, top: 25),
+                                child: SelectionCityWidget(
+                                  selectedItem: selectedItem,
+                                  onTap: selectedCity,
+                                  isError: isError,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20, right: 20, top: 25),
+                                child: SelectionGenderWidget(
+                                  selectedItem: selectedItemG,
+                                  onTap: selectedGender,
+                                  isError: isErrorG,
+                                ),
+                              ),
+                            ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 25),
-                            child: InputBirthdayWidget(
-                              isValidBirthday: isDateBirthError,
-                              birthdayController: birthdayController,
-                              isValidBirthdayText: isDateErrorText,
-                              focusNode: focusNode2,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 25),
-                            child: SelectionCityWidget(
-                              selectedItem: selectedItem,
-                              onTap: selectedCity,
-                              isError: isError,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 25),
-                            child: SelectionGenderWidget(
-                              selectedItem: selectedItemG,
-                              onTap: selectedGender,
-                              isError: isErrorG,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 24),
-                        child: CommonWidgetButton(
-                          text: 'СОХРАНИТЬ',
-                          colorButton: AppColors.main,
-                          textColor: AppColors.white,
-                          openPath: () {
-                            errorCheckerG();
-                            context
-                                .read<ProfileCubit>()
-                                .changeGender(selectedItemG);
-                            print("1");
-                            errorChecker();
-                            context
-                                .read<ProfileCubit>()
-                                .changeCity(selectedItem);
-
-                            print("2");
-                            validateName(nameController.text);
-                            context
-                                .read<ProfileCubit>()
-                                .changeName(nameController.text);
-                            print("3");
-                            validateEmail(emailController.text);
-                            context
-                                .read<ProfileCubit>()
-                                .changeEmail(emailController.text);
-                            print("4");
-
-                            isDateErrorText =
-                                validateDateOfBirth(birthdayController.text) ??
+                            padding: const EdgeInsets.only(top: 24),
+                            child: CommonWidgetButton(
+                              text: 'СОХРАНИТЬ',
+                              colorButton: AppColors.main,
+                              textColor: AppColors.white,
+                              openPath: () {
+                                errorCheckerG();
+                                errorChecker();
+                                validateName(nameController.text);
+                                validateEmail(emailController.text);
+                                isDateErrorText = validateDateOfBirth(
+                                        birthdayController.text) ??
                                     '';
-                            context
-                                .read<ProfileCubit>()
-                                .changeBirthday(birthdayController.text);
-                            print(
-                                context.read<ProfileCubit>().state.dateOfBirth);
 
-                            focusNode.unfocus();
-                            focusNode1.unfocus();
-                            focusNode2.unfocus();
+                                focusNode.unfocus();
+                                focusNode1.unfocus();
+                                focusNode2.unfocus();
 
-                            if (isError == true ||
-                                isErrorG == true ||
-                                isDateBirthError == true ||
-                                _validateName == false ||
-                                _isEmailValid == false) {
-                              setState(() {});
-                            } else {
-                              print("else");
-                              Future.delayed(Duration(milliseconds: 350), () {
-                                context.goNamed("/main");
-                              });
-                            }
-                          },
-                        ),
+                                if (isError == true ||
+                                    isErrorG == true ||
+                                    isDateBirthError == true ||
+                                    _validateName == false ||
+                                    _isEmailValid == false) {
+                                  setState(() {});
+                                } else {
+                                  context
+                                      .read<ProfileCubit>()
+                                      .changeGender(selectedItemG);
+                                  context
+                                      .read<ProfileCubit>()
+                                      .changeCity(selectedItem);
+
+                                  context
+                                      .read<ProfileCubit>()
+                                      .changeName(nameController.text);
+
+                                  context
+                                      .read<ProfileCubit>()
+                                      .changeEmail(emailController.text);
+
+                                  context
+                                      .read<ProfileCubit>()
+                                      .changeBirthday(birthdayController.text);
+
+                                  print("else");
+                                  Future.delayed(Duration(milliseconds: 350),
+                                      () {
+                                    context.goNamed("/main");
+                                  });
+                                }
+                              },
+                            ),
+                          ),
+                          if (MediaQuery.of(context).viewPadding.bottom <=
+                              20) ...[
+                            SizedBox(
+                              height: 35.h,
+                            ),
+                          ]
+                        ],
                       ),
-                      if (MediaQuery.of(context).viewPadding.bottom <= 20) ...[
-                        SizedBox(
-                          height: 35.h,
-                        ),
-                      ]
-                    ],
-                  ),
-                ),
+                    ),
+                  )
+                ],
               ),
             )),
       ),

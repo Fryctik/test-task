@@ -25,24 +25,15 @@ class _SelectionCityWidgetState extends State<SelectionCityWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
-          child: Row(
-            children: [
-              Text(
-                'ГОРОД ',
-                style: AppTextStyles.body16UnboundedMedium.copyWith(
-                  color: AppColors.black,
-                ),
-              ),
-              Text(
-                '*',
-                style: AppTextStyles.body16UnboundedMedium.copyWith(
-                  color: AppColors.red,
-                ),
-              ),
-            ],
+          child: Text(
+            'ГОРОД ',
+            style: AppTextStyles.body16UnboundedMedium.copyWith(
+              color: AppColors.black,
+            ),
           ),
         ),
         CustomDropdown(isError: widget.isError, selectedItem: widget.selectedItem, customList: citiesList, onTap: widget.onTap,)

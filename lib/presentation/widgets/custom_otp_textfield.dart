@@ -66,8 +66,6 @@ class _CustomOtpTextFieldState extends State<CustomOtpTextField> {
         onChanged: widget.onCodeChanged,
         onCompleted: (value) {widget.onSubmit;},
         onSubmitted: widget.onSubmit,
-
-
         keyboardType: TextInputType.number,
         onTapOutside: (point) {
         },

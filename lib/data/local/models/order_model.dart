@@ -1,32 +1,35 @@
-class OrderAddress {
+class Order {
   String city;
   String address;
-  String time;
-  String number;
+  String doorway;
+  String floor;
+  String apartment;
+  String code;
 
-  OrderAddress({
+  Order({
     required this.city,
     required this.address,
-    required this.time,
-    required this.number,
+    required this.doorway,
+    required this.floor,
+    required this.apartment,
+    required this.code,
   });
 
-  OrderAddress copyWith({
+  Order copyWith({
     String? city,
     String? address,
-    String? time,
-    String? number,
+    String? doorway,
+    String? floor,
+    String? apartment,
+    String? code,
   }) {
-    return OrderAddress(
+    return Order(
       city: city ?? this.city,
       address: address ?? this.address,
-      time: time ?? this.time,
-      number: number ?? this.number,
+      doorway: doorway ?? this.doorway,
+      floor: floor ?? this.floor,
+      apartment: apartment ?? this.apartment,
+      code: code ?? this.code,
     );
-  }
-
-  @override
-  String toString() {
-    return 'OrderAddress(city: $city, address: $address, time: $time, number: $number)';
   }
 }

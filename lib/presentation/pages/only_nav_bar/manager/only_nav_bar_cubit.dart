@@ -8,5 +8,9 @@ class OnlyNavBarCubit extends Cubit<OnlyNavBarState> {
 
   final GlobalKey<ScaffoldState> scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
-  OnlyNavBarCubit() : super(OnlyNavBarInitial());
+  OnlyNavBarCubit() : super(OnlyNavBarState(0));
+
+  void updateIndex(int index) {
+    emit(OnlyNavBarState(index));
+  }
 }
